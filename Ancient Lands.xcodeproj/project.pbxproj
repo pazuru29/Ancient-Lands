@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
-		A8F2FD8B2BA47E03007E7598 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* ContentView.swift */; };
+		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
 		A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */; };
+		A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD9B2BA482D1007E7598 /* LottieView.swift */; };
+		A8F2FD9F2BA487F9007E7598 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A8F2FD9E2BA487F9007E7598 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedievalSharp-Regular.ttf"; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
-		A8F2FD8A2BA47E03007E7598 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A8F2FD9B2BA482D1007E7598 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +31,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F2FD9F2BA487F9007E7598 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A80538632BA494D40067FEBB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A8F2FD7C2BA47E03007E7598 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */,
-				A8F2FD8A2BA47E03007E7598 /* ContentView.swift */,
-				A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */,
+				A8F2FD972BA48016007E7598 /* Data */,
+				A8F2FD982BA48029007E7598 /* ViewModels */,
+				A8F2FD992BA48030007E7598 /* Views */,
+				A8F2FD962BA4800C007E7598 /* Components */,
+				A8F2FD9A2BA4817D007E7598 /* Resources */,
 				A8F2FD8E2BA47E05007E7598 /* Preview Content */,
 			);
 			path = "Ancient Lands";
@@ -65,6 +82,45 @@
 				A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A8F2FD962BA4800C007E7598 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A8F2FD9B2BA482D1007E7598 /* LottieView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A8F2FD972BA48016007E7598 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A8F2FD982BA48029007E7598 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A8F2FD992BA48030007E7598 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8F2FD9A2BA4817D007E7598 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A80538632BA494D40067FEBB /* Fonts */,
+				A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +139,9 @@
 			dependencies = (
 			);
 			name = "Ancient Lands";
+			packageProductDependencies = (
+				A8F2FD9E2BA487F9007E7598 /* Lottie */,
+			);
 			productName = "Ancient Lands";
 			productReference = A8F2FD852BA47E03007E7598 /* Ancient Lands.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +170,9 @@
 				Base,
 			);
 			mainGroup = A8F2FD7C2BA47E03007E7598;
+			packageReferences = (
+				A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = A8F2FD862BA47E03007E7598 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */,
+				A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */,
 				A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F2FD8B2BA47E03007E7598 /* ContentView.swift in Sources */,
+				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
+				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +339,7 @@
 				DEVELOPMENT_TEAM = 3YB5DT95UW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ancient-Lands-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +369,7 @@
 				DEVELOPMENT_TEAM = 3YB5DT95UW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ancient-Lands-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A8F2FD9E2BA487F9007E7598 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8F2FD7D2BA47E03007E7598 /* Project object */;
 }
