@@ -8,7 +8,7 @@
 import SwiftUI
 import Lottie
 
-struct LoadingView: View {    
+struct LoadingView: View {
     var body: some View {
         ZStack {
             LottieView(lottieFile: "loading_town", speed: -1)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */; };
+		A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedievalSharp-Regular.ttf"; sourceTree = "<group>"; };
+		A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 		A80538632BA494D40067FEBB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */,
 				A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */,
 			);
 			path = Fonts;
@@ -187,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */,
 				A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */,
 				A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */,
 				A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */,
