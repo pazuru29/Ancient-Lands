@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */; };
 		A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */; };
+		A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80538682BA49B280067FEBB /* Launch Screen.storyboard */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedievalSharp-Regular.ttf"; sourceTree = "<group>"; };
 		A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		A80538682BA49B280067FEBB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */,
+				A80538682BA49B280067FEBB /* Launch Screen.storyboard */,
 				A8F2FD972BA48016007E7598 /* Data */,
 				A8F2FD982BA48029007E7598 /* ViewModels */,
 				A8F2FD992BA48030007E7598 /* Views */,
@@ -193,6 +196,7 @@
 				A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */,
 				A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */,
 				A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */,
+				A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */,
 				A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,8 +351,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,8 +382,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
