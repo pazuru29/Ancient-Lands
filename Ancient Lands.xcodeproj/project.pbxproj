@@ -10,6 +10,15 @@
 		A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */; };
 		A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */; };
 		A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80538682BA49B280067FEBB /* Launch Screen.storyboard */; };
+		A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201C92BAA322400E05C43 /* AppBar.swift */; };
+		A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */; };
+		A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */; };
+		A87386092BA9ED79005C2123 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386082BA9ED79005C2123 /* Character.swift */; };
+		A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */; };
+		A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386102BA9F2F4005C2123 /* Equipment.swift */; };
+		A87386132BAA0F5C005C2123 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386122BAA0F5C005C2123 /* ItemCard.swift */; };
+		A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386142BAA0F6C005C2123 /* ItemType.swift */; };
+		A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386162BAA1E46005C2123 /* CharacterCard.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
@@ -22,6 +31,15 @@
 		A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedievalSharp-Regular.ttf"; sourceTree = "<group>"; };
 		A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A80538682BA49B280067FEBB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A82201C92BAA322400E05C43 /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
+		A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacter.swift; sourceTree = "<group>"; };
+		A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		A87386082BA9ED79005C2123 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCharacter.swift; sourceTree = "<group>"; };
+		A87386102BA9F2F4005C2123 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		A87386122BAA0F5C005C2123 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		A87386142BAA0F6C005C2123 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		A87386162BAA1E46005C2123 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -51,6 +69,50 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		A82201CB2BAA335000E05C43 /* CreateCharacterViews */ = {
+			isa = PBXGroup;
+			children = (
+				A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */,
+			);
+			path = CreateCharacterViews;
+			sourceTree = "<group>";
+		};
+		A82201CE2BAA382000E05C43 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A873860A2BA9EE35005C2123 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				A87386082BA9ED79005C2123 /* Character.swift */,
+				A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */,
+				A87386102BA9F2F4005C2123 /* Equipment.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		A873860D2BA9EF5A005C2123 /* ItemCard */ = {
+			isa = PBXGroup;
+			children = (
+				A87386122BAA0F5C005C2123 /* ItemCard.swift */,
+				A87386142BAA0F6C005C2123 /* ItemType.swift */,
+			);
+			path = ItemCard;
+			sourceTree = "<group>";
+		};
+		A8B0D9FE2BA5AF6800B3CDCB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A873860D2BA9EF5A005C2123 /* ItemCard */,
+				A873860A2BA9EE35005C2123 /* Character */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A8F2FD7C2BA47E03007E7598 = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +135,11 @@
 				A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */,
 				A80538682BA49B280067FEBB /* Launch Screen.storyboard */,
 				A8F2FD972BA48016007E7598 /* Data */,
+				A8B0D9FE2BA5AF6800B3CDCB /* Models */,
 				A8F2FD982BA48029007E7598 /* ViewModels */,
 				A8F2FD992BA48030007E7598 /* Views */,
 				A8F2FD962BA4800C007E7598 /* Components */,
+				A82201CE2BAA382000E05C43 /* Utils */,
 				A8F2FD9A2BA4817D007E7598 /* Resources */,
 				A8F2FD8E2BA47E05007E7598 /* Preview Content */,
 			);
@@ -94,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				A8F2FD9B2BA482D1007E7598 /* LottieView.swift */,
+				A87386162BAA1E46005C2123 /* CharacterCard.swift */,
+				A82201C92BAA322400E05C43 /* AppBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -115,6 +181,7 @@
 		A8F2FD992BA48030007E7598 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A82201CB2BAA335000E05C43 /* CreateCharacterViews */,
 				A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */,
 			);
 			path = Views;
@@ -208,9 +275,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */,
 				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
+				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
+				A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */,
+				A87386132BAA0F5C005C2123 /* ItemCard.swift in Sources */,
+				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
+				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
+				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
+				A87386092BA9ED79005C2123 /* Character.swift in Sources */,
+				A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

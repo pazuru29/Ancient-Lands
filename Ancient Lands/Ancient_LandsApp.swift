@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct Ancient_LandsApp: App {
+    @State var isLoading: Bool = true
+    
+    @ViewBuilder
+    var mainContent: some View {
+        if isLoading {
+            LoadingView(isLoading: $isLoading)
+        } else {
+            ChooseCharacter()
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            LoadingView()
+            mainContent
+                .background(.appPrimary)
         }
     }
 }

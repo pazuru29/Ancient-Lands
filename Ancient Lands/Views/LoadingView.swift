@@ -9,6 +9,8 @@ import SwiftUI
 import Lottie
 
 struct LoadingView: View {
+    @Binding var isLoading: Bool
+    
     var body: some View {
         ZStack {
             LottieView(lottieFile: "loading_town", speed: -1)
@@ -22,9 +24,12 @@ struct LoadingView: View {
                 .offset(CGSize(width: 0, height: 200))
         }
         .background(.appPrimary)
+        .task {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation {
+                    isLoading.toggle()
+                }
+            }
+        }
     }
-}
-
-#Preview {
-    LoadingView()
 }
