@@ -22,9 +22,14 @@ struct PickCardSet: View {
                         VStack(spacing: 0) {
                             if selectedCards != type {
                                 BackCardSet()
-                                .padding(.bottom, 48)
+                                    .padding(.bottom, 48)
                             } else {
-                                cardSetView(type)
+                                HStack(spacing: -42) {
+                                    ForEach(type.getCards(), id: \.self.1) { num, card in
+                                        ItemCard(card: card)
+                                    }
+                                }
+                                .padding(.bottom, 45)
                             }
                             
                             Text(type.rawValue)
@@ -48,14 +53,14 @@ struct PickCardSet: View {
                     
                     NavigationLink("Cintinue") {
                         if let selectedCards = selectedCards {
-                            //TODO: - navigate to change name
+                            CreateNameView(character: character, cards: selectedCards)
                         }
                     }
                     .disabled(selectedCards == nil)
                     .buttonStyle(MainButtonStyle())
                 }
                 .padding(.horizontal, 16)
-                .padding(.top, 90)
+                .padding(.top, 88)
                 .padding(.bottom, 36)
             }
             .frame(maxWidth: .infinity)
@@ -80,26 +85,6 @@ struct PickCardSet: View {
                 CharacterDetailView(isShowed: $isCharacterDetailShowed, character: character.getCharacteristic())
             }
         }
-    }
-    
-    func cardSetView(_ type: TypeStartCards) -> some View {
-        var cards: Array<(Int, ItemCardModel)>
-        
-        switch(type) {
-        case .elf:
-            cards = CardStorage.elfSet
-        case .knight:
-            cards = CardStorage.knightSet
-        case .wizard:
-            cards = CardStorage.wizardSet
-        }
-        
-        return HStack(spacing: -42) {
-            ForEach(cards, id: \.self.1) { num, card in
-                ItemCard(card: card)
-            }
-        }
-        .padding(.bottom, 45)
     }
 }
 

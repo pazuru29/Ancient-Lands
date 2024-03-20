@@ -11,4 +11,15 @@ enum TypeStartCards: String, CaseIterable {
     case knight = "Knight's Set"
     case elf = "Elf's Set"
     case wizard = "Wizard's Set"
+    
+    func getCards() -> Array<(Int, ItemCardModel)> {
+        switch(self) {
+        case .elf:
+            return CardStorage.elfSet
+        case .knight:
+            return CardStorage.knightSet
+        case .wizard:
+            return CardStorage.wizardSet
+        }
+    }
 }
