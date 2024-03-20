@@ -8,12 +8,12 @@
 import Foundation
 
 enum TypeOfCharacter: CaseIterable {
-    case knight
-    case elf
-    case wizard
     case knightWm
+    case knight
     case elfWm
+    case elf
     case wizardWm
+    case wizard
     
     func getCharacteristic() -> TypeOfCharacterStruct {
         switch self {

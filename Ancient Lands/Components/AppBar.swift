@@ -11,17 +11,22 @@ struct AppBar: View {
     let title: String
     
     var body: some View {
-        HStack(spacing: 0) {
-            Text(title)
-                .font(.custom("MontserratRoman-Semibold", size: 24))
-                .foregroundStyle(.appPrimary2)
-            Spacer()
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Text(title)
+                    .font(.custom("MontserratRoman-Semibold", size: 24))
+                    .foregroundStyle(.appPrimary2)
+                Spacer()
+            }
+            .padding(.horizontal)
+            .frame(height: 64)
+            .frame(maxWidth: .infinity)
+            .background(.appPrimary.opacity(0.85))
+            .background(.ultraThinMaterial.opacity(0.95))
+            
+            Divider()
+                .background(.appThirty)
         }
-        .padding(.horizontal)
-        .frame(height: 64)
-        .frame(maxWidth: .infinity)
-        .background(.appPrimary.opacity(0.9))
-        .background(.ultraThinMaterial)
     }
 }
 

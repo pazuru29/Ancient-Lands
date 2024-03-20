@@ -10,6 +10,9 @@ import SwiftUI
 struct ChooseCharacter: View {
     @State var selectedCharacter: TypeOfCharacter?
     
+    @State var isCharacterDetailShowed = false
+    @State var overlayCharacter: TypeOfCharacter = .knight
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -26,6 +29,15 @@ struct ChooseCharacter: View {
                                         }
                                     }
                                 }
+                                .onLongPressGesture {
+                                    overlayCharacter = character
+                                    withAnimation {
+                                        isCharacterDetailShowed.toggle()
+                                    }
+                                }
+                                .sensoryFeedback(.impact, trigger: isCharacterDetailShowed) { oldValue, newValue in
+                                    newValue == true
+                                }
                         }
                     }
                     .padding(.bottom, 36)
@@ -40,11 +52,17 @@ struct ChooseCharacter: View {
                 .padding(.bottom, 36)
                 .padding(.horizontal, 16)
             }
+            .scrollIndicators(.hidden)
             .background(.appPrimary)
             
             VStack {
                 AppBar(title: "Choose a character")
                 Spacer()
+            }
+        }
+        .overlay {
+            if isCharacterDetailShowed {
+                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: overlayCharacter.getCharacteristic())
             }
         }
     }
