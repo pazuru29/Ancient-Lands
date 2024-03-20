@@ -24,14 +24,14 @@ struct MainButtonStyle: ButtonStyle {
     
     func getBackground(isPressed: Bool) -> Color {
         guard isEnabled else {
-            return .appThirty2
+            return .appPrimary2.opacity(0.5)
         }
-        return isPressed ? .appThirty2 : .appPrimary2
+        return isPressed ? .appSecondary2 : .appPrimary2
     }
     
     func getTextForeground(isPressed: Bool) -> Color {
         guard isEnabled else {
-            return .appThirty
+            return .appPrimary.opacity(0.5)
         }
         return isPressed ? .appSecondary : .appPrimary
     }

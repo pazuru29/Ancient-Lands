@@ -39,6 +39,7 @@ struct CharacterCard: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(isSelected ? .appThirty2 : .appPrimary, lineWidth: 1)
         })
+        .shadow(color: isSelected ? Color.black : Color.clear, radius: 4, y: 4)
     }
 }
 

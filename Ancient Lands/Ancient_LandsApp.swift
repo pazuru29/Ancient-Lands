@@ -16,7 +16,9 @@ struct Ancient_LandsApp: App {
         if isLoading {
             LoadingView(isLoading: $isLoading)
         } else {
-            ChooseCharacter()
+            NavigationView {
+                ChooseCharacter()
+            }
         }
     }
     

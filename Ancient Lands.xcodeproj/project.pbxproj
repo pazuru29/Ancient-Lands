@@ -15,10 +15,19 @@
 		A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */; };
 		A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A502BAAFB0C0059955B /* OverlayView.swift */; };
 		A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A522BAB1F660059955B /* CharacterDetailView.swift */; };
+		A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A542BAB21D40059955B /* AppSecondaryBar.swift */; };
+		A84A6A572BAB23190059955B /* IconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A562BAB23190059955B /* IconButtonStyle.swift */; };
+		A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A582BAB240B0059955B /* PickCardSet.swift */; };
+		A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A5A2BAB2FC10059955B /* SmallCharacterCard.swift */; };
+		A84A6A5D2BAB445A0059955B /* TypeStartCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A5C2BAB445A0059955B /* TypeStartCards.swift */; };
+		A84A6A5F2BAB4BDB0059955B /* BackOfCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A5E2BAB4BDB0059955B /* BackOfCard.swift */; };
+		A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A602BAB5C020059955B /* BackCardSet.swift */; };
+		A84A6A632BAB62560059955B /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A622BAB62560059955B /* CardStorage.swift */; };
+		A84A6A672BAB72480059955B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A662BAB72480059955B /* ItemCard.swift */; };
 		A87386092BA9ED79005C2123 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386082BA9ED79005C2123 /* Character.swift */; };
 		A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */; };
 		A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386102BA9F2F4005C2123 /* Equipment.swift */; };
-		A87386132BAA0F5C005C2123 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386122BAA0F5C005C2123 /* ItemCard.swift */; };
+		A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386122BAA0F5C005C2123 /* ItemCardModel.swift */; };
 		A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386142BAA0F6C005C2123 /* ItemType.swift */; };
 		A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386162BAA1E46005C2123 /* CharacterCard.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
@@ -38,10 +47,19 @@
 		A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		A84A6A502BAAFB0C0059955B /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		A84A6A522BAB1F660059955B /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		A84A6A542BAB21D40059955B /* AppSecondaryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecondaryBar.swift; sourceTree = "<group>"; };
+		A84A6A562BAB23190059955B /* IconButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonStyle.swift; sourceTree = "<group>"; };
+		A84A6A582BAB240B0059955B /* PickCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCardSet.swift; sourceTree = "<group>"; };
+		A84A6A5A2BAB2FC10059955B /* SmallCharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCharacterCard.swift; sourceTree = "<group>"; };
+		A84A6A5C2BAB445A0059955B /* TypeStartCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeStartCards.swift; sourceTree = "<group>"; };
+		A84A6A5E2BAB4BDB0059955B /* BackOfCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfCard.swift; sourceTree = "<group>"; };
+		A84A6A602BAB5C020059955B /* BackCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardSet.swift; sourceTree = "<group>"; };
+		A84A6A622BAB62560059955B /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
+		A84A6A662BAB72480059955B /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
 		A87386082BA9ED79005C2123 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCharacter.swift; sourceTree = "<group>"; };
 		A87386102BA9F2F4005C2123 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
-		A87386122BAA0F5C005C2123 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		A87386122BAA0F5C005C2123 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
 		A87386142BAA0F6C005C2123 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		A87386162BAA1E46005C2123 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */,
+				A84A6A582BAB240B0059955B /* PickCardSet.swift */,
 			);
 			path = CreateCharacterViews;
 			sourceTree = "<group>";
@@ -85,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */,
+				A84A6A562BAB23190059955B /* IconButtonStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -95,6 +115,7 @@
 				A87386082BA9ED79005C2123 /* Character.swift */,
 				A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */,
 				A87386102BA9F2F4005C2123 /* Equipment.swift */,
+				A84A6A5C2BAB445A0059955B /* TypeStartCards.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -102,7 +123,7 @@
 		A873860D2BA9EF5A005C2123 /* ItemCard */ = {
 			isa = PBXGroup;
 			children = (
-				A87386122BAA0F5C005C2123 /* ItemCard.swift */,
+				A87386122BAA0F5C005C2123 /* ItemCardModel.swift */,
 				A87386142BAA0F6C005C2123 /* ItemType.swift */,
 			);
 			path = ItemCard;
@@ -165,6 +186,11 @@
 				A8F2FD9B2BA482D1007E7598 /* LottieView.swift */,
 				A87386162BAA1E46005C2123 /* CharacterCard.swift */,
 				A82201C92BAA322400E05C43 /* AppBar.swift */,
+				A84A6A542BAB21D40059955B /* AppSecondaryBar.swift */,
+				A84A6A5A2BAB2FC10059955B /* SmallCharacterCard.swift */,
+				A84A6A5E2BAB4BDB0059955B /* BackOfCard.swift */,
+				A84A6A602BAB5C020059955B /* BackCardSet.swift */,
+				A84A6A662BAB72480059955B /* ItemCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -172,6 +198,7 @@
 		A8F2FD972BA48016007E7598 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A84A6A622BAB62560059955B /* CardStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -284,11 +311,20 @@
 				A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */,
 				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
 				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
+				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
 				A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */,
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
+				A84A6A5D2BAB445A0059955B /* TypeStartCards.swift in Sources */,
+				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
+				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
+				A84A6A572BAB23190059955B /* IconButtonStyle.swift in Sources */,
 				A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */,
-				A87386132BAA0F5C005C2123 /* ItemCard.swift in Sources */,
+				A84A6A5F2BAB4BDB0059955B /* BackOfCard.swift in Sources */,
+				A84A6A632BAB62560059955B /* CardStorage.swift in Sources */,
+				A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */,
+				A84A6A672BAB72480059955B /* ItemCard.swift in Sources */,
+				A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */,
 				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
 				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,

@@ -42,8 +42,10 @@ struct ChooseCharacter: View {
                     }
                     .padding(.bottom, 36)
                     
-                    Button("Cintinue") {
-                        //TODO: continue
+                    NavigationLink("Cintinue") {
+                        if let selectedCharacter = selectedCharacter {
+                            PickCardSet(character: selectedCharacter)
+                        }
                     }
                     .disabled(selectedCharacter == nil)
                     .buttonStyle(MainButtonStyle())
