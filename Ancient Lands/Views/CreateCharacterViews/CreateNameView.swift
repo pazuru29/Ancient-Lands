@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CreateNameView: View, KeyboardReadable {
+    @EnvironmentObject var characterViewModel: CharacterViewModel
+    
     let character: TypeOfCharacter
     
     let cards: TypeStartCards
     
     @State var name: String = ""
+    
+    let textLimit = 60
     
     @State private var isKeyboardVisible = false
     
@@ -35,8 +40,16 @@ struct CreateNameView: View, KeyboardReadable {
                         Spacer()
                         
                         HStack(spacing: -24) {
-                            ForEach(cards.getCards(), id: \.self.1) { num, card in
-                                ItemCard(card: card, isSmall: true)
+                            ForEach(Array(cards.getCards().keys), id: \.self) { id in
+                                let card = CardStorage.allCards.first(where: { element in
+                                    element.id == id
+                                })
+                                
+                                if card == nil {
+                                    BackOfCard()
+                                } else {
+                                    ItemCard(card: card!, isSmall: true)
+                                }
                             }
                         }
                     }
@@ -49,6 +62,7 @@ struct CreateNameView: View, KeyboardReadable {
                     }
                     .font(.custom("MontserratRoman-Regular", size: 16))
                     .foregroundStyle(.white)
+                    .onReceive(Just(name)) { _ in limitText(textLimit) }
                     .padding(.horizontal, 12)
                     .padding(.vertical, 12)
                     .background {
@@ -65,12 +79,16 @@ struct CreateNameView: View, KeyboardReadable {
                 AppSecondaryBar(title: "Create name") {}
                 Spacer()
                 if !isKeyboardVisible {
-                    NavigationLink("Create") {
-                        if !name.isEmpty {
-                            //TODO: - save to db and navigate to main screen
+                    Button("Create") {
+                        //TODO: navigate to main
+                        
+                        if !trim(name).isEmpty {
+                            let character = Character(type: self.character, name: trim(name), equipment: Equipment(), inventory: cards.getCards())
+                            
+                            characterViewModel.saveNewCharacter(character: character)
                         }
                     }
-                    .disabled(name.isEmpty)
+                    .disabled(trim(name).isEmpty)
                     .buttonStyle(MainButtonStyle())
                     .padding(.horizontal)
                     .padding(.bottom, 36)
@@ -79,10 +97,20 @@ struct CreateNameView: View, KeyboardReadable {
         }
         .navigationBarBackButtonHidden()
         .onReceive(keyboardPublisher, perform: { newIsKeyboardVisible in
-                    print("Is keyboard visible? ", newIsKeyboardVisible)
-                    isKeyboardVisible = newIsKeyboardVisible
-                })
+            print("Is keyboard visible? ", newIsKeyboardVisible)
+            isKeyboardVisible = newIsKeyboardVisible
+        })
         .background(.appPrimary)
+    }
+    
+    func limitText(_ upper: Int) {
+        if name.count > upper {
+            name = String(name.prefix(upper))
+        }
+    }
+    
+    func trim(_ text: String) -> String {
+        return text.trimmingCharacters(in: .whitespaces)
     }
 }
 

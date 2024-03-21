@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Equipment {
-    var armor: ItemCard?
-    var attack: ItemCard?
-    var shield: ItemCard?
+struct Equipment: Codable {
+    var armor: ItemCardModel?
+    var attack: ItemCardModel?
+    var shield: ItemCardModel?
 }

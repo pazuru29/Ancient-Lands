@@ -15,6 +15,11 @@
 		A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */; };
 		A82C61802BAB95A7005FFCCA /* CreateNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C617F2BAB95A7005FFCCA /* CreateNameView.swift */; };
 		A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C61812BABA537005FFCCA /* KeyboardReadable.swift */; };
+		A8378EC32BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8378EC12BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld */; };
+		A8378EC52BAC4DA90099D5F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8378EC42BAC4DA90099D5F1 /* CoreDataManager.swift */; };
+		A8378EC72BAC4E820099D5F1 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8378EC62BAC4E820099D5F1 /* Functions.swift */; };
+		A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8378EC82BAC58720099D5F1 /* CharacterViewModel.swift */; };
+		A8378ECB2BAC61940099D5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8378ECA2BAC61940099D5F1 /* MainView.swift */; };
 		A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A502BAAFB0C0059955B /* OverlayView.swift */; };
 		A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A522BAB1F660059955B /* CharacterDetailView.swift */; };
 		A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A542BAB21D40059955B /* AppSecondaryBar.swift */; };
@@ -49,6 +54,11 @@
 		A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		A82C617F2BAB95A7005FFCCA /* CreateNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNameView.swift; sourceTree = "<group>"; };
 		A82C61812BABA537005FFCCA /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
+		A8378EC22BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AncientLandsCoreData.xcdatamodel; sourceTree = "<group>"; };
+		A8378EC42BAC4DA90099D5F1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		A8378EC62BAC4E820099D5F1 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		A8378EC82BAC58720099D5F1 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		A8378ECA2BAC61940099D5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A84A6A502BAAFB0C0059955B /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		A84A6A522BAB1F660059955B /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		A84A6A542BAB21D40059955B /* AppSecondaryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecondaryBar.swift; sourceTree = "<group>"; };
@@ -111,6 +121,7 @@
 				A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */,
 				A84A6A562BAB23190059955B /* IconButtonStyle.swift */,
 				A82C61812BABA537005FFCCA /* KeyboardReadable.swift */,
+				A8378EC62BAC4E820099D5F1 /* Functions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -205,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				A84A6A622BAB62560059955B /* CardStorage.swift */,
+				A8378EC12BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld */,
+				A8378EC42BAC4DA90099D5F1 /* CoreDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -212,6 +225,7 @@
 		A8F2FD982BA48029007E7598 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A8378EC82BAC58720099D5F1 /* CharacterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 				A82201CB2BAA335000E05C43 /* CreateCharacterViews */,
 				A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */,
 				A84A6A522BAB1F660059955B /* CharacterDetailView.swift */,
+				A8378ECA2BAC61940099D5F1 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,14 +331,18 @@
 			files = (
 				A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */,
 				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
+				A8378EC32BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld in Sources */,
+				A8378EC72BAC4E820099D5F1 /* Functions.swift in Sources */,
 				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
 				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
 				A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */,
+				A8378EC52BAC4DA90099D5F1 /* CoreDataManager.swift in Sources */,
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
 				A84A6A5D2BAB445A0059955B /* TypeStartCards.swift in Sources */,
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
 				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
+				A8378ECB2BAC61940099D5F1 /* MainView.swift in Sources */,
 				A84A6A572BAB23190059955B /* IconButtonStyle.swift in Sources */,
 				A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */,
 				A84A6A5F2BAB4BDB0059955B /* BackOfCard.swift in Sources */,
@@ -337,6 +356,7 @@
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,
 				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
+				A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */,
 				A87386092BA9ED79005C2123 /* Character.swift in Sources */,
 				A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */,
 			);
@@ -489,6 +509,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yaroslavchlek.Ancient-Lands";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -520,6 +544,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yaroslavchlek.Ancient-Lands";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -567,6 +595,20 @@
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A8378EC12BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A8378EC22BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodel */,
+			);
+			currentVersion = A8378EC22BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodel */;
+			name = AncientLandsCoreData.xcdatamodeld;
+			path = "/Users/yaroslavchlek/Documents/GitHub/Ancient-Lands/Ancient Lands/Data/AncientLandsCoreData.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A8F2FD7D2BA47E03007E7598 /* Project object */;
 }

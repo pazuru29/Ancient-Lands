@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TypeOfCharacter: CaseIterable {
+enum TypeOfCharacter: CaseIterable, Codable {
     case knightWm
     case knight
     case elfWm

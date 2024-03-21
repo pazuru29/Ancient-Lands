@@ -25,8 +25,16 @@ struct PickCardSet: View {
                                     .padding(.bottom, 48)
                             } else {
                                 HStack(spacing: -42) {
-                                    ForEach(type.getCards(), id: \.self.1) { num, card in
-                                        ItemCard(card: card)
+                                    ForEach(Array(type.getCards().keys), id: \.self) { id in
+                                        let card = CardStorage.allCards.first(where: { element in
+                                            element.id == id
+                                        })
+                                        
+                                        if card == nil {
+                                            BackOfCard()
+                                        } else {
+                                            ItemCard(card: card!)
+                                        }
                                     }
                                 }
                                 .padding(.bottom, 45)

@@ -8,7 +8,7 @@
 import Foundation
 
 //TODO: add params for items
-enum ItemType {
+enum ItemType: Codable {
     case potion
     case trap
     case amplification

@@ -8,28 +8,29 @@
 import Foundation
 
 struct CardStorage {
-    static let knightSet: Array<(Int, ItemCardModel)> = [
-        (1, ItemCardModel(id: 49, assetName: "WarriorsSword", name: "Warriors Sword", description: "", type: .meleeWeapon)),
-        (1, ItemCardModel(id: 18, assetName: "DefendersShield", name: "Defenders Shield", description: "", type: .shield)),
-        (3, ItemCardModel(id: 50, assetName: "BreakingGarnet", name: "Breaking Garnet", description: "", type: .grenade)),
-        (3, ItemCardModel(id: 4, assetName: "PowerPotion", name: "Power Potion", description: "", type: .potion)),
-        (4, ItemCardModel(id: 54, assetName: "MetalIngot", name: "Metal Ingot", description: "", type: .resource)),
+    // ID - Count
+    static let knightSet: Dictionary<Int, Int> = [
+        49: 1,
+        18: 1,
+        50: 3,
+        4: 3,
+        54: 4,
     ]
     
-    static let elfSet: Array<(Int, ItemCardModel)> = [
-        (1, ItemCardModel(id: 26, assetName: "Bow", name: "Bow", description: "", type: .rangedWeapon)),
-        (20, ItemCardModel(id: 28, assetName: "Arrow", name: "Arrow", description: "", type: .ammo)),
-        (10, ItemCardModel(id: 32, assetName: "PoisonArrow", name: "Poison Arrow", description: "", type: .ammo)),
-        (3, ItemCardModel(id: 6, assetName: "Trap", name: "Trap", description: "", type: .trap)),
-        (1, ItemCardModel(id: 7, assetName: "PoisonTrap", name: "Poison Trap", description: "", type: .trap)),
+    static let elfSet: Dictionary<Int, Int> = [
+        26: 1,
+        28: 20,
+        32: 10,
+        6: 3,
+        7: 1,
     ]
     
-    static let wizardSet: Array<(Int, ItemCardModel)> = [
-        (1, ItemCardModel(id: 36, assetName: "WizardCane", name: "Wizard Cane", description: "", type: .magicWeapon)),
-        (1, ItemCardModel(id: 38, assetName: "FireballMagician", name: "Fireball Magician", description: "", type: .spell)),
-        (2, ItemCardModel(id: 53, assetName: "MagicCrystal", name: "Magic Crystal", description: "", type: .resource)),
-        (3, ItemCardModel(id: 2, assetName: "HealingPotion", name: "Healing Potion", description: "", type: .potion)),
-        (1, ItemCardModel(id: 1, assetName: "DefensePotion", name: "Defense Potion", description: "", type: .potion)),
+    static let wizardSet: Dictionary<Int, Int> = [
+        36: 1,
+        38: 1,
+        53: 2,
+        2: 3,
+        1: 1,
     ]
     
     static let allCards: Array<ItemCardModel> = [

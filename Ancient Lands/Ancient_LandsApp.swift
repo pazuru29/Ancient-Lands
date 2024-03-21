@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct Ancient_LandsApp: App {
+    @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel()
+    
     @State var isLoading: Bool = true
     
     @ViewBuilder
@@ -16,8 +18,14 @@ struct Ancient_LandsApp: App {
         if isLoading {
             LoadingView(isLoading: $isLoading)
         } else {
-            NavigationView {
-                ChooseCharacter()
+            if characterViewModel.currentCharacter == nil {
+                NavigationView {
+                    ChooseCharacter()
+                }
+            } else {
+                NavigationView {
+                    MainView()
+                }
             }
         }
     }
@@ -26,6 +34,7 @@ struct Ancient_LandsApp: App {
         WindowGroup {
             mainContent
                 .background(.appPrimary)
+                .environmentObject(characterViewModel)
         }
     }
 }

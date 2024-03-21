@@ -9,6 +9,7 @@ import SwiftUI
 import Lottie
 
 struct LoadingView: View {
+    @EnvironmentObject var characterViewModel: CharacterViewModel
     @Binding var isLoading: Bool
     
     var body: some View {
@@ -25,6 +26,7 @@ struct LoadingView: View {
         }
         .background(.appPrimary)
         .task {
+            characterViewModel.getInitData()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation {
                     isLoading.toggle()

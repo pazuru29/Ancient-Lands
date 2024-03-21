@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemCardModel: Hashable {
+struct ItemCardModel: Hashable, Codable {
     let id: Int
     let assetName: String
     let name: String
