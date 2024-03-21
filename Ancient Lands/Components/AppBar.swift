@@ -7,8 +7,15 @@
 
 import SwiftUI
 
-struct AppBar: View {
+struct AppBar<Content: View>: View {
     let title: String
+    
+    @ViewBuilder let content: Content
+    
+    init(title: String = "", @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -17,6 +24,7 @@ struct AppBar: View {
                     .font(.custom("MontserratRoman-Semibold", size: 24))
                     .foregroundStyle(.appPrimary2)
                 Spacer()
+                content
             }
             .padding(.horizontal)
             .frame(height: 64)
@@ -31,5 +39,5 @@ struct AppBar: View {
 }
 
 #Preview {
-    AppBar(title: "Choose a character")
+    AppBar(title: "Choose a character") {}
 }

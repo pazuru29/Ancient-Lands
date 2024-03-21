@@ -18,7 +18,7 @@ struct MainButtonStyle: ButtonStyle {
             .background(getBackground(isPressed: configuration.isPressed))
             .foregroundStyle(getTextForeground(isPressed: configuration.isPressed))
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(radius: 4, y: 4)
+            .shadow(color: isEnabled ? .black.opacity(0.3) : .clear, radius: 4, y: 4)
             .animation(.easeIn, value: isEnabled)
     }
     
