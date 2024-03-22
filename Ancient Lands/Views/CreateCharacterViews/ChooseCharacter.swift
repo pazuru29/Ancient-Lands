@@ -58,7 +58,7 @@ struct ChooseCharacter: View {
             .background(.appPrimary)
             
             VStack {
-                AppBar(title: "Choose a character")
+                AppBar(title: "Choose a character") {}
                 Spacer()
             }
         }
