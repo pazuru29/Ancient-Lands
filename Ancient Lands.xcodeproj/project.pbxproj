@@ -10,6 +10,8 @@
 		A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */; };
 		A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */; };
 		A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80538682BA49B280067FEBB /* Launch Screen.storyboard */; };
+		A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8090FBE2BADB50900218C20 /* NavigationViews.swift */; };
+		A8090FC12BADB56100218C20 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8090FC02BADB56100218C20 /* NavigationManager.swift */; };
 		A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201C92BAA322400E05C43 /* AppBar.swift */; };
 		A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */; };
 		A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */; };
@@ -38,6 +40,8 @@
 		A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386122BAA0F5C005C2123 /* ItemCardModel.swift */; };
 		A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386142BAA0F6C005C2123 /* ItemType.swift */; };
 		A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386162BAA1E46005C2123 /* CharacterCard.swift */; };
+		A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BB2BADFB5600409C59 /* GameView.swift */; };
+		A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
@@ -50,6 +54,8 @@
 		A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedievalSharp-Regular.ttf"; sourceTree = "<group>"; };
 		A80538662BA499090067FEBB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A80538682BA49B280067FEBB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A8090FBE2BADB50900218C20 /* NavigationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViews.swift; sourceTree = "<group>"; };
+		A8090FC02BADB56100218C20 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		A82201C92BAA322400E05C43 /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
 		A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacter.swift; sourceTree = "<group>"; };
 		A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		A87386122BAA0F5C005C2123 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
 		A87386142BAA0F6C005C2123 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		A87386162BAA1E46005C2123 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
+		A8C7C9BB2BADFB5600409C59 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppBar.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -105,6 +113,15 @@
 				A80538642BA495050067FEBB /* MedievalSharp-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A8090FBD2BADB4E400218C20 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A8090FBE2BADB50900218C20 /* NavigationViews.swift */,
+				A8090FC02BADB56100218C20 /* NavigationManager.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		A82201CB2BAA335000E05C43 /* CreateCharacterViews */ = {
@@ -157,6 +174,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A8C7C9BA2BADFB2A00409C59 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A8C7C9BB2BADFB5600409C59 /* GameView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		A8F2FD7C2BA47E03007E7598 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +203,7 @@
 			children = (
 				A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */,
 				A80538682BA49B280067FEBB /* Launch Screen.storyboard */,
+				A8090FBD2BADB4E400218C20 /* Navigation */,
 				A8F2FD972BA48016007E7598 /* Data */,
 				A8B0D9FE2BA5AF6800B3CDCB /* Models */,
 				A8F2FD982BA48029007E7598 /* ViewModels */,
@@ -210,6 +236,7 @@
 				A84A6A5E2BAB4BDB0059955B /* BackOfCard.swift */,
 				A84A6A602BAB5C020059955B /* BackCardSet.swift */,
 				A84A6A662BAB72480059955B /* ItemCard.swift */,
+				A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -235,6 +262,7 @@
 		A8F2FD992BA48030007E7598 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A8C7C9BA2BADFB2A00409C59 /* Game */,
 				A82201CB2BAA335000E05C43 /* CreateCharacterViews */,
 				A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */,
 				A84A6A522BAB1F660059955B /* CharacterDetailView.swift */,
@@ -343,6 +371,7 @@
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
 				A84A6A5D2BAB445A0059955B /* TypeStartCards.swift in Sources */,
+				A8090FC12BADB56100218C20 /* NavigationManager.swift in Sources */,
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
 				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
 				A8378ECB2BAC61940099D5F1 /* MainView.swift in Sources */,
@@ -351,13 +380,16 @@
 				A84A6A5F2BAB4BDB0059955B /* BackOfCard.swift in Sources */,
 				A84A6A632BAB62560059955B /* CardStorage.swift in Sources */,
 				A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */,
+				A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */,
 				A84A6A672BAB72480059955B /* ItemCard.swift in Sources */,
 				A82C61802BAB95A7005FFCCA /* CreateNameView.swift in Sources */,
+				A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */,
 				A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */,
 				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
 				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,
+				A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */,
 				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
 				A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */,
 				A87386092BA9ED79005C2123 /* Character.swift in Sources */,

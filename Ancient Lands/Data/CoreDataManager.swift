@@ -36,9 +36,12 @@ class CoreDataManager: ObservableObject {
         }
     }
     
-    func deleteCharacter(_ character: CharacterDB) {
-        viewContext.delete(character)
-        save()
+    func deleteAll() {
+          let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = CharacterDB.fetchRequest()
+          let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
+          _ = try? container.viewContext.execute(batchDeleteRequest1)
+        
+        dPrint("All Data Removed")
     }
     
     func getCharacterById(id: NSManagedObjectID) -> CharacterDB? {

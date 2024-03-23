@@ -10,6 +10,8 @@ import SwiftUI
 struct SmallCharacterCard: View {
     let character: TypeOfCharacterStruct
     
+    var name: String? = nil
+    
     var body: some View {
         HStack(spacing: 0) {
             Image(character.assetName)
@@ -23,15 +25,12 @@ struct SmallCharacterCard: View {
                 })
                 .padding(.trailing, 8)
             
-            VStack(alignment: .leading ,spacing: 0) {
-                Text("Race")
-                    .font(.custom("MontserratRoman-Semibold", size: 14))
-                    .foregroundStyle(.appPrimary2)
-                    .padding(.bottom, 4)
-                Text(character.name)
-                    .font(.custom("MontserratRoman-Regular", size: 14))
+            if let name = name {
+                Text(name)
+                    .font(.custom("MontserratRoman-Medium", size: 14))
                     .foregroundStyle(.appPrimary2)
             }
+            
         }
         .contentShape(Rectangle())
     }

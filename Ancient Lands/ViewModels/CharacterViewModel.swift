@@ -10,6 +10,10 @@ import Foundation
 class CharacterViewModel: ObservableObject {
     @Published var currentCharacter: Character?
     
+    @Published var selectedCharacter: TypeOfCharacter = .knight
+    
+    @Published var selectedCards: TypeStartCards = .knight
+    
     func getInitData() {
         let characterDB = CoreDataManager.shared.getSavedCharacter()
         
@@ -22,7 +26,7 @@ class CharacterViewModel: ObservableObject {
     
     func saveNewCharacter(character: Character) {
         if let characterDB = CoreDataManager.shared.getSavedCharacter() {
-            CoreDataManager.shared.deleteCharacter(characterDB)
+            CoreDataManager.shared.deleteAll()
         }
         
         currentCharacter = character

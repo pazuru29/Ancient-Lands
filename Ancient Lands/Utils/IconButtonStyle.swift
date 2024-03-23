@@ -15,7 +15,7 @@ struct IconButtonStyle: ButtonStyle {
             .font(.headline)
             .fontWeight(.bold)
             .frame(width: 48, height: 48)
-            .containerShape(Rectangle())
+            .contentShape(Rectangle())
             .foregroundStyle(getForeground(isPressed: configuration.isPressed))
             .animation(.easeIn, value: isEnabled)
     }

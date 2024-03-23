@@ -33,8 +33,8 @@ struct SettingsView: View {
                     .buttonStyle(MainButtonStyle())
                     .padding(.bottom)
                     
-                    NavigationLink {
-                        //TODO: -
+                    Button  {
+                        NavigationManager.shared.addView(.chooseCharacter(isSecondary: true))
                     } label: {
                         HStack(spacing: 0) {
                             Image(systemName: "arrow.triangle.2.circlepath")

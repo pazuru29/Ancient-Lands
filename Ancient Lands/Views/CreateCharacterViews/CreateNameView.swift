@@ -9,11 +9,8 @@ import SwiftUI
 import Combine
 
 struct CreateNameView: View, KeyboardReadable {
+    @EnvironmentObject var navigationManager: NavigationManager
     @EnvironmentObject var characterViewModel: CharacterViewModel
-    
-    let character: TypeOfCharacter
-    
-    let cards: TypeStartCards
     
     @State var name: String = ""
     
@@ -26,7 +23,7 @@ struct CreateNameView: View, KeyboardReadable {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image(character.getCharacteristic().assetName)
+                        Image(characterViewModel.selectedCharacter.getCharacteristic().assetName)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
@@ -40,7 +37,7 @@ struct CreateNameView: View, KeyboardReadable {
                         Spacer()
                         
                         HStack(spacing: -24) {
-                            ForEach(Array(cards.getCards().keys), id: \.self) { id in
+                            ForEach(Array(characterViewModel.selectedCards.getCards().keys), id: \.self) { id in
                                 let card = CardStorage.allCards.first(where: { element in
                                     element.id == id
                                 })
@@ -80,12 +77,12 @@ struct CreateNameView: View, KeyboardReadable {
                 Spacer()
                 if !isKeyboardVisible {
                     Button("Create") {
-                        //TODO: navigate to main
-                        
                         if !trim(name).isEmpty {
-                            let character = Character(type: self.character, name: trim(name), equipment: Equipment(), inventory: cards.getCards())
+                            let character = Character(type: characterViewModel.selectedCharacter, name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards())
                             
                             characterViewModel.saveNewCharacter(character: character)
+                            
+                            navigationManager.removeAll()
                         }
                     }
                     .disabled(trim(name).isEmpty)
@@ -115,5 +112,5 @@ struct CreateNameView: View, KeyboardReadable {
 }
 
 #Preview {
-    CreateNameView(character: .elf, cards: .elf)
+    CreateNameView()
 }

@@ -11,21 +11,31 @@ import SwiftUI
 struct Ancient_LandsApp: App {
     @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel()
     
+    @StateObject var navigationManager: NavigationManager = NavigationManager.shared
+    
     @State var isLoading: Bool = true
     
     @ViewBuilder
     var mainContent: some View {
-        if isLoading {
-            LoadingView(isLoading: $isLoading)
-        } else {
-            if characterViewModel.currentCharacter == nil {
-                NavigationView {
-                    ChooseCharacter()
+        ZStack {
+            if navigationManager.path.isEmpty {
+                if isLoading {
+                    LoadingView(isLoading: $isLoading)
+                } else {
+                    if characterViewModel.currentCharacter == nil {
+                        NavigationView {
+                            ChooseCharacter()
+                        }
+                    } else {
+                        NavigationView {
+                            MainView()
+                        }
+                    }
                 }
-            } else {
-                NavigationView {
-                    MainView()
-                }
+            }
+            
+            if !navigationManager.path.isEmpty {
+                navigationManager.path.last!.getView()
             }
         }
     }
@@ -34,6 +44,7 @@ struct Ancient_LandsApp: App {
         WindowGroup {
             mainContent
                 .background(.appPrimary)
+                .environmentObject(navigationManager)
                 .environmentObject(characterViewModel)
         }
     }

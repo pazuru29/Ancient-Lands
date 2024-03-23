@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct AppSecondaryBar<Content: View>: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     let title: String
     
     @ViewBuilder let content: Content
@@ -23,7 +21,7 @@ struct AppSecondaryBar<Content: View>: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    NavigationManager.shared.removeLast()
                 }, label: {
                     Image(systemName: "chevron.left")
                 })

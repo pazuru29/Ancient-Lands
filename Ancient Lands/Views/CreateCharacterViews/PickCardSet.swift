@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PickCardSet: View {
-    let character: TypeOfCharacter
+    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var characterViewModel: CharacterViewModel
     
     @State var isCharacterDetailShowed = false
     
@@ -44,9 +45,8 @@ struct PickCardSet: View {
                                 .font(.custom("MontserratRoman-Regular", size: 16))
                                 .foregroundStyle(.appPrimary2)
                         }
-                        //TODO: cklik onli on content ??
                         .frame(maxWidth: .infinity)
-                        .containerShape(Rectangle())
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation(.interactiveSpring) {
                                 if selectedCards == type {
@@ -59,9 +59,11 @@ struct PickCardSet: View {
                         .padding(.bottom, 64)
                     }
                     
-                    NavigationLink("Cintinue") {
+                    Button("Cintinue") {
                         if let selectedCards = selectedCards {
-                            CreateNameView(character: character, cards: selectedCards)
+                            characterViewModel.selectedCards = selectedCards
+                            
+                            navigationManager.addView(.createName)
                         }
                     }
                     .disabled(selectedCards == nil)
@@ -76,7 +78,7 @@ struct PickCardSet: View {
             
             VStack {
                 AppSecondaryBar(title: "Pick a card set") {
-                    SmallCharacterCard(character: character.getCharacteristic())
+                    SmallCharacterCard(character: characterViewModel.selectedCharacter.getCharacteristic())
                         .onTapGesture {
                             withAnimation {
                                 isCharacterDetailShowed = true
@@ -90,12 +92,12 @@ struct PickCardSet: View {
         .background(.appPrimary)
         .overlay {
             if isCharacterDetailShowed {
-                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: character.getCharacteristic())
+                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.selectedCharacter.getCharacteristic())
             }
         }
     }
 }
 
 #Preview {
-    PickCardSet(character: TypeOfCharacter.elfWm)
+    PickCardSet()
 }

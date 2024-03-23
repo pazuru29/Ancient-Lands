@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ChooseCharacter: View {
+    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var characterViewModel: CharacterViewModel
+    
+    var isSecondary: Bool = false
+    
     @State var selectedCharacter: TypeOfCharacter?
     
     @State var isCharacterDetailShowed = false
@@ -42,9 +47,11 @@ struct ChooseCharacter: View {
                     }
                     .padding(.bottom, 36)
                     
-                    NavigationLink("Cintinue") {
+                    Button("Cintinue") {
                         if let selectedCharacter = selectedCharacter {
-                            PickCardSet(character: selectedCharacter)
+                            characterViewModel.selectedCharacter = selectedCharacter
+                            
+                            navigationManager.addView(.pickCardSet)
                         }
                     }
                     .disabled(selectedCharacter == nil)
@@ -58,7 +65,11 @@ struct ChooseCharacter: View {
             .background(.appPrimary)
             
             VStack {
-                AppBar(title: "Choose a character") {}
+                if !isSecondary {
+                    AppBar(title: "Choose a character") {}
+                } else {
+                    AppSecondaryBar(title: "Choose a character") {}
+                }
                 Spacer()
             }
         }

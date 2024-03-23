@@ -19,21 +19,21 @@ struct MainView: View {
                     logoView()
                         .padding(.bottom, 88)
                     
-                    NavigationLink("Cintinue") {
+                    Button("Cintinue") {
                         //TODO: -
                     }
                     .disabled(true)
                     .buttonStyle(MainButtonStyle())
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 16)
                     
-                    NavigationLink("Start new game") {
-                        //TODO: -
+                    Button("Start new game") {
+                        NavigationManager.shared.addView(.game)
                     }
                     .buttonStyle(MainButtonStyle())
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 16)
                     
-                    NavigationLink("Settings") {
-                        SettingsView()
+                    Button("Settings") {
+                        NavigationManager.shared.addView(.settings)
                     }
                     .buttonStyle(MainButtonStyle())
                 }
