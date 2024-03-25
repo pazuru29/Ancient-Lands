@@ -31,9 +31,10 @@ struct GameView: View {
             }
         }
         .sheet(isPresented: $isInventoryShowed, content: {
-            VStack {
+            ZStack {
                 Color.appPrimary.opacity(0.8)
                     .ignoresSafeArea()
+                InventoryView()
             }
             .presentationDetents([.medium, .large])
             .presentationBackground(.ultraThinMaterial)

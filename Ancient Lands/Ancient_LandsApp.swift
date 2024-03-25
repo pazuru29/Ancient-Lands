@@ -45,8 +45,8 @@ struct Ancient_LandsApp: App {
     var body: some Scene {
         WindowGroup {
             mainContent
-                .preferredColorScheme(.dark)
                 .background(.appPrimary)
+                .preferredColorScheme(.dark)
                 .environmentObject(navigationManager)
                 .environmentObject(characterViewModel)
                 .environmentObject(gameViewModel)

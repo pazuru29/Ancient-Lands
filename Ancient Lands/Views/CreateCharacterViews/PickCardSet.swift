@@ -25,20 +25,7 @@ struct PickCardSet: View {
                                 BackCardSet()
                                     .padding(.bottom, 48)
                             } else {
-                                HStack(spacing: -42) {
-                                    ForEach(Array(type.getCards().keys), id: \.self) { id in
-                                        let card = CardStorage.allCards.first(where: { element in
-                                            element.id == id
-                                        })
-                                        
-                                        if card == nil {
-                                            BackOfCard()
-                                        } else {
-                                            ItemCard(card: card!)
-                                        }
-                                    }
-                                }
-                                .padding(.bottom, 45)
+                                cardSetView(type: type)
                             }
                             
                             Text(type.rawValue)
@@ -95,6 +82,26 @@ struct PickCardSet: View {
                 CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.selectedCharacter.getCharacteristic())
             }
         }
+    }
+    
+    
+    func cardSetView(type: TypeStartCards) -> some View {
+        let cards: Dictionary<Int, Int> = type.getCards()
+        
+        return HStack(spacing: -42) {
+            ForEach(Array(cards), id: \.self.key) { cardID, count in
+                let card = CardStorage.allCards.first(where: { element in
+                    element.id == cardID
+                })
+                
+                if card == nil {
+                    BackOfCard()
+                } else {
+                    ItemCard(card: card!, count: count)
+                }
+            }
+        }
+        .padding(.bottom, 45)
     }
 }
 

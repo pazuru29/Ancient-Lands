@@ -37,7 +37,7 @@ struct CreateNameView: View, KeyboardReadable {
                         Spacer()
                         
                         HStack(spacing: -24) {
-                            ForEach(Array(characterViewModel.selectedCards.getCards().keys), id: \.self) { id in
+                            ForEach(Array(characterViewModel.selectedCards.getCards()), id: \.self.key) { id, count in
                                 let card = CardStorage.allCards.first(where: { element in
                                     element.id == id
                                 })
@@ -45,7 +45,7 @@ struct CreateNameView: View, KeyboardReadable {
                                 if card == nil {
                                     BackOfCard()
                                 } else {
-                                    ItemCard(card: card!, isSmall: true)
+                                    ItemCard(card: card!, size: .small, count: count)
                                 }
                             }
                         }
@@ -71,6 +71,7 @@ struct CreateNameView: View, KeyboardReadable {
                 .padding(.horizontal)
                 .padding(.top, 88)
             }
+            .scrollIndicators(.hidden)
             
             VStack {
                 AppSecondaryBar(title: "Create name") {}

@@ -8,17 +8,17 @@
 import Foundation
 
 //TODO: add params for items
-enum ItemType: Codable {
-    case potion
-    case trap
-    case amplification
-    case shield
-    case armor
-    case rangedWeapon
-    case ammo
-    case magicWeapon
-    case spell
-    case meleeWeapon
-    case grenade
-    case resource
+enum ItemType: String, Codable, CaseIterable {
+    case potion = "Potions"
+    case trap = "Traps"
+    case amplification = "Amplifications"
+    case shield = "Shields"
+    case armor = "Armor"
+    case rangedWeapon = "Ranged Weapon"
+    case ammo = "Ammo"
+    case magicWeapon = "Magic Weapon"
+    case spell = "Spells"
+    case meleeWeapon = "Melee Weapon"
+    case grenade = "Grenades"
+    case resource = "Resources"
 }

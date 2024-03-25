@@ -53,6 +53,7 @@
 		A8BE3E322BB19E35003311B6 /* GameStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E312BB19E35003311B6 /* GameStorage.swift */; };
 		A8BE3E342BB1A0C3003311B6 /* TypeSupplementOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E332BB1A0C3003311B6 /* TypeSupplementOfLocation.swift */; };
 		A8BE3E372BB1A154003311B6 /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E362BB1A154003311B6 /* Supplement.swift */; };
+		A8BE3E392BB1B803003311B6 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E382BB1B803003311B6 /* InventoryView.swift */; };
 		A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BB2BADFB5600409C59 /* GameView.swift */; };
 		A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
@@ -109,6 +110,7 @@
 		A8BE3E312BB19E35003311B6 /* GameStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStorage.swift; sourceTree = "<group>"; };
 		A8BE3E332BB1A0C3003311B6 /* TypeSupplementOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSupplementOfLocation.swift; sourceTree = "<group>"; };
 		A8BE3E362BB1A154003311B6 /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
+		A8BE3E382BB1B803003311B6 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		A8C7C9BB2BADFB5600409C59 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppBar.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A8C7C9BB2BADFB5600409C59 /* GameView.swift */,
+				A8BE3E382BB1B803003311B6 /* InventoryView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,
+				A8BE3E392BB1B803003311B6 /* InventoryView.swift in Sources */,
 				A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */,
 				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
 				A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */,
