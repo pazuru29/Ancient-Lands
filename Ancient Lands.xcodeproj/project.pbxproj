@@ -40,12 +40,24 @@
 		A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386122BAA0F5C005C2123 /* ItemCardModel.swift */; };
 		A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386142BAA0F6C005C2123 /* ItemType.swift */; };
 		A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386162BAA1E46005C2123 /* CharacterCard.swift */; };
+		A8BE3E1B2BB18997003311B6 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */; };
+		A8BE3E1E2BB18B9F003311B6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1D2BB18B9F003311B6 /* Location.swift */; };
+		A8BE3E202BB18E5D003311B6 /* TypeOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1F2BB18E5D003311B6 /* TypeOfLocation.swift */; };
+		A8BE3E222BB18F90003311B6 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E212BB18F90003311B6 /* ActionType.swift */; };
+		A8BE3E242BB19150003311B6 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = A8BE3E232BB19150003311B6 /* Preview Content */; };
+		A8BE3E272BB19682003311B6 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E262BB19682003311B6 /* Battle.swift */; };
+		A8BE3E292BB19770003311B6 /* TypeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E282BB19770003311B6 /* TypeStep.swift */; };
+		A8BE3E2B2BB19791003311B6 /* TypeOfEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E2A2BB19791003311B6 /* TypeOfEnemy.swift */; };
+		A8BE3E2D2BB197BE003311B6 /* GameEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E2C2BB197BE003311B6 /* GameEffects.swift */; };
+		A8BE3E302BB19874003311B6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E2F2BB19874003311B6 /* Game.swift */; };
+		A8BE3E322BB19E35003311B6 /* GameStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E312BB19E35003311B6 /* GameStorage.swift */; };
+		A8BE3E342BB1A0C3003311B6 /* TypeSupplementOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E332BB1A0C3003311B6 /* TypeSupplementOfLocation.swift */; };
+		A8BE3E372BB1A154003311B6 /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E362BB1A154003311B6 /* Supplement.swift */; };
 		A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BB2BADFB5600409C59 /* GameView.swift */; };
 		A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
-		A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */; };
 		A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD9B2BA482D1007E7598 /* LottieView.swift */; };
 		A8F2FD9F2BA487F9007E7598 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A8F2FD9E2BA487F9007E7598 /* Lottie */; };
 /* End PBXBuildFile section */
@@ -84,13 +96,25 @@
 		A87386122BAA0F5C005C2123 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
 		A87386142BAA0F6C005C2123 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		A87386162BAA1E46005C2123 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
+		A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		A8BE3E1D2BB18B9F003311B6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A8BE3E1F2BB18E5D003311B6 /* TypeOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfLocation.swift; sourceTree = "<group>"; };
+		A8BE3E212BB18F90003311B6 /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
+		A8BE3E232BB19150003311B6 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
+		A8BE3E262BB19682003311B6 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		A8BE3E282BB19770003311B6 /* TypeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeStep.swift; sourceTree = "<group>"; };
+		A8BE3E2A2BB19791003311B6 /* TypeOfEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfEnemy.swift; sourceTree = "<group>"; };
+		A8BE3E2C2BB197BE003311B6 /* GameEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEffects.swift; sourceTree = "<group>"; };
+		A8BE3E2F2BB19874003311B6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		A8BE3E312BB19E35003311B6 /* GameStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStorage.swift; sourceTree = "<group>"; };
+		A8BE3E332BB1A0C3003311B6 /* TypeSupplementOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSupplementOfLocation.swift; sourceTree = "<group>"; };
+		A8BE3E362BB1A154003311B6 /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 		A8C7C9BB2BADFB5600409C59 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppBar.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8F2FD9B2BA482D1007E7598 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,10 +192,52 @@
 		A8B0D9FE2BA5AF6800B3CDCB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A8BE3E352BB1A141003311B6 /* Supplement */,
+				A8BE3E2E2BB19868003311B6 /* Game */,
+				A8BE3E252BB19674003311B6 /* Battle */,
+				A8BE3E1C2BB18B7D003311B6 /* Location */,
 				A873860D2BA9EF5A005C2123 /* ItemCard */,
 				A873860A2BA9EE35005C2123 /* Character */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A8BE3E1C2BB18B7D003311B6 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE3E1D2BB18B9F003311B6 /* Location.swift */,
+				A8BE3E1F2BB18E5D003311B6 /* TypeOfLocation.swift */,
+				A8BE3E212BB18F90003311B6 /* ActionType.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		A8BE3E252BB19674003311B6 /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE3E262BB19682003311B6 /* Battle.swift */,
+				A8BE3E282BB19770003311B6 /* TypeStep.swift */,
+				A8BE3E2A2BB19791003311B6 /* TypeOfEnemy.swift */,
+				A8BE3E2C2BB197BE003311B6 /* GameEffects.swift */,
+			);
+			path = Battle;
+			sourceTree = "<group>";
+		};
+		A8BE3E2E2BB19868003311B6 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE3E2F2BB19874003311B6 /* Game.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		A8BE3E352BB1A141003311B6 /* Supplement */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE3E332BB1A0C3003311B6 /* TypeSupplementOfLocation.swift */,
+				A8BE3E362BB1A154003311B6 /* Supplement.swift */,
+			);
+			path = Supplement;
 			sourceTree = "<group>";
 		};
 		A8C7C9BA2BADFB2A00409C59 /* Game */ = {
@@ -211,17 +277,9 @@
 				A8F2FD962BA4800C007E7598 /* Components */,
 				A82201CE2BAA382000E05C43 /* Utils */,
 				A8F2FD9A2BA4817D007E7598 /* Resources */,
-				A8F2FD8E2BA47E05007E7598 /* Preview Content */,
+				A8BE3E232BB19150003311B6 /* Preview Content */,
 			);
 			path = "Ancient Lands";
-			sourceTree = "<group>";
-		};
-		A8F2FD8E2BA47E05007E7598 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				A8F2FD8F2BA47E05007E7598 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		A8F2FD962BA4800C007E7598 /* Components */ = {
@@ -247,6 +305,7 @@
 				A84A6A622BAB62560059955B /* CardStorage.swift */,
 				A8378EC12BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld */,
 				A8378EC42BAC4DA90099D5F1 /* CoreDataManager.swift */,
+				A8BE3E312BB19E35003311B6 /* GameStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -255,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				A8378EC82BAC58720099D5F1 /* CharacterViewModel.swift */,
+				A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -346,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A80538672BA499090067FEBB /* Montserrat-VariableFont_wght.ttf in Resources */,
-				A8F2FD902BA47E05007E7598 /* Preview Assets.xcassets in Resources */,
+				A8BE3E242BB19150003311B6 /* Preview Content in Resources */,
 				A80538652BA495050067FEBB /* MedievalSharp-Regular.ttf in Resources */,
 				A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */,
 				A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */,
@@ -360,9 +420,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BE3E1B2BB18997003311B6 /* GameViewModel.swift in Sources */,
 				A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */,
 				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
+				A8BE3E272BB19682003311B6 /* Battle.swift in Sources */,
 				A8378EC32BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld in Sources */,
+				A8BE3E2B2BB19791003311B6 /* TypeOfEnemy.swift in Sources */,
+				A8BE3E372BB1A154003311B6 /* Supplement.swift in Sources */,
+				A8BE3E222BB18F90003311B6 /* ActionType.swift in Sources */,
 				A8378EC72BAC4E820099D5F1 /* Functions.swift in Sources */,
 				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
 				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
@@ -371,9 +436,13 @@
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,
 				A84A6A5D2BAB445A0059955B /* TypeStartCards.swift in Sources */,
+				A8BE3E292BB19770003311B6 /* TypeStep.swift in Sources */,
 				A8090FC12BADB56100218C20 /* NavigationManager.swift in Sources */,
+				A8BE3E202BB18E5D003311B6 /* TypeOfLocation.swift in Sources */,
+				A8BE3E342BB1A0C3003311B6 /* TypeSupplementOfLocation.swift in Sources */,
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
 				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
+				A8BE3E1E2BB18B9F003311B6 /* Location.swift in Sources */,
 				A8378ECB2BAC61940099D5F1 /* MainView.swift in Sources */,
 				A84A6A572BAB23190059955B /* IconButtonStyle.swift in Sources */,
 				A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */,
@@ -383,6 +452,7 @@
 				A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */,
 				A84A6A672BAB72480059955B /* ItemCard.swift in Sources */,
 				A82C61802BAB95A7005FFCCA /* CreateNameView.swift in Sources */,
+				A8BE3E322BB19E35003311B6 /* GameStorage.swift in Sources */,
 				A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */,
 				A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */,
 				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
@@ -392,6 +462,8 @@
 				A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */,
 				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
 				A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */,
+				A8BE3E302BB19874003311B6 /* Game.swift in Sources */,
+				A8BE3E2D2BB197BE003311B6 /* GameEffects.swift in Sources */,
 				A87386092BA9ED79005C2123 /* Character.swift in Sources */,
 				A8378ECD2BAC72CE0099D5F1 /* SettingsView.swift in Sources */,
 				A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */,

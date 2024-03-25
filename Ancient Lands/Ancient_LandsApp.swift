@@ -11,6 +11,8 @@ import SwiftUI
 struct Ancient_LandsApp: App {
     @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel()
     
+    @StateObject var gameViewModel: GameViewModel = GameViewModel()
+    
     @StateObject var navigationManager: NavigationManager = NavigationManager.shared
     
     @State var isLoading: Bool = true
@@ -43,9 +45,11 @@ struct Ancient_LandsApp: App {
     var body: some Scene {
         WindowGroup {
             mainContent
+                .preferredColorScheme(.dark)
                 .background(.appPrimary)
                 .environmentObject(navigationManager)
                 .environmentObject(characterViewModel)
+                .environmentObject(gameViewModel)
         }
     }
 }

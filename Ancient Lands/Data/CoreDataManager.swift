@@ -44,15 +44,6 @@ class CoreDataManager: ObservableObject {
         dPrint("All Data Removed")
     }
     
-    func getCharacterById(id: NSManagedObjectID) -> CharacterDB? {
-        do {
-            return try viewContext.existingObject(with: id) as? CharacterDB
-        } catch {
-            dPrint("Failed to get object by id")
-            return nil
-        }
-    }
-    
     func getSavedCharacter() -> CharacterDB? {
         let request: NSFetchRequest<CharacterDB> = CharacterDB.fetchRequest()
         
@@ -63,4 +54,20 @@ class CoreDataManager: ObservableObject {
             return nil
         }
     }
+    
+    func getSavedGame() -> GameDB? {
+        let request: NSFetchRequest<GameDB> = GameDB.fetchRequest()
+        
+        do {
+            return try viewContext.fetch(request).first
+        } catch {
+            dPrint("Failed to load the data")
+            return nil
+        }
+    }
+    
+    func deleteGame(_ game: GameDB) {
+            viewContext.delete(game)
+            save()
+        }
 }

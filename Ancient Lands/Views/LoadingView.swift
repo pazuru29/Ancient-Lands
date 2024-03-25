@@ -10,6 +10,7 @@ import Lottie
 
 struct LoadingView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
     @Binding var isLoading: Bool
     
     var body: some View {
@@ -26,6 +27,7 @@ struct LoadingView: View {
         }
         .background(.appPrimary)
         .task {
+            gameViewModel.getInitData()
             characterViewModel.getInitData()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation {

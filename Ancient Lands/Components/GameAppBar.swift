@@ -30,6 +30,7 @@ struct GameAppBar: View {
                             isDetailShowed.toggle()
                         }
                     }
+                    .padding(.trailing, 24)
                 
                 Spacer()
                 

@@ -17,15 +17,15 @@ class CharacterViewModel: ObservableObject {
     func getInitData() {
         let characterDB = CoreDataManager.shared.getSavedCharacter()
         
-        if characterDB != nil {
+        if let characterDB = characterDB {
             DispatchQueue.main.async {
-                self.currentCharacter = Character.fromJSON(json: characterDB!.json ?? "")
+                self.currentCharacter = Character.fromJSON(json: characterDB.json ?? "")
             }
         }
     }
     
     func saveNewCharacter(character: Character) {
-        if let characterDB = CoreDataManager.shared.getSavedCharacter() {
+        if CoreDataManager.shared.getSavedCharacter() != nil {
             CoreDataManager.shared.deleteAll()
         }
         

@@ -37,9 +37,9 @@ struct Character: Codable {
             
             let jsonData = json.data(using: .utf8) ?? Data()
             
-            let decodePokemon = try jsonDecoder.decode(Character.self, from: jsonData)
+            let decodeCharacter = try jsonDecoder.decode(Character.self, from: jsonData)
             
-            return decodePokemon
+            return decodeCharacter
         } catch {
             return nil
         }

@@ -23,7 +23,7 @@ struct SmallCharacterCard: View {
                     Circle()
                         .stroke(.appPrimary2, lineWidth: 1)
                 })
-                .padding(.trailing, 8)
+                .padding(.trailing, name != nil ? 8 : 0)
             
             if let name = name {
                 Text(name)

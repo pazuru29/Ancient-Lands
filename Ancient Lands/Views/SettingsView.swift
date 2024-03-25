@@ -12,6 +12,8 @@ struct SettingsView: View {
     
     @State var isCharacterDetailShowed = false
     
+    @State var isDialogChangeCharacterShowed = false
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -34,7 +36,9 @@ struct SettingsView: View {
                     .padding(.bottom)
                     
                     Button  {
-                        NavigationManager.shared.addView(.chooseCharacter(isSecondary: true))
+                        withAnimation {
+                            isDialogChangeCharacterShowed.toggle()
+                        }
                     } label: {
                         HStack(spacing: 0) {
                             Image(systemName: "arrow.triangle.2.circlepath")
@@ -82,7 +86,7 @@ struct SettingsView: View {
                         .padding(.horizontal)
                     }
                     .buttonStyle(MainButtonStyle())
-
+                    
                 }
                 .padding(.top, 88)
                 .padding(.horizontal)
@@ -106,6 +110,15 @@ struct SettingsView: View {
         .overlay {
             if isCharacterDetailShowed {
                 CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.currentCharacter!.type.getCharacteristic())
+            }
+        }
+        .alert("If you change character, all current progress will be lost. Do you want to change your character?", isPresented: $isDialogChangeCharacterShowed) {
+            Button("Change", role: .destructive) {
+                NavigationManager.shared.addView(.chooseCharacter(isSecondary: true))
+            }
+            
+            Button("Cancel", role: .cancel) {
+                isDialogChangeCharacterShowed = false
             }
         }
     }

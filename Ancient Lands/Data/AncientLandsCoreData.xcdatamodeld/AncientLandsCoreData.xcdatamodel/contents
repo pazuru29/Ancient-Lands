@@ -3,4 +3,7 @@
     <entity name="CharacterDB" representedClassName="CharacterDB" syncable="YES" codeGenerationType="class">
         <attribute name="json" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="GameDB" representedClassName="GameDB" syncable="YES" codeGenerationType="class">
+        <attribute name="json" optional="YES" attributeType="String"/>
+    </entity>
 </model>

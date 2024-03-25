@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var gameViewModel: GameViewModel
     @EnvironmentObject var characterViewModel: CharacterViewModel
+    
+    @State var isNeedNewGameCreatedAlertOpen: Bool = false
     
     @State var isCharacterDetailShowed = false
     
@@ -20,14 +23,19 @@ struct MainView: View {
                         .padding(.bottom, 88)
                     
                     Button("Cintinue") {
-                        //TODO: -
+                        NavigationManager.shared.addView(.game)
                     }
-                    .disabled(true)
+                    .disabled(gameViewModel.currentGame == nil)
                     .buttonStyle(MainButtonStyle())
                     .padding(.bottom, 16)
                     
                     Button("Start new game") {
-                        NavigationManager.shared.addView(.game)
+                        if gameViewModel.currentGame == nil {
+                            gameViewModel.startNewGame()
+                            NavigationManager.shared.addView(.game)
+                        } else {
+                            isNeedNewGameCreatedAlertOpen.toggle()
+                        }
                     }
                     .buttonStyle(MainButtonStyle())
                     .padding(.bottom, 16)
@@ -58,6 +66,16 @@ struct MainView: View {
         .overlay {
             if isCharacterDetailShowed {
                 CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.currentCharacter!.type.getCharacteristic())
+            }
+        }
+        .alert("Do you really want to create a new game? All previous data will be deleted.", isPresented: $isNeedNewGameCreatedAlertOpen) {
+            Button("Create", role: .destructive) {
+                gameViewModel.startNewGame()
+                NavigationManager.shared.addView(.game)
+            }
+            
+            Button("Cancel", role: .cancel) {
+                isNeedNewGameCreatedAlertOpen = false
             }
         }
     }
