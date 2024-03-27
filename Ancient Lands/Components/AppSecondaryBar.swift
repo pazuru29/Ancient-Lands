@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct AppSecondaryBar<Content: View>: View {
+    @EnvironmentObject var navigationManager: NavigationManager
+    
     let title: String
+    
+    let needTrailingPadding: Bool
     
     @ViewBuilder let content: Content
     
-    init(title: String, @ViewBuilder content: () -> Content) {
+    init(title: String, needTrailingPadding: Bool = true, @ViewBuilder content: () -> Content) {
         self.title = title
+        self.needTrailingPadding = needTrailingPadding
         self.content = content()
     }
     
@@ -21,7 +26,7 @@ struct AppSecondaryBar<Content: View>: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Button(action: {
-                    NavigationManager.shared.removeLast()
+                    navigationManager.removeLast()
                 }, label: {
                     Image(systemName: "chevron.left")
                 })
@@ -33,7 +38,7 @@ struct AppSecondaryBar<Content: View>: View {
                 Spacer()
                 content
             }
-            .padding(.trailing)
+            .padding(.trailing, needTrailingPadding ? 16 : 0)
             .frame(height: 64)
             .frame(maxWidth: .infinity)
             .background(.appPrimary.opacity(0.85))

@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct Ancient_LandsApp: App {
-    @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel()
+    @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel.shared
     
-    @StateObject var gameViewModel: GameViewModel = GameViewModel()
+    @StateObject var gameViewModel: GameViewModel = GameViewModel.shared
     
     @StateObject var navigationManager: NavigationManager = NavigationManager.shared
     

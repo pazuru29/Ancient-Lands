@@ -11,6 +11,7 @@ import Lottie
 struct LoadingView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
     @EnvironmentObject var gameViewModel: GameViewModel
+    
     @Binding var isLoading: Bool
     
     var body: some View {

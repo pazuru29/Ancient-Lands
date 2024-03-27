@@ -12,8 +12,8 @@ struct Battle: Codable {
     let step: TypeStep
     
     //MARK: Enemy
-    let enemy: TypeOfEnemy
-    let enemyHp:Int
+    let enemy: Enemy
+    let currentEnemyHp:Int
     
     //MARK: Player
     let playerHp: Int

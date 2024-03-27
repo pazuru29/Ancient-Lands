@@ -10,12 +10,12 @@ import Foundation
 enum TypeOfLocation: Codable {
     case forest
     case field
-    case downdraft
     case mount
     case desert
     case swamp
-    case snowyWastelands
     case dungeons
     case caves
     case gorges
+    case any
+    case boss
 }

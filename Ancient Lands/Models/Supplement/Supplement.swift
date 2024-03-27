@@ -8,8 +8,15 @@
 import Foundation
 
 struct Supplement: Codable {
-    let assetName: String
-    let name: String
-    let story: String
-    let actions: [ActionType]
+    let assetName: String?
+    let name: String?
+    var story: String
+    var actions: [ActionType]
+    
+    init(assetName: String? = nil, name: String? = nil, story: String, actions: [ActionType]) {
+        self.assetName = assetName
+        self.name = name
+        self.story = story
+        self.actions = actions
+    }
 }

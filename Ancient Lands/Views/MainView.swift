@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var gameViewModel: GameViewModel
+    @EnvironmentObject var navigationManager: NavigationManager
     @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
     
     @State var isNeedNewGameCreatedAlertOpen: Bool = false
     
     @State var isCharacterDetailShowed = false
+    
+    @State var hasActiveGame = false
     
     var body: some View {
         ZStack {
@@ -23,16 +26,16 @@ struct MainView: View {
                         .padding(.bottom, 88)
                     
                     Button("Cintinue") {
-                        NavigationManager.shared.addView(.game)
+                        navigationManager.addView(.game)
                     }
-                    .disabled(gameViewModel.currentGame == nil)
+                    .disabled(!hasActiveGame)
                     .buttonStyle(MainButtonStyle())
                     .padding(.bottom, 16)
                     
                     Button("Start new game") {
-                        if gameViewModel.currentGame == nil {
+                        if !hasActiveGame {
                             gameViewModel.startNewGame()
-                            NavigationManager.shared.addView(.game)
+                            navigationManager.addView(.game)
                         } else {
                             isNeedNewGameCreatedAlertOpen.toggle()
                         }
@@ -41,7 +44,7 @@ struct MainView: View {
                     .padding(.bottom, 16)
                     
                     Button("Settings") {
-                        NavigationManager.shared.addView(.settings)
+                        navigationManager.addView(.settings)
                     }
                     .buttonStyle(MainButtonStyle())
                 }
@@ -49,6 +52,7 @@ struct MainView: View {
                 .padding(.top, 152)
                 .padding(.bottom, 36)
             }
+            .scrollIndicators(.hidden)
             
             VStack {
                 AppBar {
@@ -71,12 +75,15 @@ struct MainView: View {
         .alert("Do you really want to create a new game? All previous data will be deleted.", isPresented: $isNeedNewGameCreatedAlertOpen) {
             Button("Create", role: .destructive) {
                 gameViewModel.startNewGame()
-                NavigationManager.shared.addView(.game)
+                navigationManager.addView(.game)
             }
             
             Button("Cancel", role: .cancel) {
                 isNeedNewGameCreatedAlertOpen = false
             }
+        }
+        .task {
+            hasActiveGame = CoreDataManager.shared.getSavedGame() != nil
         }
     }
     

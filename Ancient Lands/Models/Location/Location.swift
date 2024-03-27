@@ -11,6 +11,7 @@ struct Location: Codable {
     let assetName: String
     let name: String
     let story: String
-    let types: [TypeOfLocation]
+    let type: TypeOfLocation
+    var nextLocations: [TypeOfLocation]
     let actions: [ActionType]
 }

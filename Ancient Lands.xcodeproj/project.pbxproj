@@ -34,6 +34,13 @@
 		A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A602BAB5C020059955B /* BackCardSet.swift */; };
 		A84A6A632BAB62560059955B /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A622BAB62560059955B /* CardStorage.swift */; };
 		A84A6A672BAB72480059955B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A662BAB72480059955B /* ItemCard.swift */; };
+		A8707B9A2BB2E84D006DD699 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B992BB2E84D006DD699 /* LevelView.swift */; };
+		A8707B9C2BB30341006DD699 /* LanguageButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B9B2BB30341006DD699 /* LanguageButtonStyle.swift */; };
+		A8707BA02BB30B9D006DD699 /* GameCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */; };
+		A8707BA22BB33DE1006DD699 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707BA12BB33DE1006DD699 /* Language.swift */; };
+		A8707BA42BB3599F006DD699 /* InGameLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707BA32BB3599F006DD699 /* InGameLoadingView.swift */; };
+		A8707BA62BB37470006DD699 /* BattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707BA52BB37470006DD699 /* BattleView.swift */; };
+		A8707BA82BB38FEC006DD699 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707BA72BB38FEC006DD699 /* Enemy.swift */; };
 		A87386092BA9ED79005C2123 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386082BA9ED79005C2123 /* Character.swift */; };
 		A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */; };
 		A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87386102BA9F2F4005C2123 /* Equipment.swift */; };
@@ -91,6 +98,13 @@
 		A84A6A602BAB5C020059955B /* BackCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardSet.swift; sourceTree = "<group>"; };
 		A84A6A622BAB62560059955B /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
 		A84A6A662BAB72480059955B /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		A8707B992BB2E84D006DD699 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		A8707B9B2BB30341006DD699 /* LanguageButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageButtonStyle.swift; sourceTree = "<group>"; };
+		A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardSet.swift; sourceTree = "<group>"; };
+		A8707BA12BB33DE1006DD699 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		A8707BA32BB3599F006DD699 /* InGameLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameLoadingView.swift; sourceTree = "<group>"; };
+		A8707BA52BB37470006DD699 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
+		A8707BA72BB38FEC006DD699 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		A87386082BA9ED79005C2123 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		A873860B2BA9EE5C005C2123 /* TypeOfCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCharacter.swift; sourceTree = "<group>"; };
 		A87386102BA9F2F4005C2123 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
@@ -163,10 +177,12 @@
 		A82201CE2BAA382000E05C43 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A8707B9B2BB30341006DD699 /* LanguageButtonStyle.swift */,
 				A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */,
 				A84A6A562BAB23190059955B /* IconButtonStyle.swift */,
 				A82C61812BABA537005FFCCA /* KeyboardReadable.swift */,
 				A8378EC62BAC4E820099D5F1 /* Functions.swift */,
+				A8707BA12BB33DE1006DD699 /* Language.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -221,6 +237,7 @@
 				A8BE3E282BB19770003311B6 /* TypeStep.swift */,
 				A8BE3E2A2BB19791003311B6 /* TypeOfEnemy.swift */,
 				A8BE3E2C2BB197BE003311B6 /* GameEffects.swift */,
+				A8707BA72BB38FEC006DD699 /* Enemy.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -247,6 +264,8 @@
 			children = (
 				A8C7C9BB2BADFB5600409C59 /* GameView.swift */,
 				A8BE3E382BB1B803003311B6 /* InventoryView.swift */,
+				A8707B992BB2E84D006DD699 /* LevelView.swift */,
+				A8707BA52BB37470006DD699 /* BattleView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -298,6 +317,7 @@
 				A84A6A602BAB5C020059955B /* BackCardSet.swift */,
 				A84A6A662BAB72480059955B /* ItemCard.swift */,
 				A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */,
+				A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -331,6 +351,7 @@
 				A84A6A522BAB1F660059955B /* CharacterDetailView.swift */,
 				A8378ECA2BAC61940099D5F1 /* MainView.swift */,
 				A8378ECC2BAC72CE0099D5F1 /* SettingsView.swift */,
+				A8707BA32BB3599F006DD699 /* InGameLoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -443,6 +464,9 @@
 				A8090FC12BADB56100218C20 /* NavigationManager.swift in Sources */,
 				A8BE3E202BB18E5D003311B6 /* TypeOfLocation.swift in Sources */,
 				A8BE3E342BB1A0C3003311B6 /* TypeSupplementOfLocation.swift in Sources */,
+				A8707B9A2BB2E84D006DD699 /* LevelView.swift in Sources */,
+				A8707BA22BB33DE1006DD699 /* Language.swift in Sources */,
+				A8707BA42BB3599F006DD699 /* InGameLoadingView.swift in Sources */,
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
 				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
 				A8BE3E1E2BB18B9F003311B6 /* Location.swift in Sources */,
@@ -453,12 +477,16 @@
 				A84A6A632BAB62560059955B /* CardStorage.swift in Sources */,
 				A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */,
 				A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */,
+				A8707B9C2BB30341006DD699 /* LanguageButtonStyle.swift in Sources */,
+				A8707BA62BB37470006DD699 /* BattleView.swift in Sources */,
 				A84A6A672BAB72480059955B /* ItemCard.swift in Sources */,
+				A8707BA82BB38FEC006DD699 /* Enemy.swift in Sources */,
 				A82C61802BAB95A7005FFCCA /* CreateNameView.swift in Sources */,
 				A8BE3E322BB19E35003311B6 /* GameStorage.swift in Sources */,
 				A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */,
 				A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */,
 				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
+				A8707BA02BB30B9D006DD699 /* GameCardSet.swift in Sources */,
 				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,

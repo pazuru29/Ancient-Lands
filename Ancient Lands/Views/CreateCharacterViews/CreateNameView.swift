@@ -14,7 +14,7 @@ struct CreateNameView: View, KeyboardReadable {
     
     @State var name: String = ""
     
-    let textLimit = 60
+    let textLimit = 30
     
     @State private var isKeyboardVisible = false
     

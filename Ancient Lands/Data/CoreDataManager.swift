@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class CoreDataManager: ObservableObject {
-
+    
     static let shared = CoreDataManager()
     
     let container = NSPersistentContainer(name: "AncientLandsCoreData")
@@ -37,9 +37,13 @@ class CoreDataManager: ObservableObject {
     }
     
     func deleteAll() {
-          let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = CharacterDB.fetchRequest()
-          let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-          _ = try? container.viewContext.execute(batchDeleteRequest1)
+        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = CharacterDB.fetchRequest()
+        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
+        _ = try? container.viewContext.execute(batchDeleteRequest1)
+        
+        let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = GameDB.fetchRequest()
+        let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        _ = try? container.viewContext.execute(batchDeleteRequest2)
         
         dPrint("All Data Removed")
     }
@@ -67,7 +71,8 @@ class CoreDataManager: ObservableObject {
     }
     
     func deleteGame(_ game: GameDB) {
-            viewContext.delete(game)
-            save()
-        }
+        viewContext.delete(game)
+        dPrint("DELETE LAST GAME")
+        save()
+    }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameAppBar: View {
+    @EnvironmentObject var navigationManager: NavigationManager
+    
     var currentCharacter: Character
     
     @Binding var isDetailShowed: Bool
@@ -18,7 +20,7 @@ struct GameAppBar: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Button(action: {
-                    NavigationManager.shared.removeLast()
+                    navigationManager.removeLast()
                 }, label: {
                     Image(systemName: "chevron.left")
                 })

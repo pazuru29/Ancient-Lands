@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
     
     @State var isDetailShowed: Bool = false
     
@@ -16,8 +17,14 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            ScrollView {
-                //TODO: -
+            if gameViewModel.gameState == .loading {
+                InGameLoadingView()
+            } else {
+                if gameViewModel.currentGame.currentBattle != nil {
+                    BattleView()
+                } else {
+                    LevelView()
+                }
             }
             
             VStack {

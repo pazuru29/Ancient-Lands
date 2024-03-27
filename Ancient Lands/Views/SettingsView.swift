@@ -8,33 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var characterViewModel: CharacterViewModel
-    
-    @State var isCharacterDetailShowed = false
+    @EnvironmentObject var navigationManager: NavigationManager
     
     @State var isDialogChangeCharacterShowed = false
+    
+    @State var selectedLanguage: Language = .en
     
     var body: some View {
         ZStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    Button {
-                        //TODO: -
-                    } label: {
-                        HStack(spacing: 0) {
-                            Text("🇺🇸")
-                                .frame(width: 24)
-                                .padding(.trailing, 8)
-                            
-                            Text("Language")
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                    }
-                    .buttonStyle(MainButtonStyle())
-                    .padding(.bottom)
-                    
                     Button  {
                         withAnimation {
                             isDialogChangeCharacterShowed.toggle()
@@ -94,27 +77,27 @@ struct SettingsView: View {
             }
             
             VStack {
-                AppSecondaryBar(title: "Settings") {
-                    SmallCharacterCard(character: characterViewModel.currentCharacter!.type.getCharacteristic())
-                        .onTapGesture {
-                            withAnimation {
-                                isCharacterDetailShowed = true
+                AppSecondaryBar(title: "Settings", needTrailingPadding: false) {
+                    Menu {
+                        Picker("Language", selection: $selectedLanguage) {
+                            ForEach(Language.allCases, id: \.self) {
+                                Text($0.rawValue)
                             }
                         }
+                    } label: {
+                        Text(selectedLanguage.rawValue)
+                    }
+                    .buttonStyle(LanguageButtonStyle())
+                    .frame(width: 64)
                 }
                 Spacer()
             }
         }
         .navigationBarBackButtonHidden()
         .background(.appPrimary)
-        .overlay {
-            if isCharacterDetailShowed {
-                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.currentCharacter!.type.getCharacteristic())
-            }
-        }
         .alert("If you change character, all current progress will be lost. Do you want to change your character?", isPresented: $isDialogChangeCharacterShowed) {
             Button("Change", role: .destructive) {
-                NavigationManager.shared.addView(.chooseCharacter(isSecondary: true))
+                navigationManager.addView(.chooseCharacter(isSecondary: true))
             }
             
             Button("Cancel", role: .cancel) {
