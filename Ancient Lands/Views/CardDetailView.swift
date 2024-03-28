@@ -59,7 +59,7 @@ struct CardDetailView: View {
                 }
                 .padding(.bottom, 12)
                 
-                if card.type == .armor || card.type == .shield || card.type == .magicWeapon || card.type == .meleeWeapon || card.type == .rangedWeapon {
+                if card.type == .armor || card.type == .shield || card.type == .amplification {
                     Button("Equip") {
                         //TODO: -
                     }

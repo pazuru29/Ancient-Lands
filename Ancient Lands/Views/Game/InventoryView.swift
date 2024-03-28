@@ -61,7 +61,7 @@ struct InventoryView: View {
                 
                 Spacer()
                 
-                equipmentItemView(title: "Attack", card: characterViewModel.currentCharacter?.equipment.attack)
+                equipmentItemView(title: "Accessory", card: characterViewModel.currentCharacter?.equipment.accessory)
                 
                 Spacer()
                 

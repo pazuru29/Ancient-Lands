@@ -293,7 +293,7 @@ class GameViewModel: ObservableObject {
     private func goToNextLocation() {
         let randomMeditation = Int.random(in: 1..<1001)
         
-        if randomMeditation > 5 || self.currentGame.currentLocation.type == .any {
+        if randomMeditation > 10 || self.currentGame.currentLocation.type == .any {
             let randomLocations = GameStorage.gameLocations.filter { location in
                 if self.currentGame.currentLocation.type == .any {
                     self.currentGame.currentLocation.nextLocations.contains(location.type)
