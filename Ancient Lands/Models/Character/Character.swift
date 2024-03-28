@@ -11,7 +11,7 @@ struct Character: Codable {
     var character: TypeOfCharacterStruct
     let name: String
     let equipment: Equipment
-    let inventory: Dictionary<Int, Int> // ID - Count
+    var inventory: Dictionary<Int, Int> // ID - Count
     
     func copyWith(character: TypeOfCharacterStruct? = nil, name: String? = nil, equipment: Equipment? = nil, inventory: Dictionary<Int, Int>? = nil) -> Character {
         return Character(character: character ?? self.character, name: name ?? self.name, equipment: equipment ?? self.equipment, inventory: inventory ?? self.inventory)

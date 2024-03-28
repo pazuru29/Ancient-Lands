@@ -21,9 +21,15 @@ class GameViewModel: ObservableObject {
     
     @Published var gameState: GameState = .loaded
     
-    @Published var isImproveToastOpen: Bool = false
+    //Toast with text
+    @Published var isTextToastOpen: Bool = false
     
-    @Published var improveToastText: String = ""
+    @Published var toastText: String = ""
+    
+    //Toast of new drop
+    @Published var isDropToastOpen: Bool = false
+    
+    @Published var dropToast: Dictionary<Int, Int> = [:]
     
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
@@ -100,7 +106,7 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...40:
                     //TODO: - add battle
-                    self.goToNextLocation()
+                    self.testAddBattle()
                 default:
                     self.goToNextLocation()
                 }
@@ -121,11 +127,11 @@ class GameViewModel: ObservableObject {
                 let randomNumber = Int.random(in: 1..<101)
                 switch(randomNumber) {
                 case 1...20:
-                    //TODO: open - add drop and go to next location
-                    ()
+                    self.addDrop(keyWord: self.currentGame.supplement!.assetName!)
+                    self.goToNextLocation()
                 default:
                     //TODO: - add battle
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .passBy:
@@ -138,7 +144,7 @@ class GameViewModel: ObservableObject {
                     self.goToNextLocation()
                 default:
                     //TODO: - add battle
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .useTheTrap:
@@ -154,10 +160,10 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...defaultChanse:
                     //TODO: - add battle player
-                    ()
+                    self.testAddBattle()
                 default:
                     //TODO: - add battle enemy
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .escape:
@@ -175,23 +181,29 @@ class GameViewModel: ObservableObject {
                     self.currentGame.supplement?.story = "You failed to escape, but the enemy didn't see you."
                 default:
                     //TODO: - add battle enemy
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .defuse:
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
+                //TODO: - add random chans from 0 to dexterity and evreything
                 let defuseChanse = 20 + (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0)
+                
+                let chanseToEnemy = (100 - ((100 - defuseChanse) / 2))
                 
                 switch(randomNumber) {
                 case 1...defuseChanse:
-                    //TODO: - open chest
-                    // дается дроп и переход на некст локацию
-                    ()
+                    self.addDrop(keyWord: self.currentGame.supplement!.assetName!)
+                    self.goToNextLocation()
+                case (defuseChanse + 1)...chanseToEnemy:
+                    self.toastText = "You failed to open the chest."
+                    self.isTextToastOpen = true
+                    self.goToNextLocation()
                 default:
                     //TODO: - add battle enemy
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .wait:
@@ -203,16 +215,14 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...trapChanse:
                     //TODO: - battle player
-                    ()
+                    self.testAddBattle()
                 default:
                     //TODO: - add battle enemy
-                    ()
+                    self.testAddBattle()
                 }
             }
         case .improveAttack, .improveHp, .improveDefense:
             clouser = {
-                //TODO: - add attack/hp/defense - 65% / not - 35%
-                
                 let isImproved = Int.random(in: 1..<101)
                 
                 switch(isImproved) {
@@ -221,36 +231,63 @@ class GameViewModel: ObservableObject {
                     
                     if action == .improveHp {
                         newCharacter.character.hp += 5
-                        self.improveToastText = "You've increased your HP."
+                        self.toastText = "You've increased your HP."
                     }
                     
                     if action == .improveAttack {
                         newCharacter.character.attack += 5
-                        self.improveToastText = "You've raised your attack level."
+                        self.toastText = "You've raised your attack level."
                     }
                     
                     if action == .improveDefense {
                         newCharacter.character.defense += 5
-                        self.improveToastText = "You've increased your level of defense."
+                        self.toastText = "You've increased your level of defense."
                     }
                     
                     CharacterViewModel.shared.changeCharacter(character: newCharacter)
                 default:
-                    self.improveToastText = "You failed to master the skill."
+                    self.toastText = "You failed to master the skill."
                 }
                 
-                self.isImproveToastOpen = true
+                self.isTextToastOpen = true
                 
                 self.goToNextLocation()
             }
         case .fight:
             clouser = {
                 //TODO: - Fight with boss
-                self.goToNextLocation()
+                self.testAddBattle()
             }
         }
         
         return clouser
+    }
+    
+    private func addDrop(keyWord: String) {
+        var drop: Dictionary<Int, Int> = [:]
+        
+        if keyWord == "AncientChest" {
+            drop = CardStorage.dropFromAncientChest.randomElement()!
+        } else if keyWord == "Chest" {
+            drop = CardStorage.dropFromChest.randomElement()!
+        }
+        
+        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        
+        for (itemID, count) in drop {
+            if newCharacter.inventory.contains(where: { (id, countCards) in
+                itemID == id
+            }) {
+                newCharacter.inventory[itemID]! += count
+            } else {
+                newCharacter.inventory[itemID] = count
+            }
+        }
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        
+        self.dropToast = drop
+        self.isDropToastOpen = true
     }
     
     private func goToNextLocation() {
@@ -285,5 +322,16 @@ class GameViewModel: ObservableObject {
         self.currentGame.usedSupplementActions.removeAll()
         
         self.currentGame.countOfLocations += 1
+    }
+    
+    //TODO: - remove
+    func testEndBattle() {
+        self.currentGame.currentBattle = nil
+        self.currentGame.countOfDefeatedEnemy += 1
+        self.goToNextLocation()
+    }
+    
+    func testAddBattle() {
+        self.currentGame.currentBattle = Battle(step: .player, enemy: GameStorage.easyEnemys.first!, currentEnemyHp: GameStorage.easyEnemys.first!.hp, playerHp: CharacterViewModel.shared.currentCharacter!.character.hp, effects: [], currentPlayCards: [])
     }
 }

@@ -37,14 +37,17 @@ struct GameView: View {
         .toast(isPresented: $isDetailShowed, content: {
             CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.character)
         })
-        .toast(isPresented: $gameViewModel.isImproveToastOpen, dismissAfter: 2, content: {
-            OverlayView(isShowed: $gameViewModel.isImproveToastOpen) {
-                Text(gameViewModel.improveToastText)
+        .toast(isPresented: $gameViewModel.isTextToastOpen, dismissAfter: 2, content: {
+            OverlayView(isShowed: $gameViewModel.isTextToastOpen) {
+                Text(gameViewModel.toastText)
                     .font(.custom("MontserratRoman-SemiBold", size: 24))
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
             }
+        })
+        .toast(isPresented: $gameViewModel.isDropToastOpen, content: {
+            DropFromChestView(isOpen: $gameViewModel.isDropToastOpen, drop: gameViewModel.dropToast)
         })
         .sheet(isPresented: $isInventoryShowed, content: {
             ZStack {

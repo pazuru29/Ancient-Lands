@@ -125,7 +125,6 @@ struct GameStorage {
     
     static let somebody = Supplement(assetName: "Somebody", name: "Somebody", story: "You're detecting someone.", actions: [.useTheTrap, .attack, .escape])
     
-    //TODO: Make 2 chests - ancient - 5%, chest - 10%, enemy - 20%, noting - 65%
     static let ancientChest = Supplement(assetName: "AncientChest", name: "Ancient Chest", story: "You have discovered an ancient chest, travelers know they are more valuable as ancient warriors hid their weapons in them.", actions: [.examine, .open, .passBy])
     
     static let chest = Supplement(assetName: "Chest", name: "Chest", story: "You have discovered a chest, such chests are usually used to hide food and valuables. Perhaps its owner is nearby.", actions: [.examine, .open, .passBy])

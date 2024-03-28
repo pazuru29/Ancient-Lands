@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct BattleView: View {
+    @EnvironmentObject var gameViewModel: GameViewModel
+    
     var body: some View {
         VStack {
-            //TODO:
+            Button("ATTACK") {
+                gameViewModel.testEndBattle()
+            }
+                .buttonStyle(MainButtonStyle())
         }
     }
 }
