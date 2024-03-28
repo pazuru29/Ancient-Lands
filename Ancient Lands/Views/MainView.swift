@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct MainView: View {
     @EnvironmentObject var navigationManager: NavigationManager
@@ -56,7 +57,7 @@ struct MainView: View {
             
             VStack {
                 AppBar {
-                    SmallCharacterCard(character: characterViewModel.currentCharacter!.type.getCharacteristic())
+                    SmallCharacterCard(character: characterViewModel.currentCharacter!.character)
                         .onTapGesture {
                             withAnimation {
                                 isCharacterDetailShowed = true
@@ -67,11 +68,9 @@ struct MainView: View {
             }
         }
         .background(.appPrimary)
-        .overlay {
-            if isCharacterDetailShowed {
-                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.currentCharacter!.type.getCharacteristic())
-            }
-        }
+        .toast(isPresented: $isCharacterDetailShowed, content: {
+            CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.currentCharacter!.character)
+        })
         .alert("Do you really want to create a new game? All previous data will be deleted.", isPresented: $isNeedNewGameCreatedAlertOpen) {
             Button("Create", role: .destructive) {
                 gameViewModel.startNewGame()

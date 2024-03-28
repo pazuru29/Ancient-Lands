@@ -26,7 +26,7 @@ struct GameAppBar: View {
                 })
                 .buttonStyle(IconButtonStyle())
                 
-                SmallCharacterCard(character: currentCharacter.type.getCharacteristic(), name: currentCharacter.name)
+                SmallCharacterCard(character: currentCharacter.character, name: currentCharacter.name)
                     .onTapGesture {
                         withAnimation {
                             isDetailShowed.toggle()

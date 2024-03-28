@@ -33,14 +33,18 @@ enum TypeOfCharacter: CaseIterable, Codable {
     }
 }
 
-struct TypeOfCharacterStruct: Equatable {
+struct TypeOfCharacterStruct: Equatable, Codable {
     let name: String
     let assetName: String
     let characterEnhancement: Array<String>
     let passiveSkills: Array<String>
-    let hp: Int
-    let attack: Int
-    let defense: Int
+    var hp: Int
+    var attack: Int
+    var defense: Int
     let dexterity: Int
     let stealth: Int
+    
+    func copyWith(name: String? = nil, assetName: String? = nil, characterEnhancement: Array<String>? = nil, passiveSkills: Array<String>? = nil, hp: Int? = nil, attack: Int? = nil, defense: Int? = nil, dexterity: Int? = nil, stealth: Int? = nil) -> TypeOfCharacterStruct {
+        TypeOfCharacterStruct(name: name ?? self.name, assetName: assetName ?? self.assetName, characterEnhancement: characterEnhancement ?? self.characterEnhancement, passiveSkills: passiveSkills ?? self.passiveSkills, hp: hp ?? self.hp, attack: attack ?? self.attack, defense: defense ?? self.defense, dexterity: dexterity ?? self.dexterity, stealth: stealth ?? self.stealth)
+    }
 }

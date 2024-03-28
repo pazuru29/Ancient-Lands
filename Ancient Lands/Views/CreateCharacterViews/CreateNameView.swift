@@ -79,9 +79,9 @@ struct CreateNameView: View, KeyboardReadable {
                 if !isKeyboardVisible {
                     Button("Create") {
                         if !trim(name).isEmpty {
-                            let character = Character(type: characterViewModel.selectedCharacter, name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards())
+                            let character = Character(character: characterViewModel.selectedCharacter.getCharacteristic(), name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards())
                             
-                            characterViewModel.saveNewCharacter(character: character)
+                            characterViewModel.createNewCharacter(character: character)
                             
                             navigationManager.removeAll()
                         }

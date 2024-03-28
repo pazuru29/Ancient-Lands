@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct InventoryView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
     
     @State var listOfView: Array<AnyView> = []
+    
+    @State var isDetailCardShowed: Bool = false
+    @State var currentDetailCard: ItemCardModel? = nil
     
     var body: some View {
         VStack(spacing: 0) {
@@ -20,7 +24,8 @@ struct InventoryView: View {
                 .padding([.bottom, .horizontal])
                 .padding(.top, 24)
             
-            Divider()
+            Color.appThirty2
+                .frame(height: 1)
                 .padding(.horizontal)
             
             ScrollView {
@@ -35,6 +40,9 @@ struct InventoryView: View {
             }
             .scrollIndicators(.hidden)
         }
+        .toast(isPresented: $isDetailCardShowed, content: {
+            CardDetailView(isShowed: $isDetailCardShowed, card: currentDetailCard!)
+        })
         .onAppear {
             getInitData()
         }
@@ -68,6 +76,13 @@ struct InventoryView: View {
             if card != nil {
                 ItemCard(card: card!, size: .medium)
                     .padding(.bottom,10)
+                    .onTapGesture {
+                        dPrint("CLICK ON CARD")
+                        currentDetailCard = card
+                        withAnimation {
+                            isDetailCardShowed = true
+                        }
+                    }
             } else {
                 Color.clear
                     .frame(width: 95, height: 130)
@@ -88,8 +103,8 @@ struct InventoryView: View {
     func typesView() -> some View {
         return VStack(spacing: 0) {
             ForEach(listOfView.indices, id: \.self) { index in
-                       listOfView[index]
-                   }
+                listOfView[index]
+            }
         }
     }
     
@@ -101,14 +116,22 @@ struct InventoryView: View {
                 .foregroundStyle(.appThirty2)
                 .padding(.bottom, 10)
             
-            Divider()
+            Color.appThirty2.opacity(0.5)
+                .frame(height: 1)
                 .padding(.horizontal)
                 .padding(.bottom, 14)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 0) {
                 ForEach(arrayOfCards, id: \.self.1) { (count, card) in
                     ItemCard(card: card, size: .medium, count: count)
-                    .padding(.bottom, 36)
+                        .padding(.bottom, 36)
+                        .onTapGesture {
+                            dPrint("CLICK ON CARD")
+                            currentDetailCard = card
+                            withAnimation {
+                                isDetailCardShowed = true
+                            }
+                        }
                 }
             }
         }
@@ -139,8 +162,4 @@ struct InventoryView: View {
             }
         }
     }
-}
-
-#Preview {
-    InventoryView()
 }

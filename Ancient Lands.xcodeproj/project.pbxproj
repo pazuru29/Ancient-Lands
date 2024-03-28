@@ -12,6 +12,9 @@
 		A80538692BA49B280067FEBB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80538682BA49B280067FEBB /* Launch Screen.storyboard */; };
 		A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8090FBE2BADB50900218C20 /* NavigationViews.swift */; };
 		A8090FC12BADB56100218C20 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8090FC02BADB56100218C20 /* NavigationManager.swift */; };
+		A8192F3D2BB5716000265AD6 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8192F3C2BB5716000265AD6 /* CardDetailView.swift */; };
+		A8192F402BB5B9F500265AD6 /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = A8192F3F2BB5B9F500265AD6 /* ToastUI */; };
+		A8192F422BB5D28100265AD6 /* ConstantOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8192F412BB5D28100265AD6 /* ConstantOverlayView.swift */; };
 		A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201C92BAA322400E05C43 /* AppBar.swift */; };
 		A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */; };
 		A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */; };
@@ -76,6 +79,8 @@
 		A80538682BA49B280067FEBB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A8090FBE2BADB50900218C20 /* NavigationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViews.swift; sourceTree = "<group>"; };
 		A8090FC02BADB56100218C20 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		A8192F3C2BB5716000265AD6 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		A8192F412BB5D28100265AD6 /* ConstantOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantOverlayView.swift; sourceTree = "<group>"; };
 		A82201C92BAA322400E05C43 /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
 		A82201CC2BAA336D00E05C43 /* ChooseCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacter.swift; sourceTree = "<group>"; };
 		A82201CF2BAA383C00E05C43 /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8192F402BB5B9F500265AD6 /* ToastUI in Frameworks */,
 				A8F2FD9F2BA487F9007E7598 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +324,7 @@
 				A84A6A662BAB72480059955B /* ItemCard.swift */,
 				A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */,
 				A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */,
+				A8192F412BB5D28100265AD6 /* ConstantOverlayView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -352,6 +359,7 @@
 				A8378ECA2BAC61940099D5F1 /* MainView.swift */,
 				A8378ECC2BAC72CE0099D5F1 /* SettingsView.swift */,
 				A8707BA32BB3599F006DD699 /* InGameLoadingView.swift */,
+				A8192F3C2BB5716000265AD6 /* CardDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +391,7 @@
 			name = "Ancient Lands";
 			packageProductDependencies = (
 				A8F2FD9E2BA487F9007E7598 /* Lottie */,
+				A8192F3F2BB5B9F500265AD6 /* ToastUI */,
 			);
 			productName = "Ancient Lands";
 			productReference = A8F2FD852BA47E03007E7598 /* Ancient Lands.app */;
@@ -414,6 +423,7 @@
 			mainGroup = A8F2FD7C2BA47E03007E7598;
 			packageReferences = (
 				A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A8192F3E2BB5B9F500265AD6 /* XCRemoteSwiftPackageReference "ToastUI" */,
 			);
 			productRefGroup = A8F2FD862BA47E03007E7598 /* Products */;
 			projectDirPath = "";
@@ -491,6 +501,7 @@
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,
 				A8BE3E392BB1B803003311B6 /* InventoryView.swift in Sources */,
+				A8192F422BB5D28100265AD6 /* ConstantOverlayView.swift in Sources */,
 				A8090FBF2BADB50900218C20 /* NavigationViews.swift in Sources */,
 				A87386112BA9F2F4005C2123 /* Equipment.swift in Sources */,
 				A8378EC92BAC58720099D5F1 /* CharacterViewModel.swift in Sources */,
@@ -499,6 +510,7 @@
 				A87386092BA9ED79005C2123 /* Character.swift in Sources */,
 				A8378ECD2BAC72CE0099D5F1 /* SettingsView.swift in Sources */,
 				A82201CA2BAA322400E05C43 /* AppBar.swift in Sources */,
+				A8192F3D2BB5716000265AD6 /* CardDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +730,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A8192F3E2BB5B9F500265AD6 /* XCRemoteSwiftPackageReference "ToastUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quanshousio/ToastUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
 		A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -729,6 +749,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A8192F3F2BB5B9F500265AD6 /* ToastUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8192F3E2BB5B9F500265AD6 /* XCRemoteSwiftPackageReference "ToastUI" */;
+			productName = ToastUI;
+		};
 		A8F2FD9E2BA487F9007E7598 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A8F2FD9D2BA487F9007E7598 /* XCRemoteSwiftPackageReference "lottie-ios" */;

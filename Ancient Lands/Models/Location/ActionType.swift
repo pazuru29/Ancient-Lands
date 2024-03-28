@@ -18,8 +18,8 @@ enum ActionType: String, Codable {
     case escape = "Escape"
     case defuse = "Defuse"
     case wait = "Wait"
-    case knight = "Knight"
-    case elf = "Elf"
-    case wizard = "Wizard"
+    case improveHp = "Improve Health"
+    case improveAttack = "Improve Attack"
+    case improveDefense = "Improve Defense"
     case fight = "Take the fight"
 }

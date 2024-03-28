@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct PickCardSet: View {
     @EnvironmentObject var navigationManager: NavigationManager
@@ -77,11 +78,9 @@ struct PickCardSet: View {
         }
         .navigationBarBackButtonHidden()
         .background(.appPrimary)
-        .overlay {
-            if isCharacterDetailShowed {
-                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.selectedCharacter.getCharacteristic())
-            }
-        }
+        .toast(isPresented: $isCharacterDetailShowed, content: {
+            CharacterDetailView(isShowed: $isCharacterDetailShowed, character: characterViewModel.selectedCharacter.getCharacteristic())
+        })
     }
     
     

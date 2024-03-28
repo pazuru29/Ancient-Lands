@@ -75,4 +75,10 @@ class CoreDataManager: ObservableObject {
         dPrint("DELETE LAST GAME")
         save()
     }
+    
+    func deleteCharacter(_ character: CharacterDB) {
+        viewContext.delete(character)
+        dPrint("DELETE LAST Character")
+        save()
+    }
 }

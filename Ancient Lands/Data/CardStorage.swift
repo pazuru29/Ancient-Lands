@@ -27,10 +27,24 @@ struct CardStorage {
     
     static let wizardSet: Dictionary<Int, Int> = [
         36: 1,
-        38: 1,
+        38: 30,
         53: 2,
         2: 3,
         1: 1,
+    ]
+    
+    static let dropFromChest: [Dictionary<Int, Int>] = [
+        [1: 1, 2: 2, 28: 5],
+        [1: 2, 28: 10, 6: 1],
+        [6: 3, 7: 1],
+        [17: 1, 32: 10],
+    ]
+    
+    static let dropFromAncientChest: [Dictionary<Int, Int>] = [
+        [27: 1, 2: 2, 28: 5],
+        [2: 3, 28: 25, 6: 3],
+        [40: 5, 36: 1],
+        [44: 1, 1: 3],
     ]
     
     static let allCards: Array<ItemCardModel> = [

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct ChooseCharacter: View {
     @EnvironmentObject var navigationManager: NavigationManager
@@ -73,11 +74,9 @@ struct ChooseCharacter: View {
                 Spacer()
             }
         }
-        .overlay {
-            if isCharacterDetailShowed {
-                CharacterDetailView(isShowed: $isCharacterDetailShowed, character: overlayCharacter.getCharacteristic())
-            }
-        }
+        .toast(isPresented: $isCharacterDetailShowed, content: {
+            CharacterDetailView(isShowed: $isCharacterDetailShowed, character: overlayCharacter.getCharacteristic())
+        })
     }
 }
 

@@ -21,6 +21,10 @@ class GameViewModel: ObservableObject {
     
     @Published var gameState: GameState = .loaded
     
+    @Published var isImproveToastOpen: Bool = false
+    
+    @Published var improveToastText: String = ""
+    
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
         
@@ -92,7 +96,14 @@ class GameViewModel: ObservableObject {
             }
         case .moveOn:
             clouser = {
-                self.goToNextLocation()
+                let randomNumber = Int.random(in: 1..<101)
+                switch(randomNumber) {
+                case 1...40:
+                    //TODO: - add battle
+                    self.goToNextLocation()
+                default:
+                    self.goToNextLocation()
+                }
             }
         case .examine:
             clouser = {
@@ -101,82 +112,141 @@ class GameViewModel: ObservableObject {
                     self.currentGame.supplement?.story = "You don't notice anything."
                 } else {
                     self.currentGame.supplement?.story = "You notice the trap."
-                    self.currentGame.supplement?.actions.append(.defuse)
                     self.currentGame.usedSupplementActions.append(.open)
+                    self.currentGame.supplement?.actions.append(.defuse)
                 }
             }
         case .open:
             clouser = {
-                //TODO: - add drop or battle
+                let randomNumber = Int.random(in: 1..<101)
+                switch(randomNumber) {
+                case 1...20:
+                    //TODO: open - add drop and go to next location
+                    ()
+                default:
+                    //TODO: - add battle
+                    ()
+                }
             }
         case .passBy:
             clouser = {
-                //TODO: - battle or next location
-                let random = Bool.random()
-                if random {
-                    
-                } else {
+                let randomNumber = Int.random(in: 1..<101)
+                let defaultChanse = 15 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                
+                switch(randomNumber) {
+                case 1...defaultChanse:
                     self.goToNextLocation()
+                default:
+                    //TODO: - add battle
+                    ()
                 }
             }
         case .useTheTrap:
             clouser = {
                 //TODO: - add choose trap if player have 2 types, after add supplement "Trap"
+                // Открытие шита с выбором ловушки
             }
         case .attack:
             clouser = {
-                //TODO: - add battle
+                let randomNumber = Int.random(in: 1..<101)
+                let defaultChanse = 10 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0) + ((CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0) / 2)
+                
+                switch(randomNumber) {
+                case 1...defaultChanse:
+                    //TODO: - add battle player
+                    ()
+                default:
+                    //TODO: - add battle enemy
+                    ()
+                }
             }
         case .escape:
             clouser = {
-                //TODO: - change to 4
-                let randomNumber = Int.random(in: 1..<3)
+                let randomNumber = Int.random(in: 1..<101)
+                
+                let escapeChanse = 10 + ((CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0) / 2) + (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0)
+                
+                let stealthChanse = escapeChanse + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                
                 switch(randomNumber) {
-                case 1:
-                    self.currentGame.supplement?.story = "You failed to escape, but the enemy didn't see you."
-                case 2:
+                case 1...escapeChanse:
                     self.goToNextLocation()
+                case (escapeChanse + 1)...stealthChanse:
+                    self.currentGame.supplement?.story = "You failed to escape, but the enemy didn't see you."
                 default:
-                    //TODO: - add battle
-                    {}()
+                    //TODO: - add battle enemy
+                    ()
                 }
             }
         case .defuse:
             clouser = {
-                //TODO: - add battle
-                let random = Bool.random()
-                if random {
-                    
-                } else {
-                    self.goToNextLocation()
+                let randomNumber = Int.random(in: 1..<101)
+                
+                let defuseChanse = 20 + (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0)
+                
+                switch(randomNumber) {
+                case 1...defuseChanse:
+                    //TODO: - open chest
+                    // дается дроп и переход на некст локацию
+                    ()
+                default:
+                    //TODO: - add battle enemy
+                    ()
                 }
             }
         case .wait:
             clouser = {
-                //TODO: - add battle
-                let random = Bool.random()
-                if random {
-                    
-                } else {
-                    
+                let randomNumber = Int.random(in: 1..<101)
+                
+                let trapChanse = 20 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                
+                switch(randomNumber) {
+                case 1...trapChanse:
+                    //TODO: - battle player
+                    ()
+                default:
+                    //TODO: - add battle enemy
+                    ()
                 }
             }
-        case .knight:
+        case .improveAttack, .improveHp, .improveDefense:
             clouser = {
-                //TODO: - add characteristic or hp - 65% / attack - 35%
+                //TODO: - add attack/hp/defense - 65% / not - 35%
                 
-            }
-        case .elf:
-            clouser = {
-                //TODO: - dexterity - 50% / stealth - 50%
-            }
-        case .wizard:
-            clouser = {
-                //TODO: - defense - 60% / attack - 40%
+                let isImproved = Int.random(in: 1..<101)
+                
+                switch(isImproved) {
+                case 1...65:
+                    var newCharacter = CharacterViewModel.shared.currentCharacter!
+                    
+                    if action == .improveHp {
+                        newCharacter.character.hp += 5
+                        self.improveToastText = "You've increased your HP."
+                    }
+                    
+                    if action == .improveAttack {
+                        newCharacter.character.attack += 5
+                        self.improveToastText = "You've raised your attack level."
+                    }
+                    
+                    if action == .improveDefense {
+                        newCharacter.character.defense += 5
+                        self.improveToastText = "You've increased your level of defense."
+                    }
+                    
+                    CharacterViewModel.shared.changeCharacter(character: newCharacter)
+                default:
+                    self.improveToastText = "You failed to master the skill."
+                }
+                
+                self.isImproveToastOpen = true
+                
+                self.goToNextLocation()
             }
         case .fight:
             clouser = {
                 //TODO: - Fight with boss
+                self.goToNextLocation()
             }
         }
         
@@ -184,11 +254,13 @@ class GameViewModel: ObservableObject {
     }
     
     private func goToNextLocation() {
-        let randomMeditation = Int.random(in: 1..<101)
+        let randomMeditation = Int.random(in: 1..<1001)
         
-        if randomMeditation > 1 {
+        if randomMeditation > 5 || self.currentGame.currentLocation.type == .any {
             let randomLocations = GameStorage.gameLocations.filter { location in
-                if location.type == self.currentGame.currentLocation.type {
+                if self.currentGame.currentLocation.type == .any {
+                    self.currentGame.currentLocation.nextLocations.contains(location.type)
+                } else if location.type == self.currentGame.currentLocation.type {
                     self.currentGame.currentLocation.nextLocations.contains(location.type) && self.currentGame.currentLocation.assetName != location.assetName
                 } else {
                     self.currentGame.currentLocation.nextLocations.contains(location.type) && location.nextLocations.contains(self.currentGame.currentLocation.type)

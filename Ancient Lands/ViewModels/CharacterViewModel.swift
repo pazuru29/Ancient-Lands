@@ -26,9 +26,23 @@ class CharacterViewModel: ObservableObject {
         }
     }
     
-    func saveNewCharacter(character: Character) {
+    func createNewCharacter(character: Character) {
         if CoreDataManager.shared.getSavedCharacter() != nil {
             CoreDataManager.shared.deleteAll()
+        }
+        
+        currentCharacter = character
+        
+        let characterDB = CharacterDB(context: CoreDataManager.shared.viewContext)
+        
+        characterDB.json = character.toJSON()
+        
+        CoreDataManager.shared.save()
+    }
+    
+    func changeCharacter(character: Character) {
+        if let character = CoreDataManager.shared.getSavedCharacter() {
+            CoreDataManager.shared.deleteCharacter(character)
         }
         
         currentCharacter = character

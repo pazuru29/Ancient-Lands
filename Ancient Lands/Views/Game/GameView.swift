@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ToastUI
 
 struct GameView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
@@ -32,21 +33,29 @@ struct GameView: View {
                 Spacer()
             }
         }
-        .overlay {
-            if isDetailShowed {
-                CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.type.getCharacteristic())
+        .background(.appPrimary)
+        .toast(isPresented: $isDetailShowed, content: {
+            CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.character)
+        })
+        .toast(isPresented: $gameViewModel.isImproveToastOpen, dismissAfter: 2, content: {
+            OverlayView(isShowed: $gameViewModel.isImproveToastOpen) {
+                Text(gameViewModel.improveToastText)
+                    .font(.custom("MontserratRoman-SemiBold", size: 24))
+                    .foregroundStyle(.appPrimary2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
             }
-        }
+        })
         .sheet(isPresented: $isInventoryShowed, content: {
             ZStack {
                 Color.appPrimary.opacity(0.8)
                     .ignoresSafeArea()
                 InventoryView()
             }
-            .presentationDetents([.medium, .large])
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
             .presentationBackground(.ultraThinMaterial)
         })
-        .background(.appPrimary)
     }
 }
 

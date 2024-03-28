@@ -22,12 +22,11 @@ struct GameStorage {
         Location(assetName: "WhisperingWoods", name: "Whispering Woods", story: "The trees seem to whisper secrets to one another as you navigate through the dense woods.", type: .forest, nextLocations: [.forest, .swamp], actions: [.lookAround, .moveOn]),
         Location(assetName: "FernValley", name: "Fern Valley", story: "A lush valley filled with ferns stretches out before you, a verdant oasis within the forest.", type: .forest, nextLocations: [.forest, .swamp], actions: [.lookAround, .moveOn]),
         Location(assetName: "EnchantedForest", name: "Enchanted Forest", story: "You step into an enchanted forest, where magic seems to permeate every leaf and branch.", type: .forest, nextLocations: [.forest, .swamp], actions: [.lookAround, .moveOn]),
-        Location(assetName: "EternalWoodlands", name: "Eternal Woodlands", story: "The forest stretches on endlessly, a timeless expanse of greenery and wonder.", type: .forest, nextLocations: [.forest, .caves, .gorges], actions: [.lookAround, .moveOn]),
+        Location(assetName: "EternalWoodlands", name: "Eternal Woodlands", story: "The forest stretches on endlessly, a timeless expanse of greenery and wonder.", type: .forest, nextLocations: [.forest, .caves, .gorges, .mount], actions: [.lookAround, .moveOn]),
         Location(assetName: "SecretGlen", name: "Secret Glen", story: "In a secluded glen, you discover a hidden world of natural beauty hidden away from prying eyes.", type: .forest, nextLocations: [.forest], actions: [.lookAround, .moveOn]),
-        Location(assetName: "EmeraldThicket", name: "Emerald Thicket", story: "A dense thicket of emerald foliage surrounds you, creating a verdant paradise within the forest.", type: .forest, nextLocations: [.forest], actions: [.lookAround, .moveOn]),
+        Location(assetName: "EmeraldThicket", name: "Emerald Thicket", story: "A dense thicket of emerald foliage surrounds you, creating a verdant paradise within the forest.", type: .forest, nextLocations: [.forest, .field], actions: [.lookAround, .moveOn]),
         Location(assetName: "SereneGlade", name: "Serene Glade", story: "In a serene glade, sunlight filters through the canopy, illuminating the forest floor in a warm glow.", type: .forest, nextLocations: [.forest, .gorges], actions: [.lookAround, .moveOn]),
         Location(assetName: "MysticWoods", name: "Mystic Woods", story: "You enter a realm of mystic woods, where ancient magic still lingers in the air.", type: .forest, nextLocations: [.forest, .field], actions: [.lookAround, .moveOn]),
-        Location(assetName: "FrozenTundra", name: "Frozen Tundra", story: "The landscape is frozen and desolate, with icy winds whipping across the barren tundra.", type: .forest, nextLocations: [.forest, .field], actions: [.lookAround, .moveOn]),
         
         //Field
         Location(assetName: "GoldenMeadow", name: "Golden Meadow", story: "You find yourself in a vast meadow, bathed in the warm glow of the sun.", type: .field, nextLocations: [.field, .caves], actions: [.lookAround, .moveOn]),
@@ -122,7 +121,7 @@ struct GameStorage {
         Location(assetName: "ForrestBoss2", name: "Hall of Great Warriors", story: "This hall was once frequented by the most famous warriors of the land. But now it's home to a less than kind creature.", type: .boss, nextLocations: [], actions: [.fight,.passBy]),
     ]
     
-    static let meditation: Location = Location(assetName: "MeditationStone", name: "Meditation Stone", story: "You've come to the meditation stone. It's good luck to meet him. This stone remembers many great battles, you can meditate near it to increase your skills.", type: .any, nextLocations: [], actions: [.knight, .elf, .wizard])
+    static let meditation: Location = Location(assetName: "MeditationStone", name: "Meditation Stone", story: "You've come to the meditation stone. It's good luck to meet him. This stone remembers many great battles, you can meditate near it to increase your skills.", type: .any, nextLocations: [], actions: [.improveHp, .improveAttack, .improveDefense])
     
     static let somebody = Supplement(assetName: "Somebody", name: "Somebody", story: "You're detecting someone.", actions: [.useTheTrap, .attack, .escape])
     
@@ -133,7 +132,9 @@ struct GameStorage {
     
     static let nothing = Supplement(story: "You don't notice anything.", actions: [.moveOn])
     
-    //TODO: - add trap to supplement
+    static let trap = Supplement(assetName: "Trap", name: "Trap", story: "You set a trap and wait for the enemy to get caught in it.", actions: [.wait])
+    
+    static let potionTrap = Supplement(assetName: "PoisonTrap", name: "Poison Trap", story: "You set a poison trap and wait for the enemy to get caught in it.", actions: [.wait])
     
     static let easyEnemys: [Enemy] = [
         Enemy(assetName: "ForestGoblin", name: "Forest Goblin", typeOfLocation: .forest, hp: 30, attacks: [5,10,15], debuffs: [])
