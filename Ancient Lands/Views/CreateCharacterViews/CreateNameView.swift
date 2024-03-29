@@ -79,7 +79,7 @@ struct CreateNameView: View, KeyboardReadable {
                 if !isKeyboardVisible {
                     Button("Create") {
                         if !trim(name).isEmpty {
-                            let character = Character(character: characterViewModel.selectedCharacter.getCharacteristic(), name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards())
+                            let character = Character(character: characterViewModel.selectedCharacter.getCharacteristic(), startCharacter: characterViewModel.selectedCharacter.getCharacteristic(), name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards(), startInventory: characterViewModel.selectedCards.getCards())
                             
                             characterViewModel.createNewCharacter(character: character)
                             

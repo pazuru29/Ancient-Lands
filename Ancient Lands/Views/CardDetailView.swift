@@ -60,10 +60,7 @@ struct CardDetailView: View {
                 .padding(.bottom, 12)
                 
                 if card.type == .armor || card.type == .shield || card.type == .amplification {
-                    Button("Equip") {
-                        //TODO: -
-                    }
-                    .buttonStyle(MainButtonStyle())
+                    buttonEquip()
                 }
             }
             .frame(maxWidth: .infinity)
@@ -76,6 +73,26 @@ struct CardDetailView: View {
             })
             .padding(.horizontal, 24)
             .padding(.vertical, 48)
+        }
+    }
+    
+    @ViewBuilder
+    func buttonEquip() -> some View {
+        let isEquipted = CharacterViewModel.shared.currentCharacter?.equipment.shield?.id == card.id || CharacterViewModel.shared.currentCharacter?.equipment.armor?.id == card.id ||
+        CharacterViewModel.shared.currentCharacter?.equipment.accessory?.id == card.id
+        
+        if isEquipted {
+            Button("Take off") {
+                GameViewModel.shared.unequipCard(card: card)
+                isShowed = false
+            }
+            .buttonStyle(MainButtonStyle())
+        } else {
+            Button("Equip") {
+                GameViewModel.shared.equipCard(card: card)
+                isShowed = false
+            }
+            .buttonStyle(MainButtonStyle())
         }
     }
 }

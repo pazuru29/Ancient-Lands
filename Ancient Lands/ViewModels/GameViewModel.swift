@@ -56,6 +56,10 @@ class GameViewModel: ObservableObject {
     func startNewGame() {
         self.gameState = .loading
         
+        let newCharacter = CharacterViewModel.shared.currentCharacter!.copyWith(character: CharacterViewModel.shared.currentCharacter?.startCharacter, inventory: CharacterViewModel.shared.currentCharacter?.startInventory)
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        
         let newGame = Game()
         
         saveNewGame(game: newGame)
@@ -103,6 +107,34 @@ class GameViewModel: ObservableObject {
         saveNewGame(game: currentGame)
         
         self.gameState = .loaded
+    }
+    
+    func equipCard(card: ItemCardModel) {
+        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        
+        if card.type == .armor {
+            newCharacter.equipment.armor = card
+        } else if card.type == .shield {
+            newCharacter.equipment.shield = card
+        } else if card.type == .amplification {
+            newCharacter.equipment.accessory = card
+        }
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+    }
+    
+    func unequipCard(card: ItemCardModel) {
+        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        
+        if card.type == .armor {
+            newCharacter.equipment.armor = nil
+        } else if card.type == .shield {
+            newCharacter.equipment.shield = nil
+        } else if card.type == .amplification {
+            newCharacter.equipment.accessory = nil
+        }
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
     }
     
     private func saveNewGame(game: Game) {
@@ -183,10 +215,10 @@ class GameViewModel: ObservableObject {
                 
                 let extraChance = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
                 
-                let defaultChanse = 15 + Int.random(in: 1...extraChance)
+                let defaultChance = 15 + Int.random(in: 1...extraChance)
                 
                 switch(randomNumber) {
-                case 1...defaultChanse:
+                case 1...defaultChance:
                     self.goToNextLocation()
                 default:
                     //TODO: - add battle
@@ -205,10 +237,10 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 4) / 2
                 
-                let defaultChanse = 10 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
+                let defaultChance = 10 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
                 
                 switch(randomNumber) {
-                case 1...defaultChanse:
+                case 1...defaultChance:
                     //TODO: - add battle player
                     self.testAddBattle()
                 default:
@@ -226,14 +258,14 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
                 
-                let escapeChanse = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
+                let escapeChance = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
                 
-                let stealthChanse = escapeChanse + Int.random(in: 1...extraChanceStealth)
+                let stealthChance = escapeChance + Int.random(in: 1...extraChanceStealth)
                 
                 switch(randomNumber) {
-                case 1...escapeChanse:
+                case 1...escapeChance:
                     self.goToNextLocation()
-                case (escapeChanse + 1)...stealthChanse:
+                case (escapeChance + 1)...stealthChance:
                     self.currentGame.supplement?.story = "You failed to escape, but the enemy didn't see you."
                 default:
                     //TODO: - add battle enemy
@@ -246,15 +278,15 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
                 
-                let defuseChanse = 20 + Int.random(in: 1...extraChanceDexterity)
+                let defuseChance = 30 + Int.random(in: 1...extraChanceDexterity)
                 
-                let chanseToEnemy = (100 - ((100 - defuseChanse) / 2))
+                let chanceToEnemy = (100 - ((100 - defuseChance) / 2))
                 
                 switch(randomNumber) {
-                case 1...defuseChanse:
+                case 1...defuseChance:
                     self.addDrop(keyWord: self.currentGame.supplement!.assetName!)
                     self.goToNextLocation()
-                case (defuseChanse + 1)...chanseToEnemy:
+                case (defuseChance + 1)...chanceToEnemy:
                     self.toastText = "You failed to open the chest."
                     self.isTextToastOpen = true
                     self.goToNextLocation()
@@ -269,10 +301,10 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
                 
-                let trapChanse = 20 + Int.random(in: 1...extraChanceStealth)
+                let trapChance = 20 + Int.random(in: 1...extraChanceStealth)
                 
                 switch(randomNumber) {
-                case 1...trapChanse:
+                case 1...trapChance:
                     //TODO: - battle player
                     self.testAddBattle()
                 default:

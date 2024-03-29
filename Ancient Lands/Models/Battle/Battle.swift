@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum ChestType: Codable {
+    case ancientChest
+    case chest
+}
+
 struct Battle: Codable {
     //MARK: step of round
     let step: TypeStep
@@ -19,4 +24,7 @@ struct Battle: Codable {
     let playerHp: Int
     let effects: [GameEffects]
     let currentPlayCards: [ItemCardModel]
+    
+    //MARK: Chest
+    let chest: ChestType?
 }

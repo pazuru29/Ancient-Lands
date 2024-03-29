@@ -9,12 +9,14 @@ import Foundation
 
 struct Character: Codable {
     var character: TypeOfCharacterStruct
+    var startCharacter: TypeOfCharacterStruct
     let name: String
-    let equipment: Equipment
+    var equipment: Equipment
     var inventory: Dictionary<Int, Int> // ID - Count
+    var startInventory: Dictionary<Int, Int> // ID - Count
     
     func copyWith(character: TypeOfCharacterStruct? = nil, name: String? = nil, equipment: Equipment? = nil, inventory: Dictionary<Int, Int>? = nil) -> Character {
-        return Character(character: character ?? self.character, name: name ?? self.name, equipment: equipment ?? self.equipment, inventory: inventory ?? self.inventory)
+        return Character(character: character ?? self.character, startCharacter: self.startCharacter, name: name ?? self.name, equipment: equipment ?? self.equipment, inventory: inventory ?? self.inventory, startInventory: self.startInventory)
     }
     
     func toJSON() -> String {
