@@ -34,6 +34,9 @@ struct GameView: View {
             }
         }
         .background(.appPrimary)
+        .onAppear() {
+            gameViewModel.getItitView()
+        }
         .toast(isPresented: $isDetailShowed, content: {
             CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.character)
         })
@@ -48,6 +51,9 @@ struct GameView: View {
         })
         .toast(isPresented: $gameViewModel.isDropToastOpen, content: {
             DropFromChestView(isOpen: $gameViewModel.isDropToastOpen, drop: gameViewModel.dropToast)
+        })
+        .toast(isPresented: $gameViewModel.isPickTrapOpen, content: {
+            ChooseTrapView()
         })
         .sheet(isPresented: $isInventoryShowed, content: {
             ZStack {

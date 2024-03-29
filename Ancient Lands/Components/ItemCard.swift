@@ -31,12 +31,12 @@ struct ItemCard: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: size == .small ? 55 : size == .medium ? 82 : 87, height: size == .small ? 55 : size == .medium ? 82 : 87)
-                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 8, topTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 8))
+                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 6, topTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 6))
                     .overlay(content: {
-                        UnevenRoundedRectangle(topLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 8, topTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 8)
+                        UnevenRoundedRectangle(topLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 6, topTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 6)
                             .stroke(.appThirty2, lineWidth: 1)
                     })
-                    .padding(.bottom, size == .small ? 2 : size == .medium ? 3 : 6)
+                    .padding(.bottom, size == .small ? 2 : size == .medium ? 3 : 4)
                 
                 Text(card.name)
                     .font(.custom("MontserratRoman-Medium", size: size == .small ? 6 : size == .medium ? 7 : 9))
@@ -45,7 +45,7 @@ struct ItemCard: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: size == .small ? 21 : size == .medium ? 31 : 34)
                     .background(.appThirty2)
-                    .clipShape(UnevenRoundedRectangle(bottomLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 8, bottomTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 8))
+                    .clipShape(UnevenRoundedRectangle(bottomLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 6, bottomTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 6))
             }
             .padding(size == .small ? 4.5 : size == .medium ? 6.5 : 7)
             .background(.appPrimary2)

@@ -31,6 +31,9 @@ class GameViewModel: ObservableObject {
     
     @Published var dropToast: Dictionary<Int, Int> = [:]
     
+    //Trap
+    @Published var isPickTrapOpen: Bool = false
+    
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
         
@@ -39,6 +42,14 @@ class GameViewModel: ObservableObject {
                 self.currentGame = Game.fromJSON(json: gameDB.json ?? "") ?? Game()
             }
             dPrint("TAKE LAST GAME")
+        }
+    }
+    
+    func getItitView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.isPickTrapOpen = self.currentGame.usedSupplementActions.contains(.useTheTrap) && self.currentGame.currentBattle == nil && self.currentGame.supplement?.assetName == GameStorage.somebody.assetName ? true : false
+            
+            dPrint("\(self.isPickTrapOpen)")
         }
     }
     
@@ -62,6 +73,32 @@ class GameViewModel: ObservableObject {
         }
         
         actionFunction(action: action)()
+        
+        saveNewGame(game: currentGame)
+        
+        self.gameState = .loaded
+    }
+    
+    func selectTrap(selectedTrap: ItemCardModel) {
+        self.gameState = .inGameLoading
+        
+        self.isPickTrapOpen = false
+        
+        if selectedTrap.id == 6 {
+            self.currentGame.supplement = GameStorage.trap
+        } else if selectedTrap.id == 7 {
+            self.currentGame.supplement = GameStorage.potionTrap
+        }
+        
+        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        
+        if newCharacter.inventory[selectedTrap.id] == 1 {
+            newCharacter.inventory[selectedTrap.id] = nil
+        } else {
+            newCharacter.inventory[selectedTrap.id]! -= 1
+        }
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
         
         saveNewGame(game: currentGame)
         
@@ -92,12 +129,18 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...5:
                     self.currentGame.supplement = GameStorage.ancientChest
-                case 6...15:
+                case 6...20:
                     self.currentGame.supplement = GameStorage.chest
-                case 16...35:
+                case 21...35:
                     self.currentGame.supplement = GameStorage.nothing
                 default:
+                    let hasTraps = CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(6) || CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(7)
+                    
                     self.currentGame.supplement = GameStorage.somebody
+                    
+                    if !hasTraps {
+                        self.currentGame.supplement!.actions.removeFirst()
+                    }
                 }
             }
         case .moveOn:
@@ -137,7 +180,10 @@ class GameViewModel: ObservableObject {
         case .passBy:
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
-                let defaultChanse = 15 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                
+                let extraChance = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                
+                let defaultChanse = 15 + Int.random(in: 1...extraChance)
                 
                 switch(randomNumber) {
                 case 1...defaultChanse:
@@ -149,13 +195,17 @@ class GameViewModel: ObservableObject {
             }
         case .useTheTrap:
             clouser = {
-                //TODO: - add choose trap if player have 2 types, after add supplement "Trap"
-                // Открытие шита с выбором ловушки
+                self.isPickTrapOpen = true
             }
         case .attack:
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
-                let defaultChanse = 10 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0) + ((CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0) / 2)
+                
+                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                
+                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 4) / 2
+                
+                let defaultChanse = 10 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
                 
                 switch(randomNumber) {
                 case 1...defaultChanse:
@@ -170,9 +220,15 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let escapeChanse = 10 + ((CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0) / 2) + (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0)
+                let extraChanceStealthDivided2 = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 4) / 2
                 
-                let stealthChanse = escapeChanse + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                
+                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
+                
+                let escapeChanse = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
+                
+                let stealthChanse = escapeChanse + Int.random(in: 1...extraChanceStealth)
                 
                 switch(randomNumber) {
                 case 1...escapeChanse:
@@ -188,8 +244,9 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                //TODO: - add random chans from 0 to dexterity and evreything
-                let defuseChanse = 20 + (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 0)
+                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
+                
+                let defuseChanse = 20 + Int.random(in: 1...extraChanceDexterity)
                 
                 let chanseToEnemy = (100 - ((100 - defuseChanse) / 2))
                 
@@ -210,7 +267,9 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let trapChanse = 20 + (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 0)
+                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                
+                let trapChanse = 20 + Int.random(in: 1...extraChanceStealth)
                 
                 switch(randomNumber) {
                 case 1...trapChanse:
@@ -293,7 +352,7 @@ class GameViewModel: ObservableObject {
     private func goToNextLocation() {
         let randomMeditation = Int.random(in: 1..<1001)
         
-        if randomMeditation > 10 || self.currentGame.currentLocation.type == .any {
+        if randomMeditation > 5 || self.currentGame.currentLocation.type == .any {
             let randomLocations = GameStorage.gameLocations.filter { location in
                 if self.currentGame.currentLocation.type == .any {
                     self.currentGame.currentLocation.nextLocations.contains(location.type)

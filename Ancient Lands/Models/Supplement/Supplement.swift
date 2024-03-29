@@ -19,4 +19,8 @@ struct Supplement: Codable {
         self.story = story
         self.actions = actions
     }
+    
+    func copyWith(assetName: String? = nil, name: String? = nil, story: String? = nil, actions: [ActionType]? = nil) -> Supplement {
+        Supplement(assetName: assetName ?? self.assetName, name: name ?? self.name, story: story ?? self.story, actions: actions ?? self.actions)
+    }
 }
