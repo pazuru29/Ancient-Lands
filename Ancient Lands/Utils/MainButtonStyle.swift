@@ -14,7 +14,7 @@ struct MainButtonStyle: ButtonStyle {
         configuration.label
             .font(.custom("MontserratRoman-SemiBold", size: 18))
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
+            .frame(height: 48)
             .background(getBackground(isPressed: configuration.isPressed))
             .foregroundStyle(getTextForeground(isPressed: configuration.isPressed))
             .clipShape(RoundedRectangle(cornerRadius: 10))

@@ -181,6 +181,8 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...40:
                     //TODO: - add battle
+                    self.toastText = "You decided to move on, but you were attacked."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 default:
                     self.goToNextLocation()
@@ -206,6 +208,8 @@ class GameViewModel: ObservableObject {
                     self.goToNextLocation()
                 default:
                     //TODO: - add battle
+                    self.toastText = "You decide to open the chest, but it turns out to be a trap."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 }
             }
@@ -242,9 +246,13 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...defaultChance:
                     //TODO: - add battle player
+                    self.toastText = "You swiftly attack the enemy, he didn't expect it."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 default:
                     //TODO: - add battle enemy
+                    self.toastText = "You try to attack the enemy, but he dodges and a fight breaks out between you."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 }
             }
@@ -269,6 +277,8 @@ class GameViewModel: ObservableObject {
                     self.currentGame.supplement?.story = "You failed to escape, but the enemy didn't see you."
                 default:
                     //TODO: - add battle enemy
+                    self.toastText = "You tried to sneak past the enemy, but he spotted you."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 }
             }
@@ -292,6 +302,8 @@ class GameViewModel: ObservableObject {
                     self.goToNextLocation()
                 default:
                     //TODO: - add battle enemy
+                    self.toastText = "When disarming a trap, you get caught in it and are ambushed by an enemy."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 }
             }
@@ -306,9 +318,13 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...trapChance:
                     //TODO: - battle player
+                    self.toastText = "You lurked close to the trap and as soon as the enemy hit it, you swiftly attacked him."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 default:
                     //TODO: - add battle enemy
+                    self.toastText = "You lurk near a trap, but your stealth is not as good as you think, the enemy notices you and the fight begins."
+                    self.isTextToastOpen = true
                     self.testAddBattle()
                 }
             }
@@ -347,6 +363,8 @@ class GameViewModel: ObservableObject {
         case .fight:
             clouser = {
                 //TODO: - Fight with boss
+                self.toastText = "You've been coming to this for a long time, you're ready to take the fight to one of the strongest beings in this world."
+                self.isTextToastOpen = true
                 self.testAddBattle()
             }
         }
@@ -423,6 +441,6 @@ class GameViewModel: ObservableObject {
     }
     
     func testAddBattle() {
-        self.currentGame.currentBattle = Battle(step: .player, enemy: GameStorage.easyEnemys.first!, currentEnemyHp: GameStorage.easyEnemys.first!.hp, playerHp: CharacterViewModel.shared.currentCharacter!.character.hp, effects: [], currentPlayCards: [])
+        self.currentGame.currentBattle = Battle(step: .player, enemy: GameStorage.easyEnemys.first!, currentEnemyHp: GameStorage.easyEnemys.first!.hp, playerHp: CharacterViewModel.shared.currentCharacter!.character.hp, effects: [], currentPlayCards: [], chest: nil)
     }
 }

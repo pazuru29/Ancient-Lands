@@ -17,13 +17,11 @@ struct IconButtonStyle: ButtonStyle {
             .frame(width: 48, height: 48)
             .contentShape(Rectangle())
             .foregroundStyle(getForeground(isPressed: configuration.isPressed))
+            .opacity(isEnabled ? 1 : 0.5)
             .animation(.easeIn, value: isEnabled)
     }
     
     func getForeground(isPressed: Bool) -> Color {
-        guard isEnabled else {
-            return .appPrimary2.opacity(0.5)
-        }
         return isPressed ? .appThirty2 : .appPrimary2
     }
 }

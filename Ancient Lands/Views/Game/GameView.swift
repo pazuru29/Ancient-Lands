@@ -40,10 +40,10 @@ struct GameView: View {
         .toast(isPresented: $isDetailShowed, content: {
             CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.character)
         })
-        .toast(isPresented: $gameViewModel.isTextToastOpen, dismissAfter: 2, content: {
+        .toast(isPresented: $gameViewModel.isTextToastOpen, dismissAfter: 3, content: {
             OverlayView(isShowed: $gameViewModel.isTextToastOpen) {
                 Text(gameViewModel.toastText)
-                    .font(.custom("MontserratRoman-SemiBold", size: 24))
+                    .font(.custom("MontserratRoman-SemiBold", size: 18))
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
