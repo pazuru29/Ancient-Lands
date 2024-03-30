@@ -11,31 +11,43 @@ struct BattleView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
     @EnvironmentObject var gameViewModel: GameViewModel
     
-    let testCard: ItemCardModel = CardStorage.allCards.randomElement()!
+    let testCard: ItemCardModel = ItemCardModel(id: 0, assetName: "dragon", name: "Name", description: "", type: .shield)
     
     var body: some View {
-        VStack(spacing: 0) {
-            enemyView()
-                .padding(.bottom, 16)
-            
-            Spacer()
-            
-            HStack(spacing: 8) {
-                ItemCard(card: testCard, size: .medium)
-                
-                ItemCard(card: testCard, size: .medium)
+        GeometryReader { reader in
+            VStack(spacing: 0) {
+                enemyView()
+                    .padding(.bottom, 16)
                 
                 Spacer()
+                
+                HStack(spacing: 8) {
+                    ItemCard(card: testCard, size: .medium)
+                    
+                    ItemCard(card: testCard, size: .medium)
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 16)
+                
+                Spacer()
+                
+                playerView()
             }
-            .padding(.bottom, 16)
-            
-            Spacer()
-            
-            playerView()
+            .padding(.top, 80)
+            .padding(.bottom)
+            .padding(.horizontal, 16)
+            .sheet(isPresented: $gameViewModel.isBattleItemsOpen) {
+                ZStack {
+                    Color.appPrimary.opacity(0.8)
+                        .ignoresSafeArea()
+                    ChooseBattleCardView(isOpen: $gameViewModel.isBattleItemsOpen)
+                }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .presentationBackground(.ultraThinMaterial)
+            }
         }
-        .padding(.top, 80)
-        .padding(.bottom)
-        .padding(.horizontal, 16)
     }
     
     func playerView() -> some View {
@@ -47,7 +59,7 @@ struct BattleView: View {
                     .frame(width: 36, height: 36)
                     .padding(.trailing, 8)
                 
-                ProgressView(value: 30, total: Double(CharacterViewModel.shared.currentCharacter?.character.hp ?? 100))
+                ProgressView(value: 30, total: Double(characterViewModel.currentCharacter?.character.hp ?? 100))
                     .progressViewStyle(HpProgressViewStyle())
                     .frame(height: 16)
             }
@@ -75,6 +87,7 @@ struct BattleView: View {
             HStack {
                 Button {
                     //TODO: -
+                    gameViewModel.openBattleItemsSheet(title: "Attack", types: [.rangedWeapon, .ammo, .meleeWeapon, .grenade, .magicWeapon, .spell])
                 } label: {
                     Image("attack")
                         .resizable()
@@ -85,6 +98,7 @@ struct BattleView: View {
                 
                 Button {
                     //TODO: -
+                    gameViewModel.openBattleItemsSheet(title: "Defense", types: [.shield])
                 } label: {
                     Image("defense")
                         .resizable()
@@ -95,8 +109,9 @@ struct BattleView: View {
                 
                 Button {
                     //TODO: -
+                    gameViewModel.openBattleItemsSheet(title: "Potions", types: [.potion])
                 } label: {
-                    Image("poison")
+                    Image("potion")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 48, height: 48)

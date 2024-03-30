@@ -19,7 +19,9 @@ struct OverlayView<Content: View>: View {
                 .opacity(0.8)
                 .background(.ultraThinMaterial)
                 .onTapGesture {
-                    isShowed = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        isShowed = false
+                    }
                 }
             
             content

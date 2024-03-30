@@ -54,6 +54,7 @@
 		A892E6862BB6D3DB0053C34A /* ChooseTrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A892E6852BB6D3DB0053C34A /* ChooseTrapView.swift */; };
 		A892E6882BB71B130053C34A /* HpProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A892E6872BB71B130053C34A /* HpProgressViewStyle.swift */; };
 		A892E68A2BB727AE0053C34A /* GameButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A892E6892BB727AE0053C34A /* GameButtonStyle.swift */; };
+		A892E68C2BB752680053C34A /* ChooseBattleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A892E68B2BB752680053C34A /* ChooseBattleCardView.swift */; };
 		A8BE3E1B2BB18997003311B6 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */; };
 		A8BE3E1E2BB18B9F003311B6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1D2BB18B9F003311B6 /* Location.swift */; };
 		A8BE3E202BB18E5D003311B6 /* TypeOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E1F2BB18E5D003311B6 /* TypeOfLocation.swift */; };
@@ -124,6 +125,7 @@
 		A892E6852BB6D3DB0053C34A /* ChooseTrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrapView.swift; sourceTree = "<group>"; };
 		A892E6872BB71B130053C34A /* HpProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressViewStyle.swift; sourceTree = "<group>"; };
 		A892E6892BB727AE0053C34A /* GameButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonStyle.swift; sourceTree = "<group>"; };
+		A892E68B2BB752680053C34A /* ChooseBattleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBattleCardView.swift; sourceTree = "<group>"; };
 		A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		A8BE3E1D2BB18B9F003311B6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8BE3E1F2BB18E5D003311B6 /* TypeOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfLocation.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				A8BE3E382BB1B803003311B6 /* InventoryView.swift */,
 				A8707B992BB2E84D006DD699 /* LevelView.swift */,
 				A8707BA52BB37470006DD699 /* BattleView.swift */,
+				A892E68B2BB752680053C34A /* ChooseBattleCardView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
 				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
 				A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */,
+				A892E68C2BB752680053C34A /* ChooseBattleCardView.swift in Sources */,
 				A8378EC52BAC4DA90099D5F1 /* CoreDataManager.swift in Sources */,
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
 				A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */,

@@ -64,7 +64,7 @@ struct ItemCard: View {
                     .padding(.horizontal, size == .small ? 4 : 6)
                     .padding(.vertical, 2)
                     .background(.appThirty2)
-                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: size == .small ? 2 : size == .medium ? 4 : 8, bottomTrailingRadius: size == .small ? 2 : size == .medium ? 4 : 8))
+                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: size == .small ? 4 : size == .medium ? 8 : 10, bottomTrailingRadius: size == .small ? 4 : size == .medium ? 8 : 10))
             }
         }
     }

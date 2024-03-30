@@ -34,6 +34,12 @@ class GameViewModel: ObservableObject {
     //Trap
     @Published var isPickTrapOpen: Bool = false
     
+    //Battle
+    @Published var isBattleItemsOpen = false
+    
+    @Published var titleBattleItems: String = ""
+    @Published var typesOfBattleItems: [ItemType] = []
+    
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
         
@@ -135,6 +141,12 @@ class GameViewModel: ObservableObject {
         }
         
         CharacterViewModel.shared.changeCharacter(character: newCharacter)
+    }
+    
+    func openBattleItemsSheet(title: String, types: [ItemType]) {
+        titleBattleItems = title
+        typesOfBattleItems = types
+        isBattleItemsOpen = true
     }
     
     private func saveNewGame(game: Game) {

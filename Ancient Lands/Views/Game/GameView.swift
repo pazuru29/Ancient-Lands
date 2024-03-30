@@ -41,7 +41,7 @@ struct GameView: View {
             CharacterDetailView(isShowed: $isDetailShowed, character: characterViewModel.currentCharacter!.character)
         })
         .toast(isPresented: $gameViewModel.isTextToastOpen, dismissAfter: 3, content: {
-            OverlayView(isShowed: $gameViewModel.isTextToastOpen) {
+            ConstantOverlayView() {
                 Text(gameViewModel.toastText)
                     .font(.custom("MontserratRoman-SemiBold", size: 18))
                     .foregroundStyle(.appPrimary2)
