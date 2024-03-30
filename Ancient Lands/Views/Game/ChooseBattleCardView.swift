@@ -53,6 +53,9 @@ struct ChooseBattleCardView: View {
         .toast(isPresented: $isDetailCardShowed, content: {
             CardDetailView(isShowed: $isDetailCardShowed, card: currentDetailCard!)
         })
+        .sensoryFeedback(.impact, trigger: isDetailCardShowed) { oldValue, newValue in
+            newValue == true
+        }
     }
     
     @ViewBuilder
