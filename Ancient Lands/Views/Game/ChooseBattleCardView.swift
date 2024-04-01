@@ -52,7 +52,7 @@ struct ChooseBattleCardView: View {
             }
             
             if !chooseBattleCardViewModel.arrayOfCards.isEmpty {
-                Button("Select") {
+                Button(gameViewModel.typeOfActiveBattleButton == .potion ? "Use" : "Select") {
                     chooseBattleCardViewModel.onSelectButtonPressed()
                     isOpen = false
                 }

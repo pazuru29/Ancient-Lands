@@ -71,7 +71,7 @@ struct InventoryView: View {
     }
     
     @ViewBuilder
-    func equipmentItemView(title: String, card: ItemCardModel?) -> some View {
+    func equipmentItemView(title: String, card: (any ItemCardModelProtocol)?) -> some View {
         VStack(spacing: 0) {
             if card != nil {
                 ItemCard(card: card!, size: .medium)

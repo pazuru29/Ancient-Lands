@@ -72,14 +72,18 @@ class ChooseBattleCardViewModel: ObservableObject {
     func onSelectButtonPressed() {
         switch(GameViewModel.shared.typeOfActiveBattleButton) {
         case .attack, .defense:
-            GameViewModel.shared.currentGame.currentBattle?.currentPlayCards = selectedCards as! Array<ItemCardModel>
+            GameViewModel.shared.currentGame.currentBattle?.currentPlayCards = selectedCards as! Array<ValueItemCardModel>
         case .potion:
             var effects: [GameEffects] = []
             
             for card in selectedCards {
-                if let card = card as? PotionItemCardModel {
+                if let card = card as? EffectItemCardModel {
                     if card.id == 2 {
-                        let newHp = (GameViewModel.shared.currentGame.currentBattle?.currentPlayerHp ?? 100) + card.effect.value
+                        var newHp = (GameViewModel.shared.currentGame.currentBattle?.currentPlayerHp ?? 100) + card.effect.value
+                        
+                        if CharacterViewModel.shared.currentCharacter?.character.assetName == "Wizard" || CharacterViewModel.shared.currentCharacter?.character.assetName == "WizardWm" {
+                            newHp += 10
+                        }
                         
                         if newHp > (CharacterViewModel.shared.currentCharacter?.character.hp ?? 100) {
                             GameViewModel.shared.currentGame.currentBattle?.currentPlayerHp = CharacterViewModel.shared.currentCharacter?.character.hp ?? 100
@@ -104,7 +108,9 @@ class ChooseBattleCardViewModel: ObservableObject {
                 }
             }
             
-            GameViewModel.shared.currentGame.currentBattle?.playerEffects = effects
+            for effect in effects {
+                GameViewModel.shared.currentGame.currentBattle?.playerEffects.append(effect)
+            }
         }
         
         GameViewModel.shared.saveNewGame(game: GameViewModel.shared.currentGame)
@@ -141,22 +147,20 @@ class ChooseBattleCardViewModel: ObservableObject {
     }
     
     private func onDefenseCardTap(card: any ItemCardModelProtocol) {
-        if selectedCards.count == 1 {
+        if selectedCards.contains(where: { $0.id == card.id }) {
+            selectedCards.removeAll { itemCard in
+                itemCard.id == card.id
+            }
+        } else if selectedCards.count == 1 {
             warningText = "Only one defense card can be used."
             isWarningOpen = true
         } else {
-            if selectedCards.contains(where: { $0.id == card.id }) {
-                selectedCards.removeAll { itemCard in
-                    itemCard.id == card.id
-                }
-            } else {
-                selectedCards.append(card)
-            }
+            selectedCards.append(card)
         }
     }
     
     private func onPotionCardTap(card: any ItemCardModelProtocol) {
-        if let card = card as? PotionItemCardModel, let currentBattle = GameViewModel.shared.currentGame.currentBattle {
+        if let card = card as? EffectItemCardModel, let currentBattle = GameViewModel.shared.currentGame.currentBattle {
             if currentBattle.playerEffects.contains(where: {$0.id == card.effect.id}) {
                 warningText = "This effect is already in use."
                 isWarningOpen = true

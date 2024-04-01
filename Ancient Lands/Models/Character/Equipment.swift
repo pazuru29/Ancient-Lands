@@ -8,7 +8,7 @@
 import Foundation
 
 struct Equipment: Codable {
-    var armor: ItemCardModel?
+    var armor: ValueItemCardModel?
     var accessory: ItemCardModel?
-    var shield: ItemCardModel?
+    var shield: ValueItemCardModel?
 }

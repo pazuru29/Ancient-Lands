@@ -50,7 +50,7 @@ struct GameView: View {
             }
         })
         .toast(isPresented: $gameViewModel.isDropToastOpen, content: {
-            DropFromChestView(isOpen: $gameViewModel.isDropToastOpen, drop: gameViewModel.dropToast)
+            DropView(isOpen: $gameViewModel.isDropToastOpen, title: gameViewModel.dropTitle, drop: gameViewModel.dropToast)
         })
         .toast(isPresented: $gameViewModel.isPickTrapOpen, content: {
             ChooseTrapView()

@@ -47,10 +47,32 @@ struct BattleView: View {
                 .presentationBackground(.ultraThinMaterial)
             }
         }
+        .toast(isPresented: $gameViewModel.isGameLoose, content: {
+            LooseGameView()
+        })
     }
     
     func playerView() -> some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 8) {
+            HStack(spacing: 0) {
+                Spacer()
+                
+                ForEach(gameViewModel.currentGame.currentBattle?.playerEffects ?? [], id: \.self) { effect in
+                    HStack(alignment: .bottom, spacing: 0) {
+                        Image(effect.assetName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 36, height: 36)
+                            .padding(.trailing, 4)
+                        
+                        Text("X \(effect.countOfRounds)")
+                            .font(.custom("MontserratRoman-Medium", size: 12))
+                            .foregroundStyle(.appThirty2)
+                    }
+                }
+            }
+            .frame(height: 36)
+            
             HStack(spacing: 0) {
                 Image("hpLight")
                     .resizable()
@@ -65,27 +87,32 @@ struct BattleView: View {
             .padding(.bottom, 12)
             
             HStack(spacing: 0) {
-                Button("Attack") {
-                    //TODO: --
+                Button(gameViewModel.currentGame.currentBattle?.step == .enemy ? "Defense" : "Attack") {
+                    if gameViewModel.currentGame.currentBattle?.step == .enemy {
+                        gameViewModel.defenseFromEnemy()
+                    } else {
+                        gameViewModel.attackEnemy()
+                    }
                 }
                 .buttonStyle(MainButtonStyle())
-                .padding(.trailing, 24)
+                .padding(.trailing, gameViewModel.countOfEscapeFromBattle < 3 ? 24 : 0)
                 
-                Button(action: {
-                    gameViewModel.testEndBattle()
-                }, label: {
-                    Image("run")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 36, height: 36)
-                })
-                .buttonStyle(IconButtonStyle())
+                if gameViewModel.countOfEscapeFromBattle < 3 {
+                    Button(action: {
+                        gameViewModel.escapeFromBattle()
+                    }, label: {
+                        Image("run")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 36, height: 36)
+                    })
+                    .buttonStyle(IconButtonStyle())
+                }
             }
             .padding(.bottom, 16)
             
             HStack {
                 Button {
-                    //TODO: -
                     gameViewModel.openBattleItemsSheet(typeOfButton: .attack)
                 } label: {
                     Image("attack")
@@ -97,7 +124,6 @@ struct BattleView: View {
                 .disabled(gameViewModel.currentGame.currentBattle?.step == .enemy)
                 
                 Button {
-                    //TODO: -
                     gameViewModel.openBattleItemsSheet(typeOfButton: .defense)
                 } label: {
                     Image("defense")
@@ -109,7 +135,6 @@ struct BattleView: View {
                 .disabled(gameViewModel.currentGame.currentBattle?.step == .player)
                 
                 Button {
-                    //TODO: -
                     gameViewModel.openBattleItemsSheet(typeOfButton: .potion)
                 } label: {
                     Image("potion")
@@ -157,6 +182,23 @@ struct BattleView: View {
                 ProgressView(value: Double(gameViewModel.currentGame.currentBattle?.currentEnemyHp ?? 0), total: Double(gameViewModel.currentGame.currentBattle?.enemy.hp ?? 100))
                     .progressViewStyle(HpProgressViewStyle())
                     .frame(height: 16)
+            }
+            HStack(spacing: 8) {
+                Spacer()
+                
+                ForEach(gameViewModel.currentGame.currentBattle?.enemy.debuffs ?? [], id: \.self) { effect in
+                    HStack(alignment: .bottom, spacing: 0) {
+                        Image(effect.assetName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 36, height: 36)
+                            .padding(.trailing, 4)
+                        
+                        Text("X \(effect.countOfRounds)")
+                            .font(.custom("MontserratRoman-Medium", size: 12))
+                            .foregroundStyle(.appThirty2)
+                    }
+                }
             }
         }
     }

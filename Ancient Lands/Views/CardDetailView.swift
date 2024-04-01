@@ -83,13 +83,13 @@ struct CardDetailView: View {
         
         if isEquipted {
             Button("Take off") {
-                GameViewModel.shared.unequipCard(card: card as! ItemCardModel)
+                GameViewModel.shared.unequipCard(card: card)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())
         } else {
             Button("Equip") {
-                GameViewModel.shared.equipCard(card: card as! ItemCardModel)
+                GameViewModel.shared.equipCard(card: card)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())

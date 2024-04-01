@@ -13,5 +13,5 @@ struct Enemy: Codable {
     let typeOfLocation: TypeOfLocation
     let hp: Int
     let attacks: [Int] // to upper power of attack exp: 3,5,7
-    let debuffs: [GameEffects]
+    var debuffs: [GameEffects]
 }

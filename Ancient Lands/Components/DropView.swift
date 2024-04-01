@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct DropFromChestView: View {
+struct DropView: View {
     @Binding var isOpen: Bool
+    
+    let title: String
     
     let drop: Dictionary<Int, Int>
     
     var body: some View {
         OverlayView(isShowed: $isOpen) {
             VStack(spacing: 0) {
-                Text("You opened the chest, there were things in there:")
+                Text(title)
                     .font(.custom("MontserratRoman-SemiBold", size: 24))
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
@@ -43,8 +45,4 @@ struct DropFromChestView: View {
             .padding(.horizontal, 24)
         }
     }
-}
-
-#Preview {
-    DropFromChestView(isOpen: .constant(true), drop: [:])
 }

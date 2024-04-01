@@ -22,4 +22,5 @@ enum ActionType: String, Codable {
     case improveAttack = "Improve Attack"
     case improveDefense = "Improve Defense"
     case fight = "Take the fight"
+    case backOut = "Back out"
 }

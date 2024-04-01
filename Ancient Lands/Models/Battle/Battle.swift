@@ -13,17 +13,20 @@ enum ChestType: Codable {
 }
 
 struct Battle: Codable {
+    //MARK: Battle
+    let battleType: TypeOfEnemy
+    
     //MARK: step of round
     var step: TypeStep
     
     //MARK: Enemy
-    let enemy: Enemy
+    var enemy: Enemy
     var currentEnemyHp:Int
     
     //MARK: Player
     var currentPlayerHp: Int
     var playerEffects: [GameEffects]
-    var currentPlayCards: [ItemCardModel]
+    var currentPlayCards: [ValueItemCardModel]
     
     //MARK: Chest
     let chest: ChestType?

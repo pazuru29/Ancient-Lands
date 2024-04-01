@@ -18,12 +18,16 @@ struct Game: Codable {
     
     var countOfDefeatedEnemy: Int = 0
     
+    var countOfDefeatedBosses: Int = 0
+    
     var usedActions: [ActionType] = []
     
     var usedSupplementActions: [ActionType] = []
     
-    func copyWith(currentLocation: Location? = nil, supplement: Supplement? = nil, currentBattle: Battle? = nil, countOfLocations: Int? = nil, countOfDefeatedEnemy: Int? = nil, usedActions: [ActionType]? = nil) -> Game {
-        return Game(currentLocation: currentLocation ?? self.currentLocation, supplement: supplement ?? self.supplement, currentBattle: currentBattle ?? self.currentBattle, countOfLocations: countOfLocations ?? self.countOfLocations, countOfDefeatedEnemy: countOfDefeatedEnemy ?? self.countOfDefeatedEnemy, usedActions: usedActions ?? self.usedActions)
+    var isGameLoose: Bool = false
+    
+    func copyWith(currentLocation: Location? = nil, supplement: Supplement? = nil, currentBattle: Battle? = nil, countOfLocations: Int? = nil, countOfDefeatedEnemy: Int? = nil, countOfDefeatedBosses: Int? = nil, usedActions: [ActionType]? = nil) -> Game {
+        return Game(currentLocation: currentLocation ?? self.currentLocation, supplement: supplement ?? self.supplement, currentBattle: currentBattle ?? self.currentBattle, countOfLocations: countOfLocations ?? self.countOfLocations, countOfDefeatedEnemy: countOfDefeatedEnemy ?? self.countOfDefeatedEnemy, countOfDefeatedBosses: countOfDefeatedBosses ?? self.countOfDefeatedBosses, usedActions: usedActions ?? self.usedActions)
     }
     
     func toJSON() -> String {

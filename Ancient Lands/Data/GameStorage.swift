@@ -117,8 +117,8 @@ struct GameStorage {
     
     //TODO: - add boss location to game
     static let bossLocations: [Location] = [
-        Location(assetName: "ForrestBoss1", name: "Temple of the Great One", story: "You meet the temple of the great one, its magnitude paralyzing you. Are you ready to take this fight?", type: .boss, nextLocations: [], actions: [.fight,.passBy]),
-        Location(assetName: "ForrestBoss2", name: "Hall of Great Warriors", story: "This hall was once frequented by the most famous warriors of the land. But now it's home to a less than kind creature.", type: .boss, nextLocations: [], actions: [.fight,.passBy]),
+        Location(assetName: "ForrestBoss1", name: "Temple of the Great One", story: "You meet the temple of the great one, its magnitude paralyzing you. Are you ready to take this fight?", type: .boss, nextLocations: [], actions: [.fight,.backOut]),
+        Location(assetName: "ForrestBoss2", name: "Hall of Great Warriors", story: "This hall was once frequented by the most famous warriors of the land. But now it's home to a less than kind creature.", type: .boss, nextLocations: [], actions: [.fight,.backOut]),
     ]
     
     static let meditation: Location = Location(assetName: "MeditationStone", name: "Meditation Stone", story: "You've come to the meditation stone. It's good luck to meet him. This stone remembers many great battles, you can meditate near it to increase your skills.", type: .any, nextLocations: [], actions: [.improveHp, .improveAttack, .improveDefense])
@@ -145,5 +145,6 @@ struct GameStorage {
     
     static let bossEnemys: [Enemy] = [
         //TODO: - add boss
+        Enemy(assetName: "ChiefForestGoblin", name: "Chief Forest Goblin", typeOfLocation: .forest, hp: 250, attacks: [30,50,70], debuffs: [])
     ]
 }
