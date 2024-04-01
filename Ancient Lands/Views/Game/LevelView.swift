@@ -31,7 +31,6 @@ struct LevelView: View {
                                 !gameViewModel.currentGame.usedActions.contains(action)
                             }), id: \.self) { action in
                                 Button(action.rawValue) {
-                                    //TODO: -
                                     gameViewModel.makeAction(action: action)
                                 }
                                 .buttonStyle(MainButtonStyle())
@@ -42,7 +41,6 @@ struct LevelView: View {
                                 !gameViewModel.currentGame.usedSupplementActions.contains(action)
                             }), id: \.self) { action in
                                 Button(action.rawValue) {
-                                    //TODO: -
                                     gameViewModel.makeAction(action: action)
                                 }
                                 .buttonStyle(MainButtonStyle())
