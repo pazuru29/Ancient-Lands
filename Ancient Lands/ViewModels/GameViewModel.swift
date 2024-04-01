@@ -183,6 +183,10 @@ class GameViewModel: ObservableObject {
     func looseGame() {
         self.isGameLoose = false
         
+        let newCharacter = CharacterViewModel.shared.currentCharacter!.copyWith(character: CharacterViewModel.shared.currentCharacter?.startCharacter, inventory: CharacterViewModel.shared.currentCharacter?.startInventory)
+        
+        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        
         if let gameDB = CoreDataManager.shared.getSavedGame() {
             CoreDataManager.shared.deleteGame(gameDB)
         }
