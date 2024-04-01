@@ -13,7 +13,7 @@ enum GameState {
     case loaded
 }
 
-
+//TODO: ADD - ATTACK ITEM CARD | DEFENSE ITEM CARD | ETD, FOR ATTACK VALUE, DEFENSE VALUE, ETD
 class GameViewModel: ObservableObject {
     static let shared = GameViewModel()
     
@@ -37,8 +37,9 @@ class GameViewModel: ObservableObject {
     //Battle
     @Published var isBattleItemsOpen = false
     
-    @Published var titleBattleItems: String = ""
     @Published var typesOfBattleItems: [ItemType] = []
+    
+    @Published var typeOfActiveBattleButton: BattleCardType = .attack
     
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
@@ -89,7 +90,7 @@ class GameViewModel: ObservableObject {
         self.gameState = .loaded
     }
     
-    func selectTrap(selectedTrap: ItemCardModel) {
+    func selectTrap(selectedTrap: any ItemCardModelProtocol) {
         self.gameState = .inGameLoading
         
         self.isPickTrapOpen = false
@@ -143,13 +144,22 @@ class GameViewModel: ObservableObject {
         CharacterViewModel.shared.changeCharacter(character: newCharacter)
     }
     
-    func openBattleItemsSheet(title: String, types: [ItemType]) {
-        titleBattleItems = title
-        typesOfBattleItems = types
+    func openBattleItemsSheet(typeOfButton: BattleCardType) {
+        typeOfActiveBattleButton = typeOfButton
+        
+        switch(typeOfButton) {
+        case .attack:
+            typesOfBattleItems = [.rangedWeapon, .ammo, .meleeWeapon, .grenade, .magicWeapon, .spell]
+        case .defense:
+            typesOfBattleItems = [.shield]
+        case .potion:
+            typesOfBattleItems = [.potion]
+        }
+        
         isBattleItemsOpen = true
     }
     
-    private func saveNewGame(game: Game) {
+    func saveNewGame(game: Game) {
         if let gameDB = CoreDataManager.shared.getSavedGame() {
             CoreDataManager.shared.deleteGame(gameDB)
         }
@@ -384,6 +394,7 @@ class GameViewModel: ObservableObject {
         return clouser
     }
     
+    //TODO: Add type of drop, end battle etd
     private func addDrop(keyWord: String) {
         var drop: Dictionary<Int, Int> = [:]
         
@@ -453,6 +464,6 @@ class GameViewModel: ObservableObject {
     }
     
     func testAddBattle() {
-        self.currentGame.currentBattle = Battle(step: .player, enemy: GameStorage.easyEnemys.first!, currentEnemyHp: GameStorage.easyEnemys.first!.hp, playerHp: CharacterViewModel.shared.currentCharacter!.character.hp, effects: [], currentPlayCards: [], chest: nil)
+        self.currentGame.currentBattle = Battle(step: .player, enemy: GameStorage.easyEnemys.first!, currentEnemyHp: GameStorage.easyEnemys.first!.hp, currentPlayerHp: CharacterViewModel.shared.currentCharacter!.character.hp, playerEffects: [], currentPlayCards: [], chest: nil)
     }
 }

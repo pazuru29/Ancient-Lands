@@ -10,7 +10,7 @@ import SwiftUI
 struct CardDetailView: View {
     @Binding var isShowed: Bool
     
-    let card: ItemCardModel
+    let card: any ItemCardModelProtocol
     
     var body: some View {
         OverlayView(isShowed: $isShowed) {
@@ -83,13 +83,13 @@ struct CardDetailView: View {
         
         if isEquipted {
             Button("Take off") {
-                GameViewModel.shared.unequipCard(card: card)
+                GameViewModel.shared.unequipCard(card: card as! ItemCardModel)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())
         } else {
             Button("Equip") {
-                GameViewModel.shared.equipCard(card: card)
+                GameViewModel.shared.equipCard(card: card as! ItemCardModel)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())

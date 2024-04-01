@@ -7,7 +7,6 @@
 
 import Foundation
 
-//TODO: add params for items
 enum ItemType: String, Codable, CaseIterable {
     case potion = "Potions"
     case trap = "Traps"

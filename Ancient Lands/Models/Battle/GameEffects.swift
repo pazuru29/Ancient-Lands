@@ -20,8 +20,10 @@ enum TypeOfCharacteristic: Codable {
     case stealth
 }
 
-struct GameEffects: Codable {
+struct GameEffects: Hashable, Codable {
+    let id: Int
     let value: Int
+    var countOfRounds: Int
     let assetName: String
     let type: TypeOfEffect
     let typeOfCharacteristic: TypeOfCharacteristic

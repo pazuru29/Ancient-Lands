@@ -14,11 +14,11 @@ enum CardSize {
 }
 
 struct ItemCard: View {
-    let card: ItemCardModel
+    let card: any ItemCardModelProtocol
     let size: CardSize
     let count: Int
     
-    init(card: ItemCardModel, size: CardSize = .large, count: Int = 1) {
+    init(card: any ItemCardModelProtocol, size: CardSize = .large, count: Int = 1) {
         self.card = card
         self.size = size
         self.count = count

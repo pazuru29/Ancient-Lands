@@ -71,6 +71,7 @@
 		A8BE3E392BB1B803003311B6 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE3E382BB1B803003311B6 /* InventoryView.swift */; };
 		A8C7C9BC2BADFB5600409C59 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BB2BADFB5600409C59 /* GameView.swift */; };
 		A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */; };
+		A8D3E7402BBA265500BD68C6 /* ChooseBattleCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D3E73F2BBA265500BD68C6 /* ChooseBattleCardViewModel.swift */; };
 		A8F2FD892BA47E03007E7598 /* Ancient_LandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */; };
 		A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */; };
 		A8F2FD8D2BA47E05007E7598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F2FD8C2BA47E05007E7598 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		A8BE3E382BB1B803003311B6 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		A8C7C9BB2BADFB5600409C59 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		A8C7C9BE2BADFBE300409C59 /* GameAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppBar.swift; sourceTree = "<group>"; };
+		A8D3E73F2BBA265500BD68C6 /* ChooseBattleCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBattleCardViewModel.swift; sourceTree = "<group>"; };
 		A8F2FD852BA47E03007E7598 /* Ancient Lands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ancient Lands.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2FD882BA47E03007E7598 /* Ancient_LandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ancient_LandsApp.swift; sourceTree = "<group>"; };
 		A8F2FD8A2BA47E03007E7598 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			children = (
 				A8378EC82BAC58720099D5F1 /* CharacterViewModel.swift */,
 				A8BE3E1A2BB18997003311B6 /* GameViewModel.swift */,
+				A8D3E73F2BBA265500BD68C6 /* ChooseBattleCardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 			files = (
 				A8BE3E1B2BB18997003311B6 /* GameViewModel.swift in Sources */,
 				A892E6882BB71B130053C34A /* HpProgressViewStyle.swift in Sources */,
+				A8D3E7402BBA265500BD68C6 /* ChooseBattleCardViewModel.swift in Sources */,
 				A87386172BAA1E46005C2123 /* CharacterCard.swift in Sources */,
 				A8F2FD8B2BA47E03007E7598 /* LoadingView.swift in Sources */,
 				A8BE3E272BB19682003311B6 /* Battle.swift in Sources */,

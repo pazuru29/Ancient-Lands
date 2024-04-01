@@ -8,58 +8,88 @@
 import SwiftUI
 import ToastUI
 
+enum BattleCardType: Codable {
+    case attack
+    case defense
+    case potion
+}
+
 struct ChooseBattleCardView: View {
+    @StateObject var chooseBattleCardViewModel: ChooseBattleCardViewModel = ChooseBattleCardViewModel()
+    
     @EnvironmentObject var characterViewModel: CharacterViewModel
     @EnvironmentObject var gameViewModel: GameViewModel
     
     @Binding var isOpen: Bool
     
-    @State var arrayOfCards: Array<(ItemType, Array<(Int, ItemCardModel)>)> = []
-    
-    @State var isDetailCardShowed: Bool = false
-    @State var currentDetailCard: ItemCardModel? = nil
-    
     var body: some View {
         VStack(spacing: 0) {
-            Text(gameViewModel.titleBattleItems)
-                .font(.custom("MontserratRoman-Semibold", size: 24))
-                .foregroundStyle(.appPrimary2)
-                .padding([.bottom, .horizontal])
-                .padding(.top, 24)
-            
             Color.appThirty2
                 .frame(height: 1)
                 .padding(.horizontal)
-            
-            ScrollView {
-                VStack(spacing: 0) {
-                    ForEach(arrayOfCards, id: \.self.0) { (type, array) in
-                        cardTypeView(type: type, arrayOfCards: array)
-                    }
-                }
                 .padding(.top, 36)
+            
+            
+            if chooseBattleCardViewModel.arrayOfCards.isEmpty {
+                Spacer()
+                
+                Text("You do not have these items.")
+                    .font(.custom("MontserratRoman-Semibold", size: 16))
+                    .foregroundStyle(.appThirty2)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+            } else {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        ForEach(chooseBattleCardViewModel.arrayOfCards, id: \.self.0) { (type, array) in
+                            cardTypeView(type: type, arrayOfCards: array)
+                        }
+                    }
+                    .padding(.top, 24)
+                }
+                .scrollIndicators(.hidden)
             }
             
-            Button("Select") {
-                isOpen = false
+            if !chooseBattleCardViewModel.arrayOfCards.isEmpty {
+                Button("Select") {
+                    chooseBattleCardViewModel.onSelectButtonPressed()
+                    isOpen = false
+                }
+                .buttonStyle(MainButtonStyle())
+                .disabled(!chooseBattleCardViewModel.selectButtonActive())
+                .padding([.bottom, .horizontal], 24)
+                .padding(.top, 8)
             }
-            .buttonStyle(MainButtonStyle())
-            .padding([.bottom, .horizontal], 24)
-            .padding(.top, 8)
         }
         .onAppear() {
-            getInitData()
+            chooseBattleCardViewModel.getInitData()
         }
-        .toast(isPresented: $isDetailCardShowed, content: {
-            CardDetailView(isShowed: $isDetailCardShowed, card: currentDetailCard!)
+        .toast(isPresented: $chooseBattleCardViewModel.isDetailCardShowed, content: {
+            CardDetailView(isShowed: $chooseBattleCardViewModel.isDetailCardShowed, card: chooseBattleCardViewModel.currentDetailCard!)
         })
-        .sensoryFeedback(.impact, trigger: isDetailCardShowed) { oldValue, newValue in
+        .sensoryFeedback(.impact, trigger: chooseBattleCardViewModel.isDetailCardShowed) { oldValue, newValue in
             newValue == true
+        }
+        .toast(isPresented: $chooseBattleCardViewModel.isWarningOpen, dismissAfter: 1) {
+            VStack {
+                Spacer()
+                
+                Text(chooseBattleCardViewModel.warningText)
+                    .font(.custom("MontserratRoman-SemiBold", size: 14))
+                    .foregroundStyle(.white)
+                    .padding(8)
+                    .background(.appLightRed)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding([.horizontal, .top], 24)
+                
+                Spacer()
+            }
         }
     }
     
     @ViewBuilder
-    private func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, ItemCardModel)>) -> some View {
+    private func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, any ItemCardModelProtocol)>) -> some View {
         VStack(spacing: 0) {
             Text(type.rawValue)
                 .font(.custom("MontserratRoman-Semibold", size: 20))
@@ -72,43 +102,26 @@ struct ChooseBattleCardView: View {
                 .padding(.bottom, 14)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 0) {
-                ForEach(arrayOfCards, id: \.self.1) { (count, card) in
+                ForEach(arrayOfCards, id: \.self.1.id) { (count, card) in
                     ItemCard(card: card, size: .medium, count: count)
+                        .overlay(content: {
+                            if !chooseBattleCardViewModel.selectedCards.contains(where: { $0.id == card.id }) {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundStyle(.gray.opacity(0.3))
+                            }
+                        })
                         .padding(.bottom, 36)
+                        .onTapGesture {
+                            chooseBattleCardViewModel.onCardTap(card: card)
+                        }
                         .onLongPressGesture(perform: {
                             dPrint("CLICK ON CARD")
-                            currentDetailCard = card
+                            chooseBattleCardViewModel.currentDetailCard = card
                             withAnimation {
-                                isDetailCardShowed = true
+                                chooseBattleCardViewModel.isDetailCardShowed = true
                             }
                         })
                 }
-            }
-        }
-    }
-    
-    private func getInitData() {
-        dPrint("TAKE INIT LIST OF CARDS")
-        
-        var cards: Array<(Int, ItemCardModel)> = []
-        
-        let arrayOfId = Array(characterViewModel.currentCharacter!.inventory)
-        
-        for item in arrayOfId {
-            let card = CardStorage.allCards.first { card in
-                card.id == item.key
-            }
-            
-            cards.append((item.value, card!))
-        }
-        
-        for type in gameViewModel.typesOfBattleItems {
-            let filtredCards = cards.filter({ (count, card) in
-                card.type == type
-            })
-            
-            if !filtredCards.isEmpty {
-                arrayOfCards.append((type, filtredCards))
             }
         }
     }

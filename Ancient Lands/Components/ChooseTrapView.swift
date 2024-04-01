@@ -14,7 +14,7 @@ struct ChooseTrapView: View {
     let trap = CardStorage.allCards.first(where: { $0.id == 6 })
     let poisonTrap = CardStorage.allCards.first(where: { $0.id == 7 })
     
-    @State var selectedTrap: ItemCardModel?
+    @State var selectedTrap: (any ItemCardModelProtocol)?
     
     var body: some View {
         ConstantOverlayView() {

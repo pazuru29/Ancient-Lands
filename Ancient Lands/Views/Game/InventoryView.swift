@@ -14,7 +14,7 @@ struct InventoryView: View {
     @State var listOfView: Array<AnyView> = []
     
     @State var isDetailCardShowed: Bool = false
-    @State var currentDetailCard: ItemCardModel? = nil
+    @State var currentDetailCard: (any ItemCardModelProtocol)? = nil
     
     var body: some View {
         VStack(spacing: 0) {
@@ -109,7 +109,7 @@ struct InventoryView: View {
     }
     
     @ViewBuilder
-    func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, ItemCardModel)>) -> some View {
+    func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, any ItemCardModelProtocol)>) -> some View {
         VStack(spacing: 0) {
             Text(type.rawValue)
                 .font(.custom("MontserratRoman-Semibold", size: 20))
@@ -122,7 +122,7 @@ struct InventoryView: View {
                 .padding(.bottom, 14)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 0) {
-                ForEach(arrayOfCards, id: \.self.1) { (count, card) in
+                ForEach(arrayOfCards, id: \.self.1.id) { (count, card) in
                     ItemCard(card: card, size: .medium, count: count)
                         .padding(.bottom, 36)
                         .onTapGesture {
@@ -140,7 +140,7 @@ struct InventoryView: View {
     func getInitData() {
         dPrint("TAKE INIT LIST OF CARDS")
         
-        var arrayOfCards: Array<(Int, ItemCardModel)> = []
+        var arrayOfCards: Array<(Int, any ItemCardModelProtocol)> = []
         
         let arrayOfId = Array(characterViewModel.currentCharacter!.inventory)
         
