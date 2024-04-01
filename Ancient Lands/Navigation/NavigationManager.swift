@@ -13,7 +13,17 @@ class NavigationManager: ObservableObject {
     @Published var path = Array<NavigationViews>()
     
     func addView(_ view: NavigationViews) {
-        path.append(view)
+        guard path.last != view else {
+            return
+        }
+        
+        if path.contains(where: {$0 == view}) {
+            while path.last != view {
+                path.removeLast()
+            }
+        } else {
+            path.append(view)
+        }
     }
     
     func removeLast() {

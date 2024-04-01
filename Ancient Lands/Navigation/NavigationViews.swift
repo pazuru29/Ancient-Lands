@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum NavigationViews {
+enum NavigationViews: Equatable {
     case settings
     case chooseCharacter(isSecondary: Bool = false)
     case pickCardSet
