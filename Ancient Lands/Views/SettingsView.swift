@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     @State var isDialogChangeCharacterShowed = false
     
-    @State var selectedLanguage: Language = .en
+//    @State var selectedLanguage: Language = .en
     
     var body: some View {
         ZStack {
@@ -79,17 +79,17 @@ struct SettingsView: View {
             
             VStack {
                 AppSecondaryBar(title: "Settings", needTrailingPadding: false) {
-                    Menu {
-                        Picker("Language", selection: $selectedLanguage) {
-                            ForEach(Language.allCases, id: \.self) {
-                                Text($0.rawValue)
-                            }
-                        }
-                    } label: {
-                        Text(selectedLanguage.rawValue)
-                    }
-                    .buttonStyle(LanguageButtonStyle())
-                    .frame(width: 64)
+//                    Menu {
+//                        Picker("Language", selection: $selectedLanguage) {
+//                            ForEach(Language.allCases, id: \.self) {
+//                                Text($0.rawValue)
+//                            }
+//                        }
+//                    } label: {
+//                        Text(selectedLanguage.rawValue)
+//                    }
+//                    .buttonStyle(LanguageButtonStyle())
+//                    .frame(width: 64)
                 }
                 Spacer()
             }

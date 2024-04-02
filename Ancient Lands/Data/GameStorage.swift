@@ -115,7 +115,6 @@ struct GameStorage {
         Location(assetName: "FoggyGorge", name: "Foggy Gorge", story: "A thick fog blankets the gorge, obscuring your vision and adding to the sense of mystery.", type: .gorges, nextLocations: [.swamp], actions: [.lookAround, .moveOn]),
     ]
     
-    //TODO: - add boss location to game
     static let bossLocations: [Location] = [
         Location(assetName: "ForrestBoss1", name: "Temple of the Great One", story: "You meet the temple of the great one, its magnitude paralyzing you. Are you ready to take this fight?", type: .boss, nextLocations: [], actions: [.fight,.backOut]),
         Location(assetName: "ForrestBoss2", name: "Hall of Great Warriors", story: "This hall was once frequented by the most famous warriors of the land. But now it's home to a less than kind creature.", type: .boss, nextLocations: [], actions: [.fight,.backOut]),
@@ -136,15 +135,67 @@ struct GameStorage {
     static let potionTrap = Supplement(assetName: "PoisonTrap", name: "Poison Trap", story: "You set a poison trap and wait for the enemy to get caught in it.", actions: [.wait])
     
     static let easyEnemys: [Enemy] = [
-        Enemy(assetName: "ForestGoblin", name: "Forest Goblin", typeOfLocation: .forest, hp: 30, attacks: [5,10,15], debuffs: [])
+        Enemy(assetName: "ForestGoblin", name: "Forest Goblin", typeOfLocation: .forest, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "ForestSpirit", name: "Forest Spirit", typeOfLocation: .forest, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "SkeletonWarrior", name: "Skeleton Warrior", typeOfLocation: .caves, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "SlipperySlug", name: "Slippery Slug", typeOfLocation: .caves, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "FireSalamander", name: "Fire Salamander", typeOfLocation: .desert, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "SandSnake", name: "Sand Snake", typeOfLocation: .desert, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "PhantomSpirit", name: "Phantom Spirit", typeOfLocation: .dungeons, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "UndergroundGhoul", name: "Underground Ghoul", typeOfLocation: .dungeons, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "TrollFurry", name: "Troll Furry", typeOfLocation: .field, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "EvilSarcanthrope", name: "Evil Sarcanthrope", typeOfLocation: .field, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "WingedGuardian", name: "Winged Guardian", typeOfLocation: .field, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "FlyingGargoyle", name: "Flying Gargoyle", typeOfLocation: .gorges, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "RockTrollWarrior", name: "Rock Troll Warrior", typeOfLocation: .gorges, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "EvilScorpion", name: "Evil Scorpion", typeOfLocation: .mount, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "KillerRockSpider", name: "Killer Rock Spider", typeOfLocation: .mount, hp: 30, attacks: [5,10,15], debuffs: []),
+        
+        Enemy(assetName: "SnakeChimera", name: "Snake Chimera", typeOfLocation: .swamp, hp: 30, attacks: [5,10,15], debuffs: []),
+        Enemy(assetName: "PoisonFrogMutant", name: "Poison Frog Mutant", typeOfLocation: .swamp, hp: 30, attacks: [5,10,15], debuffs: []),
     ]
     
     static let mediumEnemys: [Enemy] = [
-        Enemy(assetName: "ChiefForestGoblin", name: "Chief Forest Goblin", typeOfLocation: .forest, hp: 75, attacks: [20,30,45], debuffs: [])
+        Enemy(assetName: "ChiefForestGoblin", name: "Chief Forest Goblin", typeOfLocation: .forest, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "Werewolf", name: "Werewolf", typeOfLocation: .forest, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "CreepyMushroomKraken", name: "Creepy Mushroom Kraken", typeOfLocation: .caves, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "UndergroundGrizzly", name: "Underground Grizzly", typeOfLocation: .caves, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "EagleGryphon", name: "Eagle Gryphon", typeOfLocation: .desert, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "SandyDuner", name: "Sandy Duner", typeOfLocation: .desert, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "DustyPhantomGuardian", name: "Dusty Phantom Guardian", typeOfLocation: .desert, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "TrollDungeonGuard", name: "Troll Dungeon Guard", typeOfLocation: .dungeons, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "SpiderKillerTrap", name: "Spider Killer Trap", typeOfLocation: .dungeons, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "GiantSpider", name: "Giant Spider", typeOfLocation: .field, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "FieldGolem", name: "Field Golem", typeOfLocation: .field, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "SteppeCyclops", name: "Steppe Cyclops", typeOfLocation: .field, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "StoneGolem", name: "Stone Golem", typeOfLocation: .gorges, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "CreepyScavengerHarpy", name: "Creepy Scavenger Harpy", typeOfLocation: .gorges, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "MountainOrc", name: "Mountain Orc", typeOfLocation: .mount, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "MountainGriffin", name: "Mountain Griffin", typeOfLocation: .mount, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "MountainGiant", name: "Mountain Giant", typeOfLocation: .mount, hp: 75, attacks: [10,20,25], debuffs: []),
+        
+        Enemy(assetName: "SwampSerpent", name: "Swamp Serpent", typeOfLocation: .swamp, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "MushroomGiant", name: "Mushroom Giant", typeOfLocation: .swamp, hp: 75, attacks: [10,20,25], debuffs: []),
+        Enemy(assetName: "SwampLion", name: "Swamp Lion", typeOfLocation: .swamp, hp: 75, attacks: [10,20,25], debuffs: []),
     ]
     
     static let bossEnemys: [Enemy] = [
-        //TODO: - add boss
-        Enemy(assetName: "ChiefForestGoblin", name: "Chief Forest Goblin", typeOfLocation: .forest, hp: 250, attacks: [30,50,70], debuffs: [])
+        Enemy(assetName: "MultiTentacledHydra", name: "Multi-Tentacled Hydra", typeOfLocation: .forest, hp: 250, attacks: [20,30,35], debuffs: []),
+        Enemy(assetName: "SkyGryphon", name: "Sky Gryphon", typeOfLocation: .forest, hp: 250, attacks: [20,30,35], debuffs: []),
+        Enemy(assetName: "Kerber", name: "Kerber", typeOfLocation: .forest, hp: 250, attacks: [20,30,35], debuffs: []),
+        Enemy(assetName: "FirePhoenix", name: "Fire Phoenix", typeOfLocation: .forest, hp: 250, attacks: [20,30,35], debuffs: []),
+        Enemy(assetName: "MinotaurOfLabyrinths", name: "Minotaur Of Labyrinths", typeOfLocation: .forest, hp: 250, attacks: [20,30,35], debuffs: []),
     ]
 }

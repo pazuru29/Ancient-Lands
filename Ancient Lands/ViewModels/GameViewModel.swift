@@ -843,18 +843,17 @@ class GameViewModel: ObservableObject {
             typeOfEnemy = .boss
         } else {
             if currentGame.countOfLocations < 10 || currentGame.countOfDefeatedEnemy < 5 {
-                //TODO: - add for type of location
-                enemy = GameStorage.easyEnemys.randomElement()!
+                enemy = GameStorage.easyEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                 typeOfEnemy = .easy
             } else if currentGame.countOfLocations < 20 || currentGame.countOfDefeatedEnemy < 15 {
                 let randomEnemy = Int.random(in: 1...3)
                 
                 switch(randomEnemy) {
                 case 1...2:
-                    enemy = GameStorage.easyEnemys.randomElement()!
+                    enemy = GameStorage.easyEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .easy
                 default:
-                    enemy = GameStorage.mediumEnemys.randomElement()!
+                    enemy = GameStorage.mediumEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .medium
                 }
             } else {
@@ -862,10 +861,10 @@ class GameViewModel: ObservableObject {
                 
                 switch(randomEnemy) {
                 case 1...2:
-                    enemy = GameStorage.mediumEnemys.randomElement()!
+                    enemy = GameStorage.mediumEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .medium
                 default:
-                    enemy = GameStorage.easyEnemys.randomElement()!
+                    enemy = GameStorage.easyEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .easy
                 }
             }
