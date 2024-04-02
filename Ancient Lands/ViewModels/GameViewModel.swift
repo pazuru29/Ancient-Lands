@@ -73,11 +73,11 @@ class GameViewModel: ObservableObject {
     
     func startNewGame() {
         self.gameState = .loading
-        guard let characterViewModel, let current = characterViewModel.currentCharacter else {
+        guard let characterViewModel, let currentCharacter = characterViewModel.currentCharacter else {
             return
         }
         
-        let newCharacter = current.copyWith(character: current.typeOfCharacter.getCharacteristic(), inventory: current.startInventory)
+        let newCharacter = currentCharacter.copyWith(character: currentCharacter.typeOfCharacter.getCharacteristic(), inventory: currentCharacter.startInventory)
         
         characterViewModel.changeCharacter(character: newCharacter)
         
