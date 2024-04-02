@@ -47,7 +47,7 @@ struct PickCardSet: View {
                         .padding(.bottom, 64)
                     }
                     
-                    Button("Cintinue") {
+                    Button("Continue") {
                         if let selectedCards = selectedCards {
                             characterViewModel.selectedCards = selectedCards
                             

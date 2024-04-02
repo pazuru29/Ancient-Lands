@@ -48,7 +48,7 @@ struct ChooseCharacter: View {
                     }
                     .padding(.bottom, 36)
                     
-                    Button("Cintinue") {
+                    Button("Continue") {
                         if let selectedCharacter = selectedCharacter {
                             characterViewModel.selectedCharacter = selectedCharacter
                             

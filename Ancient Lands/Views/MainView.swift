@@ -26,7 +26,7 @@ struct MainView: View {
                     logoView()
                         .padding(.bottom, 88)
                     
-                    Button("Cintinue") {
+                    Button("Continue") {
                         navigationManager.addView(.game)
                     }
                     .disabled(!hasActiveGame)
