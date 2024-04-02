@@ -21,7 +21,7 @@ struct LoadingView: View {
             LottieView(lottieFile: "loading_dragon")
                 .frame(width: 150)
             Text("Ancient Lands:\nCard Adventures")
-                .font(.custom("MedievalSharp", size: 36))
+                .appMedievalSharpFont(size: 36)
                 .foregroundStyle(.appPrimary2)
                 .multilineTextAlignment(.center)
                 .offset(CGSize(width: 0, height: 200))

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CardDetailView: View {
+    @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
+    
     @Binding var isShowed: Bool
     
     let card: any ItemCardModelProtocol
@@ -33,7 +36,7 @@ struct CardDetailView: View {
                         Spacer()
                         
                         Text(card.name)
-                            .font(.custom("MontserratRoman-SemiBold", size: 22))
+                            .appSemiBlodFont(size: 22)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.appPrimary2)
                             .padding(.top, 10)
@@ -48,12 +51,12 @@ struct CardDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Description:")
-                        .font(.custom("MontserratRoman-SemiBold", size: 16))
+                        .appSemiBlodFont(size: 16)
                         .foregroundStyle(.appPrimary2)
                         .padding(.bottom, 4)
                     
                     Text(card.description)
-                        .font(.custom("MontserratRoman-Regular", size: 16))
+                        .appRegularFont(size: 16)
                         .foregroundStyle(.appPrimary2)
                         .padding(.bottom, 2)
                 }
@@ -78,18 +81,18 @@ struct CardDetailView: View {
     
     @ViewBuilder
     func buttonEquip() -> some View {
-        let isEquipted = CharacterViewModel.shared.currentCharacter?.equipment.shield?.id == card.id || CharacterViewModel.shared.currentCharacter?.equipment.armor?.id == card.id ||
-        CharacterViewModel.shared.currentCharacter?.equipment.accessory?.id == card.id
+        let isEquipted = characterViewModel.currentCharacter?.equipment.shield?.id == card.id || characterViewModel.currentCharacter?.equipment.armor?.id == card.id ||
+        characterViewModel.currentCharacter?.equipment.accessory?.id == card.id
         
         if isEquipted {
             Button("Take off") {
-                GameViewModel.shared.unequipCard(card: card)
+                gameViewModel.unequipCard(card: card)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())
         } else {
             Button("Equip") {
-                GameViewModel.shared.equipCard(card: card)
+                gameViewModel.equipCard(card: card)
                 isShowed = false
             }
             .buttonStyle(MainButtonStyle())

@@ -34,7 +34,7 @@ struct ChooseBattleCardView: View {
                 Spacer()
                 
                 Text("You do not have these items.")
-                    .font(.custom("MontserratRoman-Semibold", size: 16))
+                    .appSemiBlodFont(size: 16)
                     .foregroundStyle(.appThirty2)
                     .multilineTextAlignment(.center)
                 
@@ -63,6 +63,7 @@ struct ChooseBattleCardView: View {
             }
         }
         .onAppear() {
+            chooseBattleCardViewModel.embed(character: characterViewModel, game: gameViewModel)
             chooseBattleCardViewModel.getInitData()
         }
         .toast(isPresented: $chooseBattleCardViewModel.isDetailCardShowed, content: {
@@ -76,7 +77,7 @@ struct ChooseBattleCardView: View {
                 Spacer()
                 
                 Text(chooseBattleCardViewModel.warningText)
-                    .font(.custom("MontserratRoman-SemiBold", size: 14))
+                    .appSemiBlodFont(size: 14)
                     .foregroundStyle(.white)
                     .padding(8)
                     .background(.appLightRed)
@@ -92,7 +93,7 @@ struct ChooseBattleCardView: View {
     private func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, any ItemCardModelProtocol)>) -> some View {
         VStack(spacing: 0) {
             Text(type.rawValue)
-                .font(.custom("MontserratRoman-Semibold", size: 20))
+                .appSemiBlodFont(size: 20)
                 .foregroundStyle(.appThirty2)
                 .padding(.bottom, 10)
             

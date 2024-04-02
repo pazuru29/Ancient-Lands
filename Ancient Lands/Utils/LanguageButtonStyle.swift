@@ -12,7 +12,7 @@ struct LanguageButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.custom("MontserratRoman-SemiBold", size: 18))
+            .appSemiBlodFont(size: 18)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .foregroundStyle(getTextForeground(isPressed: configuration.isPressed))

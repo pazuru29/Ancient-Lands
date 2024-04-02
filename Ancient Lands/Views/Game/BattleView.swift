@@ -66,7 +66,7 @@ struct BattleView: View {
                             .padding(.trailing, 4)
                         
                         Text("X \(effect.countOfRounds)")
-                            .font(.custom("MontserratRoman-Medium", size: 12))
+                            .appMediumFont(size: 12)
                             .foregroundStyle(.appThirty2)
                     }
                 }
@@ -164,7 +164,7 @@ struct BattleView: View {
                     .padding(.trailing, 16)
                 
                 Text(gameViewModel.currentGame.currentBattle?.enemy.name ?? "Name")
-                    .font(.custom("MontserratRoman-SemiBold", size: 20))
+                    .appSemiBlodFont(size: 20)
                     .foregroundStyle(.appThirty2)
                     .multilineTextAlignment(.center)
                 
@@ -173,7 +173,7 @@ struct BattleView: View {
             .padding(.bottom, 16)
             
             HStack(spacing: 0) {
-                Image("hpLight")
+                Image(.hpLight)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 36, height: 36)
@@ -195,7 +195,7 @@ struct BattleView: View {
                             .padding(.trailing, 4)
                         
                         Text("X \(effect.countOfRounds)")
-                            .font(.custom("MontserratRoman-Medium", size: 12))
+                            .appMediumFont(size: 12)
                             .foregroundStyle(.appThirty2)
                     }
                 }
@@ -207,10 +207,14 @@ struct BattleView: View {
         let widthOfCard = CGFloat(95)
         let countOfCards = CGFloat(gameViewModel.currentGame.currentBattle?.currentPlayCards.count ?? 1)
         
+        let paddingBetwenCards: CGFloat = 8
+        
+        let horizontalPadding: CGFloat = 32
+        
         dPrint("Screen width: \(reader.size.width)")
         dPrint("Cards width: \((countOfCards * widthOfCard))")
         
-        let widthAllCards = (reader.size.width - (32 + (8 * (countOfCards - 1)))) - (countOfCards * widthOfCard)
+        let widthAllCards = (reader.size.width - (horizontalPadding + (paddingBetwenCards * (countOfCards - 1)))) - (countOfCards * widthOfCard)
         
         if widthAllCards < 0 {
             return widthAllCards / countOfCards

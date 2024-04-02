@@ -83,6 +83,8 @@
 		A8F2FD9F2BA487F9007E7598 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A8F2FD9E2BA487F9007E7598 /* Lottie */; };
 		A8FC17A72BBAE6CB00CC174D /* DropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC17A62BBAE6CB00CC174D /* DropType.swift */; };
 		A8FC17A92BBB278300CC174D /* LooseGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC17A82BBB278300CC174D /* LooseGameView.swift */; };
+		A8FC27082BBC9A2200DEE186 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC27072BBC9A2200DEE186 /* Text+Extension.swift */; };
+		A8FC270A2BBC9E1B00DEE186 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC27092BBC9E1B00DEE186 /* View+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +163,8 @@
 		A8F2FD9B2BA482D1007E7598 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		A8FC17A62BBAE6CB00CC174D /* DropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropType.swift; sourceTree = "<group>"; };
 		A8FC17A82BBB278300CC174D /* LooseGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LooseGameView.swift; sourceTree = "<group>"; };
+		A8FC27072BBC9A2200DEE186 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		A8FC27092BBC9E1B00DEE186 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,8 @@
 				A892E6892BB727AE0053C34A /* GameButtonStyle.swift */,
 				A8FC17A62BBAE6CB00CC174D /* DropType.swift */,
 				A859A1AC2BBB98E500C9136E /* AppConfiguration.swift */,
+				A8FC27072BBC9A2200DEE186 /* Text+Extension.swift */,
+				A8FC27092BBC9E1B00DEE186 /* View+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				A8378EC72BAC4E820099D5F1 /* Functions.swift in Sources */,
 				A82201D02BAA383C00E05C43 /* MainButtonStyle.swift in Sources */,
 				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
+				A8FC270A2BBC9E1B00DEE186 /* View+Extension.swift in Sources */,
 				A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */,
 				A892E68C2BB752680053C34A /* ChooseBattleCardView.swift in Sources */,
 				A859A1AD2BBB98E500C9136E /* AppConfiguration.swift in Sources */,
@@ -518,6 +525,7 @@
 				A8BE3E342BB1A0C3003311B6 /* TypeSupplementOfLocation.swift in Sources */,
 				A8707B9A2BB2E84D006DD699 /* LevelView.swift in Sources */,
 				A892E68A2BB727AE0053C34A /* GameButtonStyle.swift in Sources */,
+				A8FC27082BBC9A2200DEE186 /* Text+Extension.swift in Sources */,
 				A8707BA22BB33DE1006DD699 /* Language.swift in Sources */,
 				A8707BA42BB3599F006DD699 /* InGameLoadingView.swift in Sources */,
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
@@ -700,6 +708,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -735,6 +744,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

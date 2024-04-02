@@ -30,7 +30,7 @@ struct PickCardSet: View {
                             }
                             
                             Text(type.rawValue)
-                                .font(.custom("MontserratRoman-Regular", size: 16))
+                                .appRegularFont(size: 16)
                                 .foregroundStyle(.appPrimary2)
                         }
                         .frame(maxWidth: .infinity)

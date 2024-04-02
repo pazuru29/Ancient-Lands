@@ -18,7 +18,7 @@ struct DropView: View {
         OverlayView(isShowed: $isOpen) {
             VStack(spacing: 0) {
                 Text(title)
-                    .font(.custom("MontserratRoman-SemiBold", size: 24))
+                    .appSemiBlodFont(size: 24)
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 16)

@@ -7,9 +7,8 @@
 
 import Foundation
 
+
 class CharacterViewModel: ObservableObject {
-    static let shared = CharacterViewModel()
-    
     @Published var currentCharacter: Character?
     
     @Published var selectedCharacter: TypeOfCharacter = .knight

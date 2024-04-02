@@ -54,10 +54,10 @@ struct CreateNameView: View, KeyboardReadable {
                     
                     TextField(text: $name) {
                         Text("Name of character")
-                            .font(.custom("MontserratRoman-Regular", size: 16))
+                            .appRegularFont(size: 16)
                             .foregroundStyle(.white)
                     }
-                    .font(.custom("MontserratRoman-Regular", size: 16))
+                    .appRegularFont(size: 16)
                     .foregroundStyle(.white)
                     .onReceive(Just(name)) { _ in limitText(textLimit) }
                     .padding(.horizontal, 12)
@@ -79,7 +79,7 @@ struct CreateNameView: View, KeyboardReadable {
                 if !isKeyboardVisible {
                     Button("Create") {
                         if !trim(name).isEmpty {
-                            let character = Character(character: characterViewModel.selectedCharacter.getCharacteristic(), startCharacter: characterViewModel.selectedCharacter.getCharacteristic(), name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards(), startInventory: characterViewModel.selectedCards.getCards())
+                            let character = Character(character: characterViewModel.selectedCharacter.getCharacteristic(), typeOfCharacter: characterViewModel.selectedCharacter, name: trim(name), equipment: Equipment(), inventory: characterViewModel.selectedCards.getCards(), startInventory: characterViewModel.selectedCards.getCards())
                             
                             characterViewModel.createNewCharacter(character: character)
                             

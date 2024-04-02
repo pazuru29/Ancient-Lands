@@ -27,7 +27,7 @@ struct SmallCharacterCard: View {
             
             if let name = name {
                 Text(name)
-                    .font(.custom("MontserratRoman-Medium", size: 14))
+                    .appMediumFont(size: 14)
                     .foregroundStyle(.appPrimary2)
             }
             

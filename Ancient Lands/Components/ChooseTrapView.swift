@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ChooseTrapView: View {
-    let hasTraps = CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(6)
-    let hasPoisonTrap = CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(7)
+    @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
+    
+    @State var hasTraps = false
+    @State var hasPoisonTrap = false
     
     let trap = CardStorage.allCards.first(where: { $0.id == 6 })
     let poisonTrap = CardStorage.allCards.first(where: { $0.id == 7 })
@@ -20,7 +23,7 @@ struct ChooseTrapView: View {
         ConstantOverlayView() {
             VStack(spacing: 0) {
                 Text("Pick a trap")
-                    .font(.custom("MontserratRoman-SemiBold", size: 24))
+                    .appSemiBlodFont(size: 24)
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 24)
@@ -56,12 +59,16 @@ struct ChooseTrapView: View {
                 .padding(.bottom, 56)
                 
                 Button("Select") {
-                    GameViewModel.shared.selectTrap(selectedTrap: selectedTrap!)
+                    gameViewModel.selectTrap(selectedTrap: selectedTrap!)
                 }
                 .buttonStyle(MainButtonStyle())
                 .disabled(selectedTrap == nil)
             }
             .padding(.horizontal, 24)
+        }
+        .onAppear() {
+            hasTraps = characterViewModel.currentCharacter!.inventory.keys.contains(6)
+            hasPoisonTrap = characterViewModel.currentCharacter!.inventory.keys.contains(7)
         }
     }
 }

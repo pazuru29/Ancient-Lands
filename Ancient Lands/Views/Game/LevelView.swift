@@ -15,7 +15,7 @@ struct LevelView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     Text(gameViewModel.currentGame.supplement?.story ?? gameViewModel.currentGame.currentLocation.story)
-                        .font(.custom("MontserratRoman-Medium", size: 14))
+                        .appMediumFont(size: 14)
                         .foregroundStyle(.appPrimary2)
                         .multilineTextAlignment(.center)
                         .frame(height: reader.size.height / 5)

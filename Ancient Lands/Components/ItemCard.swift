@@ -39,7 +39,7 @@ struct ItemCard: View {
                     .padding(.bottom, size == .small ? 2 : size == .medium ? 3 : 4)
                 
                 Text(card.name)
-                    .font(.custom("MontserratRoman-Medium", size: size == .small ? 6 : size == .medium ? 7 : 9))
+                    .appMediumFont(size: size == .small ? 6 : size == .medium ? 7 : 9)
                     .foregroundStyle(.appPrimary)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
@@ -59,7 +59,7 @@ struct ItemCard: View {
             
             if count > 1 {
                 Text("\(count)")
-                    .font(.custom("MontserratRoman-SemiBold", size: size == .small ? 8 : size == .medium ? 12 : 12))
+                    .appSemiBlodFont(size: size == .small ? 8 : size == .medium ? 12 : 12)
                     .foregroundStyle(.appPrimary)
                     .padding(.horizontal, size == .small ? 4 : 6)
                     .padding(.vertical, 2)

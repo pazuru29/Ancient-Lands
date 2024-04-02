@@ -13,8 +13,8 @@ enum GameState {
     case loaded
 }
 
-class GameViewModel: ObservableObject {
-    static let shared = GameViewModel()
+class GameViewModel: ObservableObject {    
+    weak var characterViewModel: CharacterViewModel?
     
     @Published var currentGame: Game = Game()
     
@@ -46,6 +46,10 @@ class GameViewModel: ObservableObject {
     
     @Published var isGameLoose = false
     
+    func embed(character: CharacterViewModel) {
+        self.characterViewModel = character
+    }
+    
     func getInitData() {
         let gameDB = CoreDataManager.shared.getSavedGame()
         
@@ -69,10 +73,13 @@ class GameViewModel: ObservableObject {
     
     func startNewGame() {
         self.gameState = .loading
+        guard let characterViewModel, let current = characterViewModel.currentCharacter else {
+            return
+        }
         
-        let newCharacter = CharacterViewModel.shared.currentCharacter!.copyWith(character: CharacterViewModel.shared.currentCharacter?.startCharacter, inventory: CharacterViewModel.shared.currentCharacter?.startInventory)
+        let newCharacter = current.copyWith(character: current.typeOfCharacter.getCharacteristic(), inventory: current.startInventory)
         
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        characterViewModel.changeCharacter(character: newCharacter)
         
         let newGame = Game()
         
@@ -108,7 +115,9 @@ class GameViewModel: ObservableObject {
             self.currentGame.supplement = GameStorage.potionTrap
         }
         
-        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        guard var newCharacter = characterViewModel?.currentCharacter else {
+            return
+        }
         
         if newCharacter.inventory[selectedTrap.id] == 1 {
             newCharacter.inventory[selectedTrap.id] = nil
@@ -116,7 +125,7 @@ class GameViewModel: ObservableObject {
             newCharacter.inventory[selectedTrap.id]! -= 1
         }
         
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        characterViewModel?.changeCharacter(character: newCharacter)
         
         saveNewGame(game: currentGame)
         
@@ -124,21 +133,25 @@ class GameViewModel: ObservableObject {
     }
     
     func equipCard(card: any ItemCardModelProtocol) {
-        var newCharacter = CharacterViewModel.shared.currentCharacter!
-        
-        if card.type == .armor {
-            newCharacter.equipment.armor = card as! ValueItemCardModel?
-        } else if card.type == .shield {
-            newCharacter.equipment.shield = card as! ValueItemCardModel?
-        } else if card.type == .amplification {
-            newCharacter.equipment.accessory = card as! ItemCardModel?
+        guard var newCharacter = characterViewModel?.currentCharacter else {
+            return
         }
         
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        if card.type == .armor {
+            newCharacter.equipment.armor = card as? ValueItemCardModel
+        } else if card.type == .shield {
+            newCharacter.equipment.shield = card as? ValueItemCardModel
+        } else if card.type == .amplification {
+            newCharacter.equipment.accessory = card as? ItemCardModel
+        }
+        
+        characterViewModel?.changeCharacter(character: newCharacter)
     }
     
     func unequipCard(card: any ItemCardModelProtocol) {
-        var newCharacter = CharacterViewModel.shared.currentCharacter!
+        guard var newCharacter = characterViewModel?.currentCharacter else {
+            return
+        }
         
         if card.type == .armor {
             newCharacter.equipment.armor = nil
@@ -148,7 +161,7 @@ class GameViewModel: ObservableObject {
             newCharacter.equipment.accessory = nil
         }
         
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        characterViewModel?.changeCharacter(character: newCharacter)
     }
     
     func openBattleItemsSheet(typeOfButton: BattleCardType) {
@@ -183,9 +196,13 @@ class GameViewModel: ObservableObject {
     func looseGame() {
         self.isGameLoose = false
         
-        let newCharacter = CharacterViewModel.shared.currentCharacter!.copyWith(character: CharacterViewModel.shared.currentCharacter?.startCharacter, inventory: CharacterViewModel.shared.currentCharacter?.startInventory)
+        guard var character = characterViewModel?.currentCharacter else {
+            return
+        }
         
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
+        let newCharacter = character.copyWith(character: character.typeOfCharacter.getCharacteristic(), inventory: character.startInventory)
+        
+        characterViewModel?.changeCharacter(character: newCharacter)
         
         if let gameDB = CoreDataManager.shared.getSavedGame() {
             CoreDataManager.shared.deleteGame(gameDB)
@@ -209,12 +226,20 @@ class GameViewModel: ObservableObject {
                 case 21...35:
                     self.currentGame.supplement = GameStorage.nothing
                 default:
-                    let hasTraps = CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(6) || CharacterViewModel.shared.currentCharacter!.inventory.keys.contains(7)
+                    guard var character = self.characterViewModel?.currentCharacter else {
+                        return
+                    }
+                    
+                    let hasTraps = character.inventory.keys.contains(6) || character.inventory.keys.contains(7)
                     
                     self.currentGame.supplement = GameStorage.somebody
                     
                     if !hasTraps {
-                        self.currentGame.supplement!.actions.removeFirst()
+                        guard var supplement = self.currentGame.supplement else {
+                            return
+                        }
+                        
+                        supplement.actions.removeFirst()
                     }
                 }
             }
@@ -258,7 +283,7 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let extraChance = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                let extraChance = (self.characterViewModel?.currentCharacter?.character.stealth ?? 2)
                 
                 let defaultChance = 25 + Int.random(in: 1...extraChance)
                 
@@ -277,9 +302,9 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                let extraChanceStealth = (self.characterViewModel?.currentCharacter?.character.stealth ?? 2)
                 
-                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 4) / 2
+                let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 4) / 2
                 
                 let defaultChance = 10 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
                 
@@ -298,11 +323,11 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let extraChanceStealthDivided2 = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 4) / 2
+                let extraChanceStealthDivided2 = (self.characterViewModel?.currentCharacter?.character.stealth ?? 4) / 2
                 
-                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                let extraChanceStealth = (self.characterViewModel?.currentCharacter?.character.stealth ?? 2)
                 
-                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
+                let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 2)
                 
                 let escapeChance = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
                 
@@ -323,7 +348,7 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
+                let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 2)
                 
                 let defuseChance = 30 + Int.random(in: 1...extraChanceDexterity)
                 
@@ -347,7 +372,7 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 
-                let extraChanceStealth = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 2)
+                let extraChanceStealth = (self.characterViewModel?.currentCharacter?.character.stealth ?? 2)
                 
                 let trapChance = 20 + Int.random(in: 1...extraChanceStealth)
                 
@@ -368,24 +393,24 @@ class GameViewModel: ObservableObject {
                 
                 switch(isImproved) {
                 case 1...65:
-                    var newCharacter = CharacterViewModel.shared.currentCharacter!
-                    
-                    if action == .improveHp {
-                        newCharacter.character.hp += 5
-                        self.toastText = "You've increased your HP."
+                    if var newCharacter = self.characterViewModel?.currentCharacter {
+                        if action == .improveHp {
+                            newCharacter.character.hp += 5
+                            self.toastText = "You've increased your HP."
+                        }
+                        
+                        if action == .improveAttack {
+                            newCharacter.character.attack += 5
+                            self.toastText = "You've raised your attack level."
+                        }
+                        
+                        if action == .improveDefense {
+                            newCharacter.character.defense += 5
+                            self.toastText = "You've increased your level of defense."
+                        }
+                        
+                        self.characterViewModel?.changeCharacter(character: newCharacter)
                     }
-                    
-                    if action == .improveAttack {
-                        newCharacter.character.attack += 5
-                        self.toastText = "You've raised your attack level."
-                    }
-                    
-                    if action == .improveDefense {
-                        newCharacter.character.defense += 5
-                        self.toastText = "You've increased your level of defense."
-                    }
-                    
-                    CharacterViewModel.shared.changeCharacter(character: newCharacter)
                 default:
                     self.toastText = "You failed to master the skill."
                 }
@@ -451,19 +476,20 @@ class GameViewModel: ObservableObject {
             }
         }
         
-        var newCharacter = CharacterViewModel.shared.currentCharacter!
-        
-        for (itemID, count) in drop {
-            if newCharacter.inventory.contains(where: { (id, countCards) in
-                itemID == id
-            }) {
-                newCharacter.inventory[itemID]! += count
-            } else {
-                newCharacter.inventory[itemID] = count
+        if var newCharacter = characterViewModel?.currentCharacter {
+            
+            for (itemID, count) in drop {
+                if newCharacter.inventory.contains(where: { (id, countCards) in
+                    itemID == id
+                }) {
+                    newCharacter.inventory[itemID]! += count
+                } else {
+                    newCharacter.inventory[itemID] = count
+                }
             }
+            
+            characterViewModel?.changeCharacter(character: newCharacter)
         }
-        
-        CharacterViewModel.shared.changeCharacter(character: newCharacter)
         
         self.dropToast = drop
         self.isDropToastOpen = true
@@ -597,9 +623,9 @@ class GameViewModel: ObservableObject {
     func escapeFromBattle() {
         let randomNumber = Int.random(in: 1..<101)
         
-        let extraChanceStealthDivided2 = (CharacterViewModel.shared.currentCharacter?.character.stealth ?? 4) / 2
+        let extraChanceStealthDivided2 = (characterViewModel?.currentCharacter?.character.stealth ?? 4) / 2
         
-        let extraChanceDexterity = (CharacterViewModel.shared.currentCharacter?.character.dexterity ?? 2)
+        let extraChanceDexterity = (characterViewModel?.currentCharacter?.character.dexterity ?? 2)
         
         let escapeChance = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
         
@@ -619,19 +645,15 @@ class GameViewModel: ObservableObject {
         if let battle = currentGame.currentBattle {
             var attackPower = 0
             
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Knight" || CharacterViewModel.shared.currentCharacter?.character.assetName == "KnightWm") && (currentGame.currentLocation.type == .caves || currentGame.currentLocation.type == .dungeons) {
+            if (characterViewModel?.currentCharacter?.typeOfCharacter == .knight || characterViewModel?.currentCharacter?.typeOfCharacter == .knightWm) && (currentGame.currentLocation.type == .caves || currentGame.currentLocation.type == .dungeons) {
                 let randomBuff = Int.random(in: 1...20)
                 
                 attackPower += randomBuff
-            }
-            
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Elf" || CharacterViewModel.shared.currentCharacter?.character.assetName == "ElfWm") && currentGame.currentLocation.type == .forest {
+            } else if (characterViewModel?.currentCharacter?.typeOfCharacter == .elf || characterViewModel?.currentCharacter?.typeOfCharacter == .elfWm) && currentGame.currentLocation.type == .forest {
                 let randomBuff = Int.random(in: 1...20)
                 
                 attackPower += randomBuff
-            }
-            
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Wizard" || CharacterViewModel.shared.currentCharacter?.character.assetName == "WizardWm") && currentGame.currentLocation.type == .caves {
+            } else if (characterViewModel?.currentCharacter?.typeOfCharacter == .wizard || characterViewModel?.currentCharacter?.typeOfCharacter == .wizardWm) && currentGame.currentLocation.type == .caves {
                 let randomBuff = Int.random(in: 1...20)
                 
                 attackPower += randomBuff
@@ -643,25 +665,27 @@ class GameViewModel: ObservableObject {
                 attackPower += random
                 
                 if attack.type == .ammo || attack.type == .spell || attack.type == .grenade {
-                    if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Elf" || CharacterViewModel.shared.currentCharacter?.character.assetName == "ElfWm") && attack.type == .ammo {
-                        let random = Int.random(in: 1...100)
-                        
-                        if random > 10 {
-                            if CharacterViewModel.shared.currentCharacter?.inventory[attack.id] == 1 {
-                                CharacterViewModel.shared.currentCharacter?.inventory[attack.id] = nil
+                    if var character = characterViewModel?.currentCharacter {
+                        if (character.typeOfCharacter == .elf || character.typeOfCharacter == .elfWm) && attack.type == .ammo {
+                            let random = Int.random(in: 1...100)
+                            
+                            if random > 10 {
+                                if character.inventory[attack.id] == 1 {
+                                    character.inventory[attack.id] = nil
+                                } else {
+                                    character.inventory[attack.id]! -= 1
+                                }
+                            }
+                        } else {
+                            if character.inventory[attack.id] == 1 {
+                                character.inventory[attack.id] = nil
                             } else {
-                                CharacterViewModel.shared.currentCharacter!.inventory[attack.id]! -= 1
+                                character.inventory[attack.id]! -= 1
                             }
                         }
-                    } else {
-                        if CharacterViewModel.shared.currentCharacter?.inventory[attack.id] == 1 {
-                            CharacterViewModel.shared.currentCharacter?.inventory[attack.id] = nil
-                        } else {
-                            CharacterViewModel.shared.currentCharacter!.inventory[attack.id]! -= 1
-                        }
+                        
+                        characterViewModel?.changeCharacter(character: character)
                     }
-                    
-                    CharacterViewModel.shared.changeCharacter(character: CharacterViewModel.shared.currentCharacter!)
                 }
             }
             
@@ -701,9 +725,8 @@ class GameViewModel: ObservableObject {
                 }
             }
             
-            attackPower += Int.random(in: 1...(CharacterViewModel.shared.currentCharacter?.character.attack ?? 2))
-            
-            if CharacterViewModel.shared.currentCharacter?.character.assetName == "Knight" || CharacterViewModel.shared.currentCharacter?.character.assetName == "KnightWm" {
+            attackPower += Int.random(in: 1...(characterViewModel?.currentCharacter?.character.attack ?? 2))
+            if characterViewModel?.currentCharacter?.typeOfCharacter == .knight || characterViewModel?.currentCharacter?.typeOfCharacter == .knightWm {
                 if battle.currentPlayCards.contains(where: { $0.type == .meleeWeapon}) {
                     attackPower += Int.random(in: 1...10)
                     
@@ -713,9 +736,7 @@ class GameViewModel: ObservableObject {
                         attackPower += (attackPower / 3)
                     }
                 }
-            }
-            
-            if CharacterViewModel.shared.currentCharacter?.character.assetName == "Elf" || CharacterViewModel.shared.currentCharacter?.character.assetName == "ElfWm" {
+            } else if characterViewModel?.currentCharacter?.typeOfCharacter == .elf || characterViewModel?.currentCharacter?.typeOfCharacter == .elfWm {
                 if battle.currentPlayCards.contains(where: { $0.type == .rangedWeapon}) {
                     attackPower += Int.random(in: 1...10)
                 }
@@ -729,7 +750,7 @@ class GameViewModel: ObservableObject {
                 currentGame.currentBattle!.step = .enemy
             }
             
-            if let shield = CharacterViewModel.shared.currentCharacter?.equipment.shield {
+            if let shield = characterViewModel?.currentCharacter?.equipment.shield {
                 currentGame.currentBattle?.currentPlayCards = [shield]
             } else {
                 currentGame.currentBattle?.currentPlayCards = []
@@ -743,19 +764,19 @@ class GameViewModel: ObservableObject {
         if let battle = currentGame.currentBattle {
             var currentAttackEnemy = battle.enemy.attacks.randomElement()!
             
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Knight" || CharacterViewModel.shared.currentCharacter?.character.assetName == "KnightWm") && (currentGame.currentLocation.type == .caves || currentGame.currentLocation.type == .dungeons) {
+            if (characterViewModel?.currentCharacter?.typeOfCharacter == .knight || characterViewModel?.currentCharacter?.typeOfCharacter == .knightWm) && (currentGame.currentLocation.type == .caves || currentGame.currentLocation.type == .dungeons) {
                 let randomBuff = Int.random(in: 1...20)
                 
                 currentAttackEnemy -= randomBuff
             }
             
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Elf" || CharacterViewModel.shared.currentCharacter?.character.assetName == "ElfWm") && currentGame.currentLocation.type == .forest {
+            if (characterViewModel?.currentCharacter?.typeOfCharacter == .elf || characterViewModel?.currentCharacter?.typeOfCharacter == .elfWm) && currentGame.currentLocation.type == .forest {
                 let randomBuff = Int.random(in: 1...10)
                 
                 currentAttackEnemy -= randomBuff
             }
             
-            if (CharacterViewModel.shared.currentCharacter?.character.assetName == "Wizard" || CharacterViewModel.shared.currentCharacter?.character.assetName == "WizardWm") && currentGame.currentLocation.type == .caves {
+            if (characterViewModel?.currentCharacter?.typeOfCharacter == .wizard || characterViewModel?.currentCharacter?.typeOfCharacter == .wizardWm) && currentGame.currentLocation.type == .caves {
                 let randomBuff = Int.random(in: 1...10)
                 
                 currentAttackEnemy -= randomBuff
@@ -771,20 +792,22 @@ class GameViewModel: ObservableObject {
                     
                     let crashedChance = Int.random(in: 1...100)
                     
-                    if crashedChance <= 2 {
-                        if CharacterViewModel.shared.currentCharacter?.inventory[defense.id] == 1 {
-                            CharacterViewModel.shared.currentCharacter?.inventory[defense.id] = nil
-                            CharacterViewModel.shared.currentCharacter?.equipment.shield = nil
-                        } else {
-                            CharacterViewModel.shared.currentCharacter!.inventory[defense.id]! -= 1
+                    if var character = characterViewModel?.currentCharacter {
+                        if crashedChance <= 2 {
+                            if character.inventory[defense.id] == 1 {
+                                character.inventory[defense.id] = nil
+                                character.equipment.shield = nil
+                            } else {
+                                character.inventory[defense.id]! -= 1
+                            }
+                            
+                            characterViewModel?.changeCharacter(character: character)
                         }
-                        
-                        CharacterViewModel.shared.changeCharacter(character: CharacterViewModel.shared.currentCharacter!)
                     }
                 }
             }
             
-            if let armor = CharacterViewModel.shared.currentCharacter?.equipment.armor {
+            if let armor = characterViewModel?.currentCharacter?.equipment.armor {
                 let random = Int.random(in: 1...armor.value)
                 
                 currentAttackEnemy -= random
@@ -874,10 +897,12 @@ class GameViewModel: ObservableObject {
             enemy.debuffs.append(CardStorage.poisonEffect)
         }
         
-        if stepOfBattle == .enemy && CharacterViewModel.shared.currentCharacter?.equipment.shield != nil {
-            currentPlayCards.append(CharacterViewModel.shared.currentCharacter!.equipment.shield!)
+        if let character = characterViewModel?.currentCharacter {
+            if stepOfBattle == .enemy && character.equipment.shield != nil {
+                currentPlayCards.append(character.equipment.shield!)
+            }
+            
+            self.currentGame.currentBattle = Battle(battleType: typeOfEnemy, step: stepOfBattle, enemy: enemy, currentEnemyHp: enemy.hp, currentPlayerHp: character.character.hp, playerEffects: [], currentPlayCards: currentPlayCards, chest: chestType)
         }
-        
-        self.currentGame.currentBattle = Battle(battleType: typeOfEnemy, step: stepOfBattle, enemy: enemy, currentEnemyHp: enemy.hp, currentPlayerHp: CharacterViewModel.shared.currentCharacter!.character.hp, playerEffects: [], currentPlayCards: currentPlayCards, chest: chestType)
     }
 }

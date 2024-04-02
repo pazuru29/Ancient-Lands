@@ -8,35 +8,37 @@
 import SwiftUI
 
 struct LooseGameView: View {
+    @EnvironmentObject var gameViewModel: GameViewModel
+    
     var body: some View {
         ConstantOverlayView {
             VStack(spacing: 0) {
                 Text("You have fallen in battle among the best. I'm sure you'll be much stronger in your next revivals!")
-                    .font(.custom("MontserratRoman-SemiBold", size: 18))
+                    .appSemiBlodFont(size: 18)
                     .foregroundStyle(.appSecondary2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 24)
                 
-                Text("Locations traveled: \(GameViewModel.shared.currentGame.countOfLocations)")
-                    .font(.custom("MontserratRoman-SemiBold", size: 16))
+                Text("Locations traveled: \(gameViewModel.currentGame.countOfLocations)")
+                    .appSemiBlodFont(size: 16)
                     .foregroundStyle(.appThirty2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 16)
                 
-                Text("Enemies defeated: \(GameViewModel.shared.currentGame.countOfDefeatedEnemy)")
-                    .font(.custom("MontserratRoman-SemiBold", size: 16))
+                Text("Enemies defeated: \(gameViewModel.currentGame.countOfDefeatedEnemy)")
+                    .appSemiBlodFont(size: 16)
                     .foregroundStyle(.appThirty2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 16)
                 
-                Text("Bosses defeated: \(GameViewModel.shared.currentGame.countOfDefeatedBosses)")
-                    .font(.custom("MontserratRoman-SemiBold", size: 16))
+                Text("Bosses defeated: \(gameViewModel.currentGame.countOfDefeatedBosses)")
+                    .appSemiBlodFont(size: 16)
                     .foregroundStyle(.appThirty2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 24)
                 
                 Button("Menu") {
-                    GameViewModel.shared.looseGame()
+                    gameViewModel.looseGame()
                 }
                 .buttonStyle(MainButtonStyle())
             }

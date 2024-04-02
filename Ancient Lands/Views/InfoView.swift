@@ -13,25 +13,25 @@ struct InfoView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Terms of Service")
-                        .font(.custom("MontserratRoman-SemiBold", size: 20))
+                        .appSemiBlodFont(size: 20)
                         .foregroundStyle(.appSecondary2)
                         .multilineTextAlignment(.leading)
                         .padding(.bottom)
                     
                     Text(SettingsStorage.termsOfService)
-                        .font(.custom("MontserratRoman-Regular", size: 16))
+                        .appRegularFont(size: 16)
                         .foregroundStyle(.appThirty2)
                         .multilineTextAlignment(.leading)
                         .padding(.bottom, 48)
                     
                     Text("Privacy Policy")
-                        .font(.custom("MontserratRoman-SemiBold", size: 20))
+                        .appSemiBlodFont(size: 20)
                         .foregroundStyle(.appSecondary2)
                         .multilineTextAlignment(.leading)
                         .padding(.bottom)
                     
                     Text(SettingsStorage.privacyPolicy)
-                        .font(.custom("MontserratRoman-Regular", size: 16))
+                        .appRegularFont(size: 16)
                         .foregroundStyle(.appThirty2)
                         .multilineTextAlignment(.leading)
                 }

@@ -11,9 +11,9 @@ import SwiftUI
 struct Ancient_LandsApp: App {
     @AppConfiguration(\.isFirstTime) var isFirstTime
     
-    @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel.shared
+    @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel()
     
-    @StateObject var gameViewModel: GameViewModel = GameViewModel.shared
+    @StateObject var gameViewModel: GameViewModel = GameViewModel()
     
     @StateObject var navigationManager: NavigationManager = NavigationManager.shared
     
@@ -39,9 +39,10 @@ struct Ancient_LandsApp: App {
             }
         }
         .onAppear() {
+            gameViewModel.embed(character: characterViewModel)
             if isFirstTime {
                 navigationManager.addView(.rules(isSecondary: false))
-            }
+            }            
         }
     }
     

@@ -29,7 +29,7 @@ struct CharacterDetailView: View {
                     
                     VStack(alignment: .leading, spacing: 0) {
                         Text(character.name)
-                            .font(.custom("MontserratRoman-SemiBold", size: 22))
+                            .appSemiBlodFont(size: 22)
                             .foregroundStyle(.appPrimary2)
                             .padding(.bottom, 8)
                         
@@ -47,13 +47,13 @@ struct CharacterDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Character Enhancement:")
-                        .font(.custom("MontserratRoman-SemiBold", size: 16))
+                        .appSemiBlodFont(size: 16)
                         .foregroundStyle(.appPrimary2)
                         .padding(.bottom, 4)
                     
                     ForEach(character.characterEnhancement, id: \.self) { character in
                         Text(character)
-                            .font(.custom("MontserratRoman-Regular", size: 16))
+                            .appRegularFont(size: 16)
                             .foregroundStyle(.appPrimary2)
                             .padding(.bottom, 2)
                     }
@@ -62,13 +62,13 @@ struct CharacterDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Passive Skills:")
-                        .font(.custom("MontserratRoman-SemiBold", size: 16))
+                        .appSemiBlodFont(size: 16)
                         .foregroundStyle(.appPrimary2)
                         .padding(.bottom, 4)
                     
                     ForEach(character.passiveSkills, id: \.self) { skill in
                         Text(skill)
-                            .font(.custom("MontserratRoman-Regular", size: 16))
+                            .appRegularFont(size: 16)
                             .foregroundStyle(.appPrimary2)
                             .padding(.bottom, 2)
                     }
@@ -96,7 +96,7 @@ struct CharacterDetailView: View {
                 .padding(.trailing, 5)
             
             Text(String(title))
-                .font(.custom("MontserratRoman-SemiBold", size: 18))
+                .appSemiBlodFont(size: 18)
                 .foregroundStyle(.appPrimary2)
         }
     }

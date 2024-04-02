@@ -36,7 +36,7 @@ struct RulesView: View {
                                             .padding(.bottom, 24)
                                         
                                         Text(SettingsStorage.rules[index].1)
-                                            .font(.custom("MontserratRoman-Regular", size: 16))
+                                            .appRegularFont(size: 16)
                                             .foregroundStyle(.appThirty2)
                                             .multilineTextAlignment(.center)
                                             .frame(height: reader.size.height / 4)

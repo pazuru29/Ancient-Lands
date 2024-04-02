@@ -43,7 +43,7 @@ struct GameView: View {
         .toast(isPresented: $gameViewModel.isTextToastOpen, dismissAfter: 3, content: {
             ConstantOverlayView() {
                 Text(gameViewModel.toastText)
-                    .font(.custom("MontserratRoman-SemiBold", size: 18))
+                    .appSemiBlodFont(size: 18)
                     .foregroundStyle(.appPrimary2)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
@@ -54,6 +54,8 @@ struct GameView: View {
         })
         .toast(isPresented: $gameViewModel.isPickTrapOpen, content: {
             ChooseTrapView()
+                .environmentObject(self.characterViewModel)
+                .environmentObject(self.gameViewModel)
         })
         .sheet(isPresented: $isInventoryShowed, content: {
             ZStack {

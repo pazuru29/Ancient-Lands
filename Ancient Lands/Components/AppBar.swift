@@ -21,7 +21,7 @@ struct AppBar<Content: View>: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text(title)
-                    .font(.custom("MontserratRoman-Semibold", size: 24))
+                    .appSemiBlodFont(size: 24)
                     .foregroundStyle(.appPrimary2)
                 Spacer()
                 content

@@ -33,7 +33,7 @@ struct AppSecondaryBar<Content: View>: View {
                 .buttonStyle(IconButtonStyle())
                 
                 Text(title)
-                    .font(.custom("MontserratRoman-Semibold", size: 24))
+                    .appSemiBlodFont(size: 24)
                     .foregroundStyle(.appPrimary2)
                 Spacer()
                 content

@@ -19,7 +19,7 @@ struct InventoryView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("Inventory")
-                .font(.custom("MontserratRoman-Semibold", size: 24))
+                .appSemiBlodFont(size: 24)
                 .foregroundStyle(.appPrimary2)
                 .padding([.bottom, .horizontal])
                 .padding(.top, 24)
@@ -52,7 +52,7 @@ struct InventoryView: View {
     func equipmentView() -> some View {
         VStack(spacing: 0) {
             Text("Equipment")
-                .font(.custom("MontserratRoman-Semibold", size: 20))
+                .appSemiBlodFont(size: 20)
                 .foregroundStyle(.appThirty2)
                 .padding(.bottom, 24)
             
@@ -95,7 +95,7 @@ struct InventoryView: View {
             }
             
             Text(title)
-                .font(.custom("MontserratRoman-Semibold", size: 16))
+                .appSemiBlodFont(size: 16)
                 .foregroundStyle(.appThirty2)
         }
     }
@@ -112,7 +112,7 @@ struct InventoryView: View {
     func cardTypeView(type: ItemType, arrayOfCards: Array<(Int, any ItemCardModelProtocol)>) -> some View {
         VStack(spacing: 0) {
             Text(type.rawValue)
-                .font(.custom("MontserratRoman-Semibold", size: 20))
+                .appSemiBlodFont(size: 20)
                 .foregroundStyle(.appThirty2)
                 .padding(.bottom, 10)
             

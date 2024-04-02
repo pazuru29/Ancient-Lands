@@ -17,7 +17,7 @@ struct BackOfCard: View {
                 .padding(.bottom, 14)
             
             Text("Ancient Lands:\nCard Adventures")
-                .font(.custom("MedievalSharp", size: 9))
+                .appMedievalSharpFont(size: 9)
                 .foregroundStyle(.appPrimary)
                 .multilineTextAlignment(.center)
         }

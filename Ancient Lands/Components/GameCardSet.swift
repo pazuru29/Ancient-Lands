@@ -51,7 +51,7 @@ struct GameCardSet: View {
                     .padding(.bottom, 24)
                 
                 Text("Ancient Lands:\nCard Adventures")
-                    .font(.custom("MedievalSharp", size: 24))
+                    .appMedievalSharpFont(size: 24)
                     .foregroundStyle(.appPrimary)
                     .multilineTextAlignment(.center)
             }
@@ -74,7 +74,7 @@ struct GameCardSet: View {
                 .padding(.bottom, 8)
             
             Text(name)
-                .font(.custom("MontserratRoman-Medium", size: 16))
+                .appMediumFont(size: 16)
                 .foregroundStyle(.appPrimary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)

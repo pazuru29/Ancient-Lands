@@ -96,7 +96,7 @@ struct MainView: View {
                 .padding(.bottom, 20)
             
             Text("Ancient Lands:\nCard Adventures")
-                .font(.custom("MedievalSharp", size: 28))
+                .appMedievalSharpFont(size: 28)
                 .foregroundStyle(.appPrimary2)
                 .multilineTextAlignment(.center)
         }
