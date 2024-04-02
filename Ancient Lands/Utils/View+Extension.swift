@@ -12,4 +12,8 @@ extension View {
     func appSemiBlodFont(size: CGFloat) -> some View {
         self.font(.custom("MontserratRoman-SemiBold", size: size))
     }
+    
+    func appRegularFont(size: CGFloat) -> some View {
+        self.font(.custom("MontserratRoman-Regular", size: size))
+    }
 }

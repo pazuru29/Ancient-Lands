@@ -196,7 +196,7 @@ class GameViewModel: ObservableObject {
     func looseGame() {
         self.isGameLoose = false
         
-        guard var character = characterViewModel?.currentCharacter else {
+        guard let character = characterViewModel?.currentCharacter else {
             return
         }
         
@@ -226,7 +226,7 @@ class GameViewModel: ObservableObject {
                 case 21...35:
                     self.currentGame.supplement = GameStorage.nothing
                 default:
-                    guard var character = self.characterViewModel?.currentCharacter else {
+                    guard let character = self.characterViewModel?.currentCharacter else {
                         return
                     }
                     
