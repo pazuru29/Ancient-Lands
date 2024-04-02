@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct Ancient_LandsApp: App {
+    @AppConfiguration(\.isFirstTime) var isFirstTime
+    
     @StateObject var characterViewModel: CharacterViewModel = CharacterViewModel.shared
     
     @StateObject var gameViewModel: GameViewModel = GameViewModel.shared
@@ -25,19 +27,20 @@ struct Ancient_LandsApp: App {
                     LoadingView(isLoading: $isLoading)
                 } else {
                     if characterViewModel.currentCharacter == nil {
-                        NavigationView {
-                            ChooseCharacter()
-                        }
+                        ChooseCharacter()
                     } else {
-                        NavigationView {
-                            MainView()
-                        }
+                        MainView()
                     }
                 }
             }
             
             if !navigationManager.path.isEmpty {
                 navigationManager.path.last!.getView()
+            }
+        }
+        .onAppear() {
+            if isFirstTime {
+                navigationManager.addView(.rules(isSecondary: false))
             }
         }
     }

@@ -37,6 +37,10 @@
 		A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A602BAB5C020059955B /* BackCardSet.swift */; };
 		A84A6A632BAB62560059955B /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A622BAB62560059955B /* CardStorage.swift */; };
 		A84A6A672BAB72480059955B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A6A662BAB72480059955B /* ItemCard.swift */; };
+		A859A1A72BBB6F5600C9136E /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859A1A62BBB6F5600C9136E /* SettingsStorage.swift */; };
+		A859A1A92BBB73D500C9136E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859A1A82BBB73D500C9136E /* InfoView.swift */; };
+		A859A1AB2BBB79EC00C9136E /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859A1AA2BBB79EC00C9136E /* RulesView.swift */; };
+		A859A1AD2BBB98E500C9136E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859A1AC2BBB98E500C9136E /* AppConfiguration.swift */; };
 		A8707B9A2BB2E84D006DD699 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B992BB2E84D006DD699 /* LevelView.swift */; };
 		A8707B9C2BB30341006DD699 /* LanguageButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B9B2BB30341006DD699 /* LanguageButtonStyle.swift */; };
 		A8707BA02BB30B9D006DD699 /* GameCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */; };
@@ -111,6 +115,10 @@
 		A84A6A602BAB5C020059955B /* BackCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardSet.swift; sourceTree = "<group>"; };
 		A84A6A622BAB62560059955B /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
 		A84A6A662BAB72480059955B /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		A859A1A62BBB6F5600C9136E /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		A859A1A82BBB73D500C9136E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		A859A1AA2BBB79EC00C9136E /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		A859A1AC2BBB98E500C9136E /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		A8707B992BB2E84D006DD699 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		A8707B9B2BB30341006DD699 /* LanguageButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageButtonStyle.swift; sourceTree = "<group>"; };
 		A8707B9F2BB30B9D006DD699 /* GameCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardSet.swift; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				A892E6872BB71B130053C34A /* HpProgressViewStyle.swift */,
 				A892E6892BB727AE0053C34A /* GameButtonStyle.swift */,
 				A8FC17A62BBAE6CB00CC174D /* DropType.swift */,
+				A859A1AC2BBB98E500C9136E /* AppConfiguration.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 				A8378EC12BAC441F0099D5F1 /* AncientLandsCoreData.xcdatamodeld */,
 				A8378EC42BAC4DA90099D5F1 /* CoreDataManager.swift */,
 				A8BE3E312BB19E35003311B6 /* GameStorage.swift */,
+				A859A1A62BBB6F5600C9136E /* SettingsStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -384,6 +394,8 @@
 				A8378ECC2BAC72CE0099D5F1 /* SettingsView.swift */,
 				A8707BA32BB3599F006DD699 /* InGameLoadingView.swift */,
 				A8192F3C2BB5716000265AD6 /* CardDetailView.swift */,
+				A859A1A82BBB73D500C9136E /* InfoView.swift */,
+				A859A1AA2BBB79EC00C9136E /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +505,7 @@
 				A84A6A592BAB240B0059955B /* PickCardSet.swift in Sources */,
 				A84A6A532BAB1F660059955B /* CharacterDetailView.swift in Sources */,
 				A892E68C2BB752680053C34A /* ChooseBattleCardView.swift in Sources */,
+				A859A1AD2BBB98E500C9136E /* AppConfiguration.swift in Sources */,
 				A8378EC52BAC4DA90099D5F1 /* CoreDataManager.swift in Sources */,
 				A8FC17A92BBB278300CC174D /* LooseGameView.swift in Sources */,
 				A84A6A512BAAFB0C0059955B /* OverlayView.swift in Sources */,
@@ -510,11 +523,13 @@
 				A84A6A612BAB5C020059955B /* BackCardSet.swift in Sources */,
 				A84A6A5B2BAB2FC10059955B /* SmallCharacterCard.swift in Sources */,
 				A8BE3E1E2BB18B9F003311B6 /* Location.swift in Sources */,
+				A859A1AB2BBB79EC00C9136E /* RulesView.swift in Sources */,
 				A892E6862BB6D3DB0053C34A /* ChooseTrapView.swift in Sources */,
 				A8378ECB2BAC61940099D5F1 /* MainView.swift in Sources */,
 				A84A6A572BAB23190059955B /* IconButtonStyle.swift in Sources */,
 				A87386152BAA0F6C005C2123 /* ItemType.swift in Sources */,
 				A84A6A5F2BAB4BDB0059955B /* BackOfCard.swift in Sources */,
+				A859A1A92BBB73D500C9136E /* InfoView.swift in Sources */,
 				A84A6A632BAB62560059955B /* CardStorage.swift in Sources */,
 				A87386132BAA0F5C005C2123 /* ItemCardModel.swift in Sources */,
 				A8C7C9BF2BADFBE300409C59 /* GameAppBar.swift in Sources */,
@@ -528,6 +543,7 @@
 				A84A6A552BAB21D40059955B /* AppSecondaryBar.swift in Sources */,
 				A873860C2BA9EE5C005C2123 /* TypeOfCharacter.swift in Sources */,
 				A8707BA02BB30B9D006DD699 /* GameCardSet.swift in Sources */,
+				A859A1A72BBB6F5600C9136E /* SettingsStorage.swift in Sources */,
 				A82201CD2BAA336D00E05C43 /* ChooseCharacter.swift in Sources */,
 				A8F2FD9C2BA482D1007E7598 /* LottieView.swift in Sources */,
 				A82C61822BABA537005FFCCA /* KeyboardReadable.swift in Sources */,

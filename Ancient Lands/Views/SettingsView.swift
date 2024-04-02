@@ -38,7 +38,7 @@ struct SettingsView: View {
                     .padding(.bottom)
                     
                     Button {
-                        //TODO: -
+                        navigationManager.addView(.rules(isSecondary: true))
                     } label: {
                         HStack(spacing: 0) {
                             Image(systemName: "list.bullet.clipboard")
@@ -55,7 +55,7 @@ struct SettingsView: View {
                     .padding(.bottom)
                     
                     Button {
-                        //TODO: -
+                        navigationManager.addView(.info)
                     } label: {
                         HStack(spacing: 0) {
                             Image(systemName: "info.circle")
@@ -75,6 +75,7 @@ struct SettingsView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 36)
             }
+            .scrollIndicators(.hidden)
             
             VStack {
                 AppSecondaryBar(title: "Settings", needTrailingPadding: false) {

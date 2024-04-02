@@ -13,6 +13,8 @@ enum NavigationViews: Equatable {
     case pickCardSet
     case createName
     case game
+    case info
+    case rules(isSecondary: Bool = false)
     
     @ViewBuilder
     func getView() -> some View {
@@ -27,6 +29,10 @@ enum NavigationViews: Equatable {
             CreateNameView()
         case .game:
             GameView()
+        case .info:
+            InfoView()
+        case .rules(let isSecondary):
+            RulesView(isSecondary: isSecondary)
         }
     }
 }
