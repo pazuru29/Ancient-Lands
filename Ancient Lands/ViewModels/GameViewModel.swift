@@ -77,7 +77,7 @@ class GameViewModel: ObservableObject {
             return
         }
         
-        let newCharacter = currentCharacter.copyWith(character: currentCharacter.typeOfCharacter.getCharacteristic(), inventory: currentCharacter.startInventory)
+        let newCharacter = currentCharacter.copyWith(character: currentCharacter.typeOfCharacter.getCharacteristic(), equipment: Equipment(), inventory: currentCharacter.startInventory)
         
         characterViewModel.changeCharacter(character: newCharacter)
         
@@ -232,15 +232,13 @@ class GameViewModel: ObservableObject {
                     
                     let hasTraps = character.inventory.keys.contains(6) || character.inventory.keys.contains(7)
                     
-                    self.currentGame.supplement = GameStorage.somebody
+                    var supplement = GameStorage.somebody
                     
                     if !hasTraps {
-                        guard var supplement = self.currentGame.supplement else {
-                            return
-                        }
-                        
                         supplement.actions.removeFirst()
                     }
+                    
+                    self.currentGame.supplement = supplement
                 }
             }
         case .moveOn:

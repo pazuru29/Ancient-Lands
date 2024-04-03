@@ -54,7 +54,7 @@ struct BattleView: View {
     
     func playerView() -> some View {
         VStack(spacing: 8) {
-            HStack(spacing: 0) {
+            HStack(spacing: 8) {
                 Spacer()
                 
                 ForEach(gameViewModel.currentGame.currentBattle?.playerEffects ?? [], id: \.self) { effect in
