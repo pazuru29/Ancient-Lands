@@ -32,7 +32,7 @@ struct CardStorage {
         2: 3,
         1: 1,
     ]
-    
+
     static let dropFromChest: [Dictionary<Int, Int>] = [
         [1: 2, 2: 2, 7: 4],
         [2: 3, 14: 1, 6: 4],
@@ -41,6 +41,10 @@ struct CardStorage {
         [7: 4, 9: 1, 16: 1],
         [8: 1, 50: 3],
         [9: 1, 12: 1, 17: 1],
+        [28: 10, 31: 5, 33: 5],
+        [28: 15, 29: 10],
+        [37: 10, 40: 5, 39: 5],
+        [38: 10, 41: 5, 40: 5],
     ]
     
     static let dropFromAncientChest: [Dictionary<Int, Int>] = [
@@ -76,6 +80,10 @@ struct CardStorage {
         [9: 1, 12: 1, 17: 1],
         [26: 1, 31: 10, 32: 5],
         [21: 1, 23: 1, 1: 2],
+        [28: 10, 31: 5, 33: 5],
+        [28: 15, 29: 10],
+        [37: 10, 40: 5, 39: 5],
+        [38: 10, 41: 5, 40: 5],
     ]
     
     static let dropAfterWinMedium: [Dictionary<Int, Int>] = [
