@@ -209,6 +209,8 @@ class GameViewModel: ObservableObject {
         }
         
         CoreDataManager.shared.save()
+        
+        NavigationManager.shared.removeLast()
     }
     
     private func actionFunction(action: ActionType) -> () -> Void {

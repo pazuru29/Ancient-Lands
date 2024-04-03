@@ -49,6 +49,7 @@ struct BattleView: View {
         }
         .toast(isPresented: $gameViewModel.isGameLoose, content: {
             LooseGameView()
+                .environmentObject(gameViewModel)
         })
     }
     
