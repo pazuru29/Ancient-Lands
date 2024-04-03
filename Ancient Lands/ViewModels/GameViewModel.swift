@@ -13,7 +13,7 @@ enum GameState {
     case loaded
 }
 
-class GameViewModel: ObservableObject {    
+class GameViewModel: ObservableObject {
     weak var characterViewModel: CharacterViewModel?
     
     @Published var currentGame: Game = Game()
@@ -221,9 +221,9 @@ class GameViewModel: ObservableObject {
                 switch(randomNumber) {
                 case 1...2:
                     self.currentGame.supplement = GameStorage.ancientChest
-                case 3...20:
+                case 3...25:
                     self.currentGame.supplement = GameStorage.chest
-                case 21...35:
+                case 26...35:
                     self.currentGame.supplement = GameStorage.nothing
                 default:
                     guard let character = self.characterViewModel?.currentCharacter else {
@@ -245,7 +245,7 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 switch(randomNumber) {
-                case 1...40:
+                case 1...65:
                     self.toastText = "You decided to move on, but you were attacked."
                     self.isTextToastOpen = true
                     self.addBattle(stepOfBattle: .enemy)
@@ -268,7 +268,7 @@ class GameViewModel: ObservableObject {
             clouser = {
                 let randomNumber = Int.random(in: 1..<101)
                 switch(randomNumber) {
-                case 1...20:
+                case 1...25:
                     self.addDrop(dropType: self.currentGame.supplement!.assetName == "Chest" ? .chest : .ancientChest)
                     self.goToNextLocation()
                 default:
@@ -283,7 +283,7 @@ class GameViewModel: ObservableObject {
                 
                 let extraChance = (self.characterViewModel?.currentCharacter?.character.stealth ?? 2)
                 
-                let defaultChance = 25 + Int.random(in: 1...extraChance)
+                let defaultChance = 45 + Int.random(in: 1...extraChance)
                 
                 switch(randomNumber) {
                 case 1...defaultChance:
@@ -304,7 +304,7 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 4) / 2
                 
-                let defaultChance = 10 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
+                let defaultChance = 20 + Int.random(in: 1...extraChanceStealth) + Int.random(in: 1...extraChanceDexterity)
                 
                 switch(randomNumber) {
                 case 1...defaultChance:
@@ -327,7 +327,7 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 2)
                 
-                let escapeChance = 10 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
+                let escapeChance = 20 + Int.random(in: 1...extraChanceStealthDivided2) + Int.random(in: 1...extraChanceDexterity)
                 
                 let stealthChance = escapeChance + Int.random(in: 1...extraChanceStealth)
                 
@@ -348,7 +348,7 @@ class GameViewModel: ObservableObject {
                 
                 let extraChanceDexterity = (self.characterViewModel?.currentCharacter?.character.dexterity ?? 2)
                 
-                let defuseChance = 30 + Int.random(in: 1...extraChanceDexterity)
+                let defuseChance = 35 + Int.random(in: 1...extraChanceDexterity)
                 
                 let chanceToEnemy = (100 - ((100 - defuseChance) / 2))
                 
@@ -378,7 +378,7 @@ class GameViewModel: ObservableObject {
                 case 1...trapChance:
                     self.toastText = "You lurked close to the trap and as soon as the enemy hit it, you swiftly attacked him."
                     self.isTextToastOpen = true
-                    self.addBattle(stepOfBattle: .player, needPoison: self.currentGame.supplement?.assetName == "PoisonTrap")
+                    self.addBattle(stepOfBattle: .player, needPoison: self.currentGame.supplement?.assetName == "PoisonTrap", isATrap: true)
                 default:
                     self.toastText = "You lurk near a trap, but your stealth is not as good as you think, the enemy notices you and the fight begins."
                     self.isTextToastOpen = true
@@ -564,7 +564,7 @@ class GameViewModel: ObservableObject {
             
             if currentGame.currentBattle?.chest != nil {
                 switch(random) {
-                case 1...30:
+                case 1...50:
                     if currentGame.currentBattle?.battleType == .easy {
                         addDrop(dropType: .easyBattle, needChest: currentGame.currentBattle?.chest != nil)
                     } else if currentGame.currentBattle?.battleType == .medium {
@@ -577,7 +577,7 @@ class GameViewModel: ObservableObject {
                 }
             } else {
                 switch(random) {
-                case 1...30:
+                case 1...50:
                     if currentGame.currentBattle?.battleType == .easy {
                         addDrop(dropType: .easyBattle)
                     } else if currentGame.currentBattle?.battleType == .medium {
@@ -833,7 +833,7 @@ class GameViewModel: ObservableObject {
                 }
             }
             
-            if let currentBattle = currentGame.currentBattle {
+            if currentGame.currentBattle != nil {
                 if (currentGame.currentBattle!.currentPlayerHp - currentAttackEnemy) <= 0 {
                     currentGame.currentBattle!.currentPlayerHp = 0
                     
@@ -850,7 +850,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func addBattle(stepOfBattle: TypeStep, isBossFight: Bool = false, needPoison: Bool = false, chestType: ChestType? = nil) {
+    func addBattle(stepOfBattle: TypeStep, isBossFight: Bool = false, needPoison: Bool = false, chestType: ChestType? = nil, isATrap: Bool = false) {
         var enemy: Enemy
         
         var typeOfEnemy: TypeOfEnemy
@@ -898,7 +898,7 @@ class GameViewModel: ObservableObject {
                 currentPlayCards.append(character.equipment.shield!)
             }
             
-            self.currentGame.currentBattle = Battle(battleType: typeOfEnemy, step: stepOfBattle, enemy: enemy, currentEnemyHp: enemy.hp, currentPlayerHp: character.character.hp, playerEffects: [], currentPlayCards: currentPlayCards, chest: chestType)
+            self.currentGame.currentBattle = Battle(battleType: typeOfEnemy, step: stepOfBattle, enemy: enemy, currentEnemyHp: isATrap ? (enemy.hp - 10) : enemy.hp, currentPlayerHp: character.character.hp, playerEffects: [], currentPlayCards: currentPlayCards, chest: chestType)
         }
     }
 }
