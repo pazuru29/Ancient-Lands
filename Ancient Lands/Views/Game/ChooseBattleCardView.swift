@@ -68,6 +68,8 @@ struct ChooseBattleCardView: View {
         }
         .toast(isPresented: $chooseBattleCardViewModel.isDetailCardShowed, content: {
             CardDetailView(isShowed: $chooseBattleCardViewModel.isDetailCardShowed, card: chooseBattleCardViewModel.currentDetailCard!)
+                .environmentObject(characterViewModel)
+                .environmentObject(gameViewModel)
         })
         .sensoryFeedback(.impact, trigger: chooseBattleCardViewModel.isDetailCardShowed) { oldValue, newValue in
             newValue == true

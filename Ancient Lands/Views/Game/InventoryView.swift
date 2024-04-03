@@ -10,6 +10,7 @@ import ToastUI
 
 struct InventoryView: View {
     @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var gameViewModel: GameViewModel
     
     @State var listOfView: Array<AnyView> = []
     
@@ -42,6 +43,8 @@ struct InventoryView: View {
         }
         .toast(isPresented: $isDetailCardShowed, content: {
             CardDetailView(isShowed: $isDetailCardShowed, card: currentDetailCard!)
+                .environmentObject(characterViewModel)
+                .environmentObject(gameViewModel)
         })
         .onAppear {
             getInitData()
