@@ -766,15 +766,11 @@ class GameViewModel: ObservableObject {
                 let randomBuff = Int.random(in: 1...20)
                 
                 currentAttackEnemy -= randomBuff
-            }
-            
-            if (characterViewModel?.currentCharacter?.typeOfCharacter == .elf || characterViewModel?.currentCharacter?.typeOfCharacter == .elfWm) && currentGame.currentLocation.type == .forest {
+            } else if (characterViewModel?.currentCharacter?.typeOfCharacter == .elf || characterViewModel?.currentCharacter?.typeOfCharacter == .elfWm) && currentGame.currentLocation.type == .forest {
                 let randomBuff = Int.random(in: 1...10)
                 
                 currentAttackEnemy -= randomBuff
-            }
-            
-            if (characterViewModel?.currentCharacter?.typeOfCharacter == .wizard || characterViewModel?.currentCharacter?.typeOfCharacter == .wizardWm) && currentGame.currentLocation.type == .caves {
+            } else if (characterViewModel?.currentCharacter?.typeOfCharacter == .wizard || characterViewModel?.currentCharacter?.typeOfCharacter == .wizardWm) && currentGame.currentLocation.type == .caves {
                 let randomBuff = Int.random(in: 1...10)
                 
                 currentAttackEnemy -= randomBuff
@@ -837,13 +833,15 @@ class GameViewModel: ObservableObject {
                 }
             }
             
-            if currentGame.currentBattle!.currentPlayerHp - currentAttackEnemy <= 0 {
-                currentGame.currentBattle!.currentPlayerHp = 0
-                
-                endBattle()
-            } else {
-                currentGame.currentBattle!.currentPlayerHp -= currentAttackEnemy
-                currentGame.currentBattle!.step = .player
+            if let currentBattle = currentGame.currentBattle {
+                if (currentGame.currentBattle!.currentPlayerHp - currentAttackEnemy) <= 0 {
+                    currentGame.currentBattle!.currentPlayerHp = 0
+                    
+                    endBattle()
+                } else {
+                    currentGame.currentBattle!.currentPlayerHp -= currentAttackEnemy
+                    currentGame.currentBattle!.step = .player
+                }
             }
             
             currentGame.currentBattle?.currentPlayCards = []
