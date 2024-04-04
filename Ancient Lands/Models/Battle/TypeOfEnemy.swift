@@ -10,5 +10,6 @@ import Foundation
 enum TypeOfEnemy: Codable {
     case easy
     case medium
+    case hard
     case boss
 }

@@ -569,7 +569,7 @@ class GameViewModel: ObservableObject {
                 case 1...50:
                     if currentGame.currentBattle?.battleType == .easy {
                         addDrop(dropType: .easyBattle, needChest: currentGame.currentBattle?.chest != nil)
-                    } else if currentGame.currentBattle?.battleType == .medium {
+                    } else if currentGame.currentBattle?.battleType == .medium || currentGame.currentBattle?.battleType == .hard {
                         addDrop(dropType: .mediumBattle, needChest: currentGame.currentBattle?.chest != nil)
                     } else if currentGame.currentBattle?.battleType == .boss {
                         addDrop(dropType: .bossBattle, needChest: currentGame.currentBattle?.chest != nil)
@@ -582,7 +582,7 @@ class GameViewModel: ObservableObject {
                 case 1...50:
                     if currentGame.currentBattle?.battleType == .easy {
                         addDrop(dropType: .easyBattle)
-                    } else if currentGame.currentBattle?.battleType == .medium {
+                    } else if currentGame.currentBattle?.battleType == .medium || currentGame.currentBattle?.battleType == .hard {
                         addDrop(dropType: .mediumBattle)
                     } else if currentGame.currentBattle?.battleType == .boss {
                         addDrop(dropType: .bossBattle)
@@ -877,7 +877,7 @@ class GameViewModel: ObservableObject {
                     enemy = GameStorage.mediumEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .medium
                 }
-            } else {
+            } else if  currentGame.countOfLocations < 30 || currentGame.countOfDefeatedEnemy < 20 || currentGame.countOfDefeatedBosses < 1 {
                 let randomEnemy = Int.random(in: 1...3)
                 
                 switch(randomEnemy) {
@@ -887,6 +887,20 @@ class GameViewModel: ObservableObject {
                 default:
                     enemy = GameStorage.easyEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
                     typeOfEnemy = .easy
+                }
+            } else {
+                let randomEnemy = Int.random(in: 1...100)
+                
+                switch(randomEnemy) {
+                case 1...10:
+                    enemy = GameStorage.easyEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
+                    typeOfEnemy = .easy
+                case 11...70:
+                    enemy = GameStorage.hardEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
+                    typeOfEnemy = .hard
+                default:
+                    enemy = GameStorage.mediumEnemys.filter({ $0.typeOfLocation == currentGame.currentLocation.type }).randomElement()!
+                    typeOfEnemy = .medium
                 }
             }
         }
